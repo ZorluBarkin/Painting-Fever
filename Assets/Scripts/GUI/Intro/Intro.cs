@@ -20,7 +20,7 @@ public partial class Intro : CanvasLayer
     private async void PlayIntroSequence()
     {
         await FadeInGodotLogo();
-        GetTree().Root.AddChild(gameScene.Instantiate());
+        GetTree().Root.GetChild(2).AddChild(gameScene.Instantiate());
         await ToSignal(GetTree().CreateTimer(DISPLAY_DURATION), SceneTreeTimer.SignalName.Timeout);
         await FadeOutGodotLogo();
         //await FadeInGameLogo();
