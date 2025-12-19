@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://yc15qf53iqv1"]
+
+[ext_resource type="Texture2D" uid="uid://dpxhf4glpnaac" path="res://Assets/Sprites/square.svg" id="1_jpb7u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbaqq"]
+size = Vector2(80, 80)
+
+[node name="Player Cube" type="Node2D"]
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_jpb7u")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_sbaqq")
+debug_color = Color(0.99999994, 0.14230075, 0.3681643, 0.41960785)
