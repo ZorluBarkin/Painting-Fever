@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://xhsdd4bpy7om"]
+
+[sub_resource type="Gradient" id="Gradient_qhwsd"]
+offsets = PackedFloat32Array(0, 0.67333335)
+colors = PackedColorArray(0.18497226, 0.071321554, 0.121279396, 1, 0.69803923, 0.3764706, 0.5137255, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n77li"]
+gradient = SubResource("Gradient_qhwsd")
+fill_to = Vector2(0, 1)
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_n77li")
+
+[node name="Menu HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 250
+dragging_enabled = false
+
+[node name="Menu CenterContainer" type="CenterContainer" parent="Menu HSplitContainer"]
+layout_mode = 2
+
+[node name="Buttons VBoxContainer" type="VBoxContainer" parent="Menu HSplitContainer/Menu CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Continue Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
+layout_mode = 2
+text = "continue"
+
+[node name="New Game Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
+layout_mode = 2
+text = "new-game"
+
+[node name="Level Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
+layout_mode = 2
+text = "level-selector"
+
+[node name="Settings Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
+layout_mode = 2
+text = "settings"
+
+[node name="Exit Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
+layout_mode = 2
+text = "exit
+"
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Menu HSplitContainer"]
+layout_mode = 2
