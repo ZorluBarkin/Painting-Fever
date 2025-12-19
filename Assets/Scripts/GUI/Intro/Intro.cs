@@ -6,14 +6,14 @@ public partial class Intro : CanvasLayer
     private const float DISPLAY_DURATION = 2.0f;
     private const float FADE_DURATION = 1f;
 
-    [Export] private VBoxContainer godotVboxContainer;
+    [Export] private TextureRect godotEngineImage;
     [Export] private VBoxContainer gameVboxContainer;
 
     private Tween tween;
 
     public override void _EnterTree()
     {
-        godotVboxContainer.Visible = false;
+        godotEngineImage.Visible = false;
         gameVboxContainer.Visible = false;
         base._EnterTree();
     }
@@ -38,20 +38,20 @@ public partial class Intro : CanvasLayer
 
     private async Task FadeInGodotLogo()
     {
-        godotVboxContainer.Modulate = new Color(1, 1, 1, 0);
-        godotVboxContainer.Visible = true;
+        godotEngineImage.Modulate = new Color(1, 1, 1, 0);
+        godotEngineImage.Visible = true;
 
         tween = CreateTween();
-        tween.TweenProperty(godotVboxContainer, "modulate:a", 1.0f, FADE_DURATION);
+        tween.TweenProperty(godotEngineImage, "modulate:a", 1.0f, FADE_DURATION);
         await ToSignal(tween, Tween.SignalName.Finished);
     }
 
     private async Task FadeOutGodotLogo()
     {
         tween = CreateTween();
-        tween.TweenProperty(godotVboxContainer, "modulate:a", 0.0f, FADE_DURATION);
+        tween.TweenProperty(godotEngineImage, "modulate:a", 0.0f, FADE_DURATION);
         await ToSignal(tween, Tween.SignalName.Finished);
-        godotVboxContainer.Visible = false;
+        godotEngineImage.Visible = false;
     }
     
     private async Task FadeInGameLogo()

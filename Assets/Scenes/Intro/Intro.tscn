@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cwnrtwe63binc" path="res://Assets/Sprites/Logos/Godot_Neon.png" id="3_mha3x"]
 [ext_resource type="Texture2D" uid="uid://5od7x41xa6gj" path="res://Assets/Sprites/Logos/Chadot.png" id="4_mha3x"]
 
-[node name="Intro" type="CanvasLayer" node_paths=PackedStringArray("godotVboxContainer", "gameVboxContainer")]
+[node name="Intro" type="CanvasLayer" node_paths=PackedStringArray("godotEngineImage", "gameVboxContainer")]
 layer = 1000
 script = ExtResource("1_uj1kj")
-godotVboxContainer = NodePath("CenterContainer/Godot VBoxContainer")
+godotEngineImage = NodePath("CenterContainer/Neon Godot TextureRect")
 gameVboxContainer = NodePath("CenterContainer/Game VBoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -31,38 +31,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_5sui0")
 
-[node name="Godot VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Made with Label" type="Label" parent="CenterContainer/Godot VBoxContainer"]
-visible = false
-layout_mode = 2
-text = "Made With"
-horizontal_alignment = 1
-
-[node name="spacer2" type="Control" parent="CenterContainer/Godot VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="Neon Godot TextureRect" type="TextureRect" parent="CenterContainer/Godot VBoxContainer"]
+[node name="Neon Godot TextureRect" type="TextureRect" parent="CenterContainer"]
 custom_minimum_size = Vector2(450, 450)
 layout_mode = 2
 texture = ExtResource("3_mha3x")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="spacer" type="Control" parent="CenterContainer/Godot VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="Godot Label" type="Label" parent="CenterContainer/Godot VBoxContainer"]
-visible = false
-layout_mode = 2
-text = "Godot"
-horizontal_alignment = 1
 
 [node name="Game VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
