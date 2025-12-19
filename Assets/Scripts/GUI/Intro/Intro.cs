@@ -3,9 +3,14 @@ using System.Threading.Tasks;
 
 public partial class Intro : CanvasLayer
 {
-    [Export] private VBoxContainer godotVboxContainer;
     private const float DISPLAY_DURATION = 2.0f;
     private const float FADE_DURATION = 1f;
+
+    [Export] private VBoxContainer godotVboxContainer;
+    [Export] private VBoxContainer gameVboxContainer;
+    [Export] private PackedScene gameScene;
+
+    private Tween tween;
 
     public override void _Ready()
     {
@@ -15,8 +20,15 @@ public partial class Intro : CanvasLayer
     private async void PlayIntroSequence()
     {
         await FadeInGodotLogo();
+        GetTree().Root.AddChild(gameScene.Instantiate());
         await ToSignal(GetTree().CreateTimer(DISPLAY_DURATION), SceneTreeTimer.SignalName.Timeout);
         await FadeOutGodotLogo();
+        //await FadeInGameLogo();
+        //await ToSignal(GetTree().CreateTimer(DISPLAY_DURATION), SceneTreeTimer.SignalName.Timeout);
+        //await FadeOutGameLogo();
+
+        GameManager.ChangeGameState(GameState.Start, GameState.Menu);
+        this.QueueFree();
     }
 
     private async Task FadeInGodotLogo()
@@ -24,16 +36,34 @@ public partial class Intro : CanvasLayer
         godotVboxContainer.Modulate = new Color(1, 1, 1, 0);
         godotVboxContainer.Visible = true;
 
-        Tween tween = CreateTween();
+        tween = CreateTween();
         tween.TweenProperty(godotVboxContainer, "modulate:a", 1.0f, FADE_DURATION);
         await ToSignal(tween, Tween.SignalName.Finished);
     }
 
     private async Task FadeOutGodotLogo()
     {
-        Tween tween = CreateTween();
+        tween = CreateTween();
         tween.TweenProperty(godotVboxContainer, "modulate:a", 0.0f, FADE_DURATION);
         await ToSignal(tween, Tween.SignalName.Finished);
         godotVboxContainer.Visible = false;
+    }
+    
+    private async Task FadeInGameLogo()
+    {
+        gameVboxContainer.Modulate = new Color(1, 1, 1, 0);
+        gameVboxContainer.Visible = true;
+
+        tween = CreateTween();
+        tween.TweenProperty(gameVboxContainer, "modulate:a", 1.0f, FADE_DURATION);
+        await ToSignal(tween, Tween.SignalName.Finished);
+    }
+
+    private async Task FadeOutGameLogo()
+    {
+        tween = CreateTween();
+        tween.TweenProperty(gameVboxContainer, "modulate:a", 0.0f, FADE_DURATION);
+        await ToSignal(tween, Tween.SignalName.Finished);
+        gameVboxContainer.Visible = false;
     }
 }

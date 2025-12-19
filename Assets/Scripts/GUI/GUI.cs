@@ -20,12 +20,12 @@ public partial class GUI : CanvasLayer, IEventSubscriber
 
     void IEventSubscriber.SubscribeToEvents()
     {
-        //GameManager.OnGameStateChanged += OnGameStateChanged;
+        GameManager.GameStateChanged += OnGameStateChanged;
     }
 
     void IEventSubscriber.UnsubscribeFromEvents()
     {
-        //GameManager.OnGameStateChanged -= OnGameStateChanged;
+        GameManager.GameStateChanged -= OnGameStateChanged;
     }
 
     public void ShowMainMenu()
@@ -36,5 +36,22 @@ public partial class GUI : CanvasLayer, IEventSubscriber
     public void HideMainMenu()
     {
         MainMenu.Visible = false;
+    }
+
+    private void OnGameStateChanged(GameState oldState, GameState newState)
+    {
+        switch (newState)
+        {
+            case GameState.Menu:
+                if (oldState == GameState.Start)
+                    ShowMainMenu();
+                break;
+            case GameState.Play:
+                if (oldState == GameState.Menu)
+                    HideMainMenu();
+                break;
+            default:
+                break;
+        }
     }
 }
