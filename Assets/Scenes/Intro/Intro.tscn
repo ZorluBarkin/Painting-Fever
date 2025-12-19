@@ -32,7 +32,6 @@ grow_vertical = 2
 theme = ExtResource("2_5sui0")
 
 [node name="Godot VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-visible = false
 layout_mode = 2
 alignment = 1
 

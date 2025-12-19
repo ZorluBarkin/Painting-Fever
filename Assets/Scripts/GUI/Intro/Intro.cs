@@ -11,6 +11,13 @@ public partial class Intro : CanvasLayer
 
     private Tween tween;
 
+    public override void _EnterTree()
+    {
+        godotVboxContainer.Visible = false;
+        gameVboxContainer.Visible = false;
+        base._EnterTree();
+    }
+
     public override void _Ready()
     {
         PlayIntroSequence();
