@@ -21,9 +21,9 @@ public partial class Intro : CanvasLayer
         await FadeInGodotLogo();
         await ToSignal(GetTree().CreateTimer(DISPLAY_DURATION), SceneTreeTimer.SignalName.Timeout);
         await FadeOutGodotLogo();
-        //await FadeInGameLogo();
-        //await ToSignal(GetTree().CreateTimer(DISPLAY_DURATION), SceneTreeTimer.SignalName.Timeout);
-        //await FadeOutGameLogo();
+        await FadeInGameLogo();
+        await ToSignal(GetTree().CreateTimer(DISPLAY_DURATION), SceneTreeTimer.SignalName.Timeout);
+        await FadeOutGameLogo();
 
         GameManager.ChangeGameState(GameState.Start, GameState.Menu);
         this.QueueFree();

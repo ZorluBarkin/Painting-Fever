@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwnrtwe63binc"
-path="res://.godot/imported/Godot_Neon.png-0f10acf1320ffb8b047ad93584ea3693.ctex"
+path="res://.godot/imported/Godot_Neon.png-1d472039fbc82902164a1e2b3f0eb61d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/Godot_Neon.png"
-dest_files=["res://.godot/imported/Godot_Neon.png-0f10acf1320ffb8b047ad93584ea3693.ctex"]
+source_file="res://Assets/Sprites/Logos/Godot_Neon.png"
+dest_files=["res://.godot/imported/Godot_Neon.png-1d472039fbc82902164a1e2b3f0eb61d.ctex"]
 
 [params]
 

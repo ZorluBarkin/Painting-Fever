@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://38omynbcjstw"]
+[gd_scene load_steps=5 format=3 uid="uid://38omynbcjstw"]
 
-[ext_resource type="Texture2D" uid="uid://cwnrtwe63binc" path="res://Assets/Sprites/Icons/Godot_Neon.png" id="1_37ys2"]
+[ext_resource type="Texture2D" uid="uid://cwnrtwe63binc" path="res://Assets/Sprites/Logos/Godot_Neon.png" id="1_37ys2"]
 [ext_resource type="Script" uid="uid://cfou7s1beavr2" path="res://Assets/Scripts/GUI/Intro/Intro.cs" id="1_uj1kj"]
+[ext_resource type="Theme" uid="uid://billcfxn4uwgb" path="res://Assets/Themes/IntroTheme.tres" id="2_5sui0"]
+[ext_resource type="Texture2D" uid="uid://5od7x41xa6gj" path="res://Assets/Sprites/Logos/Chadot.png" id="4_mha3x"]
 
-[node name="Intro" type="CanvasLayer" node_paths=PackedStringArray("godotVboxContainer")]
+[node name="Intro" type="CanvasLayer" node_paths=PackedStringArray("godotVboxContainer", "gameVboxContainer")]
 layer = 1000
 script = ExtResource("1_uj1kj")
 godotVboxContainer = NodePath("CenterContainer/Godot VBoxContainer")
+gameVboxContainer = NodePath("CenterContainer/Game VBoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -26,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_5sui0")
 
 [node name="Godot VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 visible = false
@@ -59,4 +63,25 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 text = "Godot"
+horizontal_alignment = 1
+
+[node name="Game VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Game Logo TextureRect" type="TextureRect" parent="CenterContainer/Game VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = ExtResource("4_mha3x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="spacer" type="Control" parent="CenterContainer/Game VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Game Name Label" type="Label" parent="CenterContainer/Game VBoxContainer"]
+layout_mode = 2
+text = "Painting Fever"
 horizontal_alignment = 1

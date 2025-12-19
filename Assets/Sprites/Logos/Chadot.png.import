@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7ax2rrx44nna"
-path="res://.godot/imported/godot-game-engine-icon.svg-5817ee6903a15714db137a46efa0f394.ctex"
+uid="uid://5od7x41xa6gj"
+path="res://.godot/imported/Chadot.png-a69158ee7fa7ef5246b5c17d1c6f7298.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/godot-game-engine-icon.svg"
-dest_files=["res://.godot/imported/godot-game-engine-icon.svg-5817ee6903a15714db137a46efa0f394.ctex"]
+source_file="res://Assets/Sprites/Logos/Chadot.png"
+dest_files=["res://.godot/imported/Chadot.png-a69158ee7fa7ef5246b5c17d1c6f7298.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
