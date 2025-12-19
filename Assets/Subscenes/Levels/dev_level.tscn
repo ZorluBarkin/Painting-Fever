@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://dn2ifcwpa3u1i"]
+
+[node name="dev_level" type="Node2D"]
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="Wall" type="Node2D" parent="walls"]
+
+[node name="Wall Sprite2D" type="Sprite2D" parent="walls/Wall"]
+
+[node name="ColorRect" type="ColorRect" parent="walls/Wall/Wall Sprite2D"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wall2" type="Node2D" parent="walls"]
+position = Vector2(80, 0)
+
+[node name="Wall Sprite2D" type="Sprite2D" parent="walls/Wall2"]
+
+[node name="ColorRect" type="ColorRect" parent="walls/Wall2/Wall Sprite2D"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wall3" type="Node2D" parent="walls"]
+position = Vector2(160, 0)
+
+[node name="Wall Sprite2D" type="Sprite2D" parent="walls/Wall3"]
+
+[node name="ColorRect" type="ColorRect" parent="walls/Wall3/Wall Sprite2D"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wall4" type="Node2D" parent="walls"]
+position = Vector2(240, 0)
+
+[node name="Wall Sprite2D" type="Sprite2D" parent="walls/Wall4"]
+
+[node name="ColorRect" type="ColorRect" parent="walls/Wall4/Wall Sprite2D"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wall5" type="Node2D" parent="walls"]
+position = Vector2(320, 0)
+
+[node name="Wall Sprite2D" type="Sprite2D" parent="walls/Wall5"]
+
+[node name="ColorRect" type="ColorRect" parent="walls/Wall5/Wall Sprite2D"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wall6" type="Node2D" parent="walls"]
+position = Vector2(400, 0)
+
+[node name="Wall Sprite2D" type="Sprite2D" parent="walls/Wall6"]
+
+[node name="ColorRect" type="ColorRect" parent="walls/Wall6/Wall Sprite2D"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="walls2" type="Node2D" parent="."]
+position = Vector2(0, 221)
+
+[node name="Wall" type="Node2D" parent="walls2"]
+
+[node name="Wall Sprite2D" type="Sprite2D" parent="walls2/Wall"]
+
+[node name="ColorRect" type="ColorRect" parent="walls2/Wall/Wall Sprite2D"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wall2" type="Node2D" parent="walls2"]
+position = Vector2(80, 0)
+
+[node name="Wall Sprite2D" type="Sprite2D" parent="walls2/Wall2"]
+
+[node name="ColorRect" type="ColorRect" parent="walls2/Wall2/Wall Sprite2D"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wall3" type="Node2D" parent="walls2"]
+position = Vector2(160, 0)
+
+[node name="Wall Sprite2D" type="Sprite2D" parent="walls2/Wall3"]
+
+[node name="ColorRect" type="ColorRect" parent="walls2/Wall3/Wall Sprite2D"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wall4" type="Node2D" parent="walls2"]
+position = Vector2(240, 0)
+
+[node name="Wall Sprite2D" type="Sprite2D" parent="walls2/Wall4"]
+
+[node name="ColorRect" type="ColorRect" parent="walls2/Wall4/Wall Sprite2D"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wall5" type="Node2D" parent="walls2"]
+position = Vector2(320, 0)
+
+[node name="Wall Sprite2D" type="Sprite2D" parent="walls2/Wall5"]
+
+[node name="ColorRect" type="ColorRect" parent="walls2/Wall5/Wall Sprite2D"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wall6" type="Node2D" parent="walls2"]
+position = Vector2(400, 0)
+
+[node name="Wall Sprite2D" type="Sprite2D" parent="walls2/Wall6"]
+
+[node name="ColorRect" type="ColorRect" parent="walls2/Wall6/Wall Sprite2D"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
