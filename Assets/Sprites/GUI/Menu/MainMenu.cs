@@ -20,7 +20,7 @@ public partial class MainMenu : Control
     private void OnContinueButtonPressed()
     {
         GD.Print("Start Button Pressed");
-        // Add logic to start the game
+        // Add logic to continue from last played levels start
     }
     
     private void OnNewGameButtonPressed()
