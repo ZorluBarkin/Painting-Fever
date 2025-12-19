@@ -8,7 +8,6 @@ public partial class Intro : CanvasLayer
 
     [Export] private VBoxContainer godotVboxContainer;
     [Export] private VBoxContainer gameVboxContainer;
-    [Export] private PackedScene gameScene;
 
     private Tween tween;
 
@@ -20,7 +19,6 @@ public partial class Intro : CanvasLayer
     private async void PlayIntroSequence()
     {
         await FadeInGodotLogo();
-        GetTree().Root.GetChild(2).AddChild(gameScene.Instantiate());
         await ToSignal(GetTree().CreateTimer(DISPLAY_DURATION), SceneTreeTimer.SignalName.Timeout);
         await FadeOutGodotLogo();
         //await FadeInGameLogo();
