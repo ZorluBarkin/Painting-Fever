@@ -5,6 +5,10 @@
 [resource]
 default_font = ExtResource("1_s3f67")
 default_font_size = 28
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0, 0.719075, 0.55982333, 1)
+Label/colors/font_color = Color(1, 0.38499877, 0.9905285, 1)
+Label/colors/font_outline_color = Color(0, 0.20392157, 0.56078434, 1)
+Label/colors/font_shadow_color = Color(0.6334609, 0.687527, 1, 0.7490196)
 Label/constants/outline_size = 10
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 16
