@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://38omynbcjstw"]
+
+[ext_resource type="Texture2D" uid="uid://cwnrtwe63binc" path="res://Assets/Sprites/Icons/Godot_Neon.png" id="1_37ys2"]
+[ext_resource type="Script" uid="uid://cfou7s1beavr2" path="res://Assets/Scripts/GUI/Intro/Intro.cs" id="1_uj1kj"]
+
+[node name="Intro" type="CanvasLayer" node_paths=PackedStringArray("godotVboxContainer")]
+layer = 1000
+script = ExtResource("1_uj1kj")
+godotVboxContainer = NodePath("CenterContainer/Godot VBoxContainer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Godot VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Made with Label" type="Label" parent="CenterContainer/Godot VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Made With"
+horizontal_alignment = 1
+
+[node name="spacer2" type="Control" parent="CenterContainer/Godot VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Neon Godot TextureRect" type="TextureRect" parent="CenterContainer/Godot VBoxContainer"]
+custom_minimum_size = Vector2(450, 450)
+layout_mode = 2
+texture = ExtResource("1_37ys2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="spacer" type="Control" parent="CenterContainer/Godot VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Godot Label" type="Label" parent="CenterContainer/Godot VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Godot"
+horizontal_alignment = 1

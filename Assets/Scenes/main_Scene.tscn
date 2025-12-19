@@ -4,4 +4,6 @@
 
 [node name="Main Scene" type="Node2D"]
 
+[node name="Game Scene" type="Node2D" parent="."]
+
 [node name="GUI" parent="." instance=ExtResource("1_ex3s3")]

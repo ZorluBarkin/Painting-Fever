@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://fqax347l1thg"]
 
 [ext_resource type="PackedScene" uid="uid://xhsdd4bpy7om" path="res://Assets/Subscenes/GUI/main_menu.tscn" id="1_221tx"]
-[ext_resource type="Script" uid="uid://dex0s44cl4wfg" path="res://Assets/Sprites/GUI/GUI.cs" id="1_gm80i"]
+[ext_resource type="Script" uid="uid://dex0s44cl4wfg" path="res://Assets/Scripts/GUI/GUI.cs" id="1_gm80i"]
 
 [node name="GUI" type="CanvasLayer" node_paths=PackedStringArray("MainMenu")]
 editor_description = "This CanvasLayer houses a singleton script."
