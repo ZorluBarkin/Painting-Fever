@@ -19,3 +19,6 @@ mono_crash.*.json
 
 #MacOS specific ignores
 .DS_Store
+
+# Export related folder
+Exports/
