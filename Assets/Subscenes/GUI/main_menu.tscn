@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://xhsdd4bpy7om"]
+[gd_scene load_steps=4 format=3 uid="uid://xhsdd4bpy7om"]
+
+[ext_resource type="Script" uid="uid://cns3kw7vleamf" path="res://Assets/Sprites/GUI/Menu/MainMenu.cs" id="1_n77li"]
 
 [sub_resource type="Gradient" id="Gradient_qhwsd"]
 offsets = PackedFloat32Array(0, 0.67333335)
@@ -15,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n77li")
 
 [node name="Background TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -65,3 +68,9 @@ text = "exit
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Menu HSplitContainer"]
 layout_mode = 2
+
+[connection signal="pressed" from="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer/Continue Button" to="." method="OnContinueButtonPressed"]
+[connection signal="pressed" from="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer/New Game Button" to="." method="OnNewGameButtonPressed"]
+[connection signal="pressed" from="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer/Level Button" to="." method="OnLevelSelectorButtonPressed"]
+[connection signal="pressed" from="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer/Settings Button" to="." method="OnSettingsButtonPressed"]
+[connection signal="pressed" from="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer/Exit Button" to="." method="OnExitButtonPressed"]
