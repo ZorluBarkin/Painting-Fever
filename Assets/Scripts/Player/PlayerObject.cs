@@ -15,7 +15,7 @@ public partial class PlayerObject : Node2D
     public bool OnBottomLane { get; private set; } = true;
     public bool AbleToPaint { get; private set; } = false;
     public Level level;
-    public Node2D LaneCentrePoint;
+    public Marker2D LaneCentrePoint;
     public float laneOffset = 0f;
     
     public override void _Ready()

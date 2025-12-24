@@ -5,7 +5,7 @@
 [node name="Main Camera" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(150, 0)
+offset = Vector2(200, 0)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 script = ExtResource("1_gphlm")

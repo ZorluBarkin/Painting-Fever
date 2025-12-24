@@ -14,7 +14,7 @@ public partial class Level : Node
     [Export] public float MusicBPM { get; private set; } = 0f;
 
     [ExportCategory("In-Level Godot Nodes")]
-    [Export] public Node2D CentralLinePoint { get; private set; }
+    [Export] public Marker2D CentralLinePoint { get; private set; }
     //[Export] public PackedScene PlayerObjectScene { get; private set; }
 
     // Runtime variables
@@ -56,6 +56,7 @@ public partial class Level : Node
             noErrors = false;
         }
 
+        // TODO: Temporary remove once dynamic calculations via markers are added
         if (LaneOffset <= 0f)
         {
             GD.PrintErr("Invalid Lane Offset assigned!");
