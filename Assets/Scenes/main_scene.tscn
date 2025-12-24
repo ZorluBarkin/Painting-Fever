@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl7qrdh347yna"]
+
+[ext_resource type="PackedScene" uid="uid://dhh3ye7n8vjp" path="res://Assets/Subscenes/Managers/game_manager.tscn" id="1_6bpw5"]
+[ext_resource type="PackedScene" uid="uid://fqax347l1thg" path="res://Assets/Scenes/GUI/GUI.tscn" id="2_qk5nb"]
+[ext_resource type="PackedScene" uid="uid://b2iy4u68ws5p8" path="res://Assets/Subscenes/Managers/sound_manager.tscn" id="3_r8ymx"]
+[ext_resource type="PackedScene" uid="uid://b38082u4rn4x4" path="res://Assets/Subscenes/Managers/level_manager.tscn" id="4_1bw7v"]
+[ext_resource type="PackedScene" uid="uid://d26l7dflxe3v1" path="res://Assets/Subscenes/Camera/main_camera.tscn" id="5_j6pfq"]
+
+[node name="Main Scene" type="Node2D"]
+
+[node name="Game Manager" parent="." node_paths=PackedStringArray("GameSceneRoot") instance=ExtResource("1_6bpw5")]
+GUI = ExtResource("2_qk5nb")
+GameSceneRoot = NodePath("../Game Scene")
+
+[node name="Sound Manager" parent="." instance=ExtResource("3_r8ymx")]
+
+[node name="Level Manager" parent="." instance=ExtResource("4_1bw7v")]
+
+[node name="Game Scene" type="Node2D" parent="."]
+
+[node name="Main Camera" parent="." instance=ExtResource("5_j6pfq")]

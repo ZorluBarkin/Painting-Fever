@@ -1,20 +1,32 @@
 using Godot;
 using System;
 
-public partial class MainMenu : Control
+public partial class MainMenu : Control, IEventSubscriber
 {
     [Export] private Button continueButton;
-    /* [Export] private Button newGameButton;
-    [Export] private Button levelSelectorButton;
-    [Export] private Button settingsButton;
-    [Export] private Button exitButton; */
 
     public override void _Ready()
     {
+        ((IEventSubscriber)this).SubscribeToEvents();
         //if (no saved game exists)
         //{
         //    continueButton.Disabled = true;
         //}
+    }
+
+    public override void _ExitTree()
+    {
+        ((IEventSubscriber)this).UnsubscribeFromEvents();
+    }
+
+    void IEventSubscriber.SubscribeToEvents()
+    {
+        GameManager.GameStateChanged += OnGameStateChanged;
+    }
+
+    void IEventSubscriber.UnsubscribeFromEvents()
+    {
+        GameManager.GameStateChanged -= OnGameStateChanged;
     }
 
     private void OnContinueButtonPressed()
@@ -27,6 +39,8 @@ public partial class MainMenu : Control
     {
         GD.Print("New Game Button Pressed");
         // Add logic to start the game
+        LevelManager.Instance.InstantiateLevel(Difficulty.Easy, 0);
+        GameManager.ChangeGameState(GameState.Menu, GameState.Play);
     }
 
     private void OnLevelSelectorButtonPressed()
@@ -44,5 +58,10 @@ public partial class MainMenu : Control
     private void OnExitButtonPressed()
     {
         GetTree().Quit();
+    }
+
+    private void OnGameStateChanged(GameState oldState, GameState targetState)
+    {
+        Visible = targetState == GameState.Menu;
     }
 }

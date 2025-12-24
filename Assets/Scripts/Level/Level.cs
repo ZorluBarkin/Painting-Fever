@@ -13,6 +13,7 @@ public partial class Level : Node
 
     [ExportCategory("In-Level Godot Nodes")]
     [Export] public Node2D CentralLinePoint { get; private set; }
+    //[Export] public PackedScene PlayerObjectScene { get; private set; }
 
     // Runtime variables
     public PlayerObject PlayerObject { get; private set; }
@@ -69,6 +70,7 @@ public partial class Level : Node
             if (child is PlayerObject player)
             {
                 PlayerObject = player;
+                SetPlayerVariables();
                 return true;
             }
         }

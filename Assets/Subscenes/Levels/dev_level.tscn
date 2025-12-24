@@ -304,5 +304,6 @@ offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Player Cube" parent="." instance=ExtResource("1_7t5j6")]
+position = Vector2(-200, 0)
 
 [node name="Central Line Definer Node2D" type="Node2D" parent="."]

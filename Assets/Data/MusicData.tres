@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://piu7j6kiek1s"]
-
-[ext_resource type="Script" uid="uid://ck07cml4q0afu" path="res://Assets/Scripts/Data/MusicData.cs" id="1_d0apv"]
-
-[resource]
-script = ExtResource("1_d0apv")
-SlowSongs = Dictionary[int, AudioStream]({})
-MediumSongs = Dictionary[int, AudioStream]({})
-FastSongs = Dictionary[int, AudioStream]({})
