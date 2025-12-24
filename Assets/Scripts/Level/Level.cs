@@ -78,7 +78,7 @@ public partial class Level : Node
 
     private void SetPlayerVariables()
     {
-        PlayerObject.SetMovementSpeed(LevelManager.Instance.LevelData.GetMoveSpeed(Difficulty), Difficulty);
+        PlayerObject.SetLevelBasedVariables(this);
     } 
 
     public void UpdateProgress(float distanceTraveled, bool painting)

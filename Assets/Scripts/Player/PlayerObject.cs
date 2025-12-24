@@ -13,6 +13,7 @@ public partial class PlayerObject : Node2D
     
     public bool OnBottomLane { get; private set; } = true;
     public bool AbleToPaint { get; private set; } = false;
+    public Level level;
     public Node2D LaneCentrePoint;
     
     public override void _Ready()
@@ -45,13 +46,15 @@ public partial class PlayerObject : Node2D
     private void MoveCube(double delta)
     {
         Position += new Vector2(MoveSpeed * (float)delta, 0);
-        LevelManager.Instance.CurrentLevel.UpdateProgress(MoveSpeed, AbleToPaint);
+        level.UpdateProgress(MoveSpeed, AbleToPaint);
     }
 
-    public void SetMovementSpeed(float speed, Difficulty difficulty)
+    public void SetLevelBasedVariables(Level currentLevel)
     {
-        MoveSpeed = speed;
-        switch (difficulty)
+        level = currentLevel;
+        MoveSpeed = LevelManager.Instance.LevelData.GetMoveSpeed(level.Difficulty);
+        LaneCentrePoint = level.CentralLinePoint;
+        switch (level.Difficulty)
         {
             case Difficulty.Easy:
                 LaneSwitchTime = 3f;
