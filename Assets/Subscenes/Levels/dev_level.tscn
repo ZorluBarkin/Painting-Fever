@@ -1,12 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn2ifcwpa3u1i"]
+[gd_scene load_steps=4 format=3 uid="uid://dn2ifcwpa3u1i"]
 
 [ext_resource type="PackedScene" uid="uid://yc15qf53iqv1" path="res://Assets/Subscenes/Player/player_cube.tscn" id="1_7t5j6"]
 [ext_resource type="Script" uid="uid://beo7axsch4on6" path="res://Assets/Scripts/Level/Level.cs" id="1_hvebc"]
+[ext_resource type="Texture2D" uid="uid://cwnrtwe63binc" path="res://Assets/Sprites/Logos/Godot_Neon.png" id="2_18l3d"]
 
 [node name="dev_level" type="Node2D" node_paths=PackedStringArray("CentralLinePoint")]
 script = ExtResource("1_hvebc")
 LaneOffset = 160.0
 CentralLinePoint = NodePath("Central Line Definer Node2D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1000
+
+[node name="Parallax2D" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1280, 720)
+follow_viewport = false
+
+[node name="background Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D"]
+texture = ExtResource("2_18l3d")
 
 [node name="walls" type="Node2D" parent="."]
 position = Vector2(0, -200)
