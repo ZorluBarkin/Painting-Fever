@@ -15,6 +15,7 @@ public partial class PlayerObject : Node2D
     public bool AbleToPaint { get; private set; } = false;
     public Level level;
     public Node2D LaneCentrePoint;
+    public float laneOffset = 0f;
     
     public override void _Ready()
     {
@@ -45,7 +46,8 @@ public partial class PlayerObject : Node2D
 
     private void MoveCube(double delta)
     {
-        Position += new Vector2(MoveSpeed * (float)delta, 0);
+        //Position += new Vector2(MoveSpeed * (float)delta, 0);
+        Position = new Vector2(Position.X + MoveSpeed * (float)delta, LaneCentrePoint.Position.Y + (OnBottomLane ? laneOffset : -laneOffset));
         level.UpdateProgress(MoveSpeed, AbleToPaint);
     }
 
@@ -69,5 +71,8 @@ public partial class PlayerObject : Node2D
                 LaneSwitchTime = 1f;
                 break;
         }
+
+        // TODO: temporary
+        laneOffset = 100f;
     }
 }
