@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2iy4u68ws5p8"]
+[gd_scene load_steps=3 format=3 uid="uid://b2iy4u68ws5p8"]
 
 [ext_resource type="Script" uid="uid://dlp5lpcpw42qy" path="res://Assets/Scripts/Managers/SoundManager.cs" id="1_02aja"]
+[ext_resource type="AudioStream" uid="uid://juqrqum4nb7r" path="res://Assets/Music/Menu/Starlight_Circuit2_71.mp3" id="2_32srt"]
 
 [node name="Sound Manager" type="Node" node_paths=PackedStringArray("MenuMusicPlayer", "LevelMusicPlayer", "EffectsPlayer")]
 script = ExtResource("1_02aja")
@@ -9,6 +10,7 @@ LevelMusicPlayer = NodePath("Level Music AudioStreamPlayer")
 EffectsPlayer = NodePath("SFX AudioStreamPlayer")
 
 [node name="Menu Music AudiStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_32srt")
 
 [node name="Level Music AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 

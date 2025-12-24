@@ -8,6 +8,7 @@ public partial class GameManager : Node, IEventSubscriber
 
     [Export] private PackedScene GUI;
     [Export] public Node2D GameSceneRoot { get; private set; }
+    public GameState CurrentGameState { get; private set; } = GameState.Start;
 
     public override void _Ready()
     {
@@ -40,6 +41,7 @@ public partial class GameManager : Node, IEventSubscriber
     public static void ChangeGameState(GameState oldState, GameState targetState)
     {
         GD.Print($"Game State changed from {oldState} to {targetState}");
+        GameStateChanged.Invoke(oldState, targetState);
     }
 
     public static void OnGameStateChanged(GameState oldState, GameState targetState)
@@ -59,5 +61,6 @@ public partial class GameManager : Node, IEventSubscriber
             default:
                 break;
         }
+        Instance.CurrentGameState = targetState;
     }
 }

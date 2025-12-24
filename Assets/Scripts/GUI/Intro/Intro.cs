@@ -23,6 +23,14 @@ public partial class Intro : CanvasLayer
         PlayIntroSequence();
     }
 
+    #if DEBUG
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        FinishIntro();
+        base._UnhandledInput(@event);
+    }
+    #endif
+
     private async void PlayIntroSequence()
     {
         await FadeInGodotLogo();
@@ -31,7 +39,11 @@ public partial class Intro : CanvasLayer
         await FadeInGameLogo();
         await ToSignal(GetTree().CreateTimer(DISPLAY_DURATION), SceneTreeTimer.SignalName.Timeout);
         await FadeOutGameLogo();
+        FinishIntro();
+    }
 
+    private void FinishIntro()
+    {
         GameManager.ChangeGameState(GameState.Start, GameState.Menu);
         this.QueueFree();
     }

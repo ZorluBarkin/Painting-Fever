@@ -102,6 +102,7 @@ public partial class SoundManager : Node, IEventSubscriber
         switch (newState)
         {
             case GameState.Menu:
+                GD.Print("Switching to menu music");
                 PlayMenuMusic();
                 break;
         }

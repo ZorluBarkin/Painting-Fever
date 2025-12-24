@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d26l7dflxe3v1"]
+
+[node name="Main Camera" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
