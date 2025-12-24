@@ -48,9 +48,9 @@ public partial class SoundManager : Node, IEventSubscriber
     public void SetVolumes()
     {
         float masterEffect = MasterVolume / 100f;
-        MenuMusicPlayer.VolumeDb = Mathf.LinearToDb(masterEffect * MusicVolume);
-        LevelMusicPlayer.VolumeDb = Mathf.LinearToDb(masterEffect * MusicVolume);
-        EffectsPlayer.VolumeDb = Mathf.LinearToDb(masterEffect * SfxVolume);
+        MenuMusicPlayer.VolumeDb = Mathf.LinearToDb(masterEffect * MusicVolume / 100f);
+        LevelMusicPlayer.VolumeDb = Mathf.LinearToDb(masterEffect * MusicVolume / 100f);
+        EffectsPlayer.VolumeDb = Mathf.LinearToDb(masterEffect * SfxVolume / 100f);
     }
 
     public void PlayLevelMusic(AudioStream music)
