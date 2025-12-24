@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://b38082u4rn4x4"]
+
+[ext_resource type="Script" uid="uid://bfmiydpdii4ax" path="res://Assets/Scripts/Managers/LevelManager.cs" id="1_reo4y"]
+[ext_resource type="Resource" uid="uid://bb0q6gadam8k3" path="res://Assets/Data/LevelData.tres" id="2_gwoxq"]
+[ext_resource type="Resource" uid="uid://dm6wo8kkdxjio" path="res://Assets/Data/ColorData.tres" id="3_dsx2p"]
+
+[node name="Level Manager" type="Node"]
+script = ExtResource("1_reo4y")
+LevelData = ExtResource("2_gwoxq")
+ColorData = ExtResource("3_dsx2p")

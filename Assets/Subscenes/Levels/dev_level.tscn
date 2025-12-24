@@ -1,8 +1,21 @@
-[gd_scene format=3 uid="uid://dn2ifcwpa3u1i"]
+[gd_scene load_steps=4 format=3 uid="uid://dn2ifcwpa3u1i"]
 
-[node name="dev_level" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://yc15qf53iqv1" path="res://Assets/Subscenes/Player/player_cube.tscn" id="1_7t5j6"]
+[ext_resource type="Script" uid="uid://beo7axsch4on6" path="res://Assets/Scripts/Level/Level.cs" id="1_hvebc"]
+
+[sub_resource type="Curve2D" id="Curve2D_7t5j6"]
+bake_interval = 512.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 1
+
+[node name="dev_level" type="Node2D" node_paths=PackedStringArray("centralLinePoint")]
+script = ExtResource("1_hvebc")
+centralLinePoint = NodePath("Central Line Definer Node2D")
 
 [node name="walls" type="Node2D" parent="."]
+position = Vector2(0, -200)
 
 [node name="Wall" type="Node2D" parent="walls"]
 
@@ -70,7 +83,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="walls2" type="Node2D" parent="."]
-position = Vector2(0, 221)
+position = Vector2(0, 200)
 
 [node name="Wall" type="Node2D" parent="walls2"]
 
@@ -136,3 +149,10 @@ offset_left = -40.0
 offset_top = -40.0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Player Cube" parent="." instance=ExtResource("1_7t5j6")]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_7t5j6")
+
+[node name="Central Line Definer Node2D" type="Node2D" parent="."]

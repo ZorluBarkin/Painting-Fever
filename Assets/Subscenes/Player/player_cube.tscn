@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://yc15qf53iqv1"]
+[gd_scene load_steps=4 format=3 uid="uid://yc15qf53iqv1"]
 
 [ext_resource type="Texture2D" uid="uid://dpxhf4glpnaac" path="res://Assets/Sprites/square.svg" id="1_jpb7u"]
+[ext_resource type="Script" uid="uid://canueraolnluh" path="res://Assets/Scripts/Player/PlayerObject.cs" id="1_sbaqq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbaqq"]
 size = Vector2(80, 80)
 
 [node name="Player Cube" type="Node2D"]
+script = ExtResource("1_sbaqq")
 
 [node name="Visual" type="Node2D" parent="."]
 

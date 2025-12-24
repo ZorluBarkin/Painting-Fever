@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bb0q6gadam8k3"]
+
+[ext_resource type="Script" uid="uid://85cbye0o2i0v" path="res://Assets/Scripts/Data/LevelData.cs" id="1_es6fk"]
+[ext_resource type="PackedScene" uid="uid://dn2ifcwpa3u1i" path="res://Assets/Subscenes/Levels/dev_level.tscn" id="1_fcbys"]
+
+[resource]
+script = ExtResource("1_es6fk")
+EasyLevelScenes = Array[PackedScene]([])
+MediumLevelScenes = Array[PackedScene]([])
+HardLevelScenes = Array[PackedScene]([])
+DevLevels = Array[PackedScene]([ExtResource("1_fcbys")])

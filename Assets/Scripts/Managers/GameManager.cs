@@ -40,8 +40,10 @@ public partial class GameManager : Node, IEventSubscriber
 
     public static void ChangeGameState(GameState oldState, GameState targetState)
     {
+        #if DEBUG
         GD.Print($"Game State changed from {oldState} to {targetState}");
-        GameStateChanged.Invoke(oldState, targetState);
+        #endif
+        GameStateChanged?.Invoke(oldState, targetState);
     }
 
     public static void OnGameStateChanged(GameState oldState, GameState targetState)
