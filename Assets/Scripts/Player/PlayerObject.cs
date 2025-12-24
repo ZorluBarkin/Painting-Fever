@@ -2,6 +2,7 @@ using Godot;
 
 public partial class PlayerObject : Node2D
 {
+    public const float OBJECT_RADIUS = 40f;
     public PlayerColors Color { get; private set; } = PlayerColors.Grey;
     
     [Export] public float MoveSpeed { get; private set; } = 300f;
@@ -56,6 +57,8 @@ public partial class PlayerObject : Node2D
         level = currentLevel;
         MoveSpeed = LevelManager.Instance.LevelData.GetMoveSpeed(level.Difficulty);
         LaneCentrePoint = level.CentralLinePoint;
+        laneOffset = level.LaneOffset;
+
         switch (level.Difficulty)
         {
             case Difficulty.Easy:
@@ -71,8 +74,5 @@ public partial class PlayerObject : Node2D
                 LaneSwitchTime = 1f;
                 break;
         }
-
-        // TODO: temporary
-        laneOffset = 100f;
     }
 }

@@ -5,6 +5,7 @@
 
 [node name="dev_level" type="Node2D" node_paths=PackedStringArray("CentralLinePoint")]
 script = ExtResource("1_hvebc")
+LaneOffset = 160.0
 CentralLinePoint = NodePath("Central Line Definer Node2D")
 
 [node name="walls" type="Node2D" parent="."]

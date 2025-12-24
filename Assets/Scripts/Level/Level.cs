@@ -6,6 +6,8 @@ public partial class Level : Node
     [Export] public Difficulty Difficulty { get; private set; }
     [Export] public float MaxDistance { get; private set; } = 3000f;
     [Export] public float RequiredProgress { get; private set; } = 2000f;
+    [Export] public float LaneOffset { get; private set; } = 0f;
+
 
     [ExportCategory("Music Section")]
     [Export] public AudioStream LevelMusic {get; private set; }
@@ -26,7 +28,7 @@ public partial class Level : Node
         if (!ReadyLevel())
             return;
             // NOTE: maybe return to main menu or show error message
-
+        
         PlayerObject.LaneCentrePoint = CentralLinePoint;
         SoundManager.Instance.PlayLevelMusic(LevelMusic);
         
@@ -53,6 +55,14 @@ public partial class Level : Node
             GD.PrintErr("Invalid BPM assigned for level music!");
             noErrors = false;
         }
+
+        if (LaneOffset <= 0f)
+        {
+            GD.PrintErr("Invalid Lane Offset assigned!");
+            noErrors = false;
+        }
+        else
+            LaneOffset -= PlayerObject.OBJECT_RADIUS;
         
         if (!GetPlayerObject())
         {
