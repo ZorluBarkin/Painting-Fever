@@ -2,5 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dlp5lpcpw42qy" path="res://Assets/Scripts/Managers/SoundManager.cs" id="1_02aja"]
 
-[node name="Sound Manager" type="Node"]
+[node name="Sound Manager" type="Node" node_paths=PackedStringArray("MenuMusicPlayer", "LevelMusicPlayer", "EffectsPlayer")]
 script = ExtResource("1_02aja")
+MenuMusicPlayer = NodePath("Menu Music AudiStreamPlayer")
+LevelMusicPlayer = NodePath("Level Music AudioStreamPlayer")
+EffectsPlayer = NodePath("SFX AudioStreamPlayer")
+
+[node name="Menu Music AudiStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Level Music AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="SFX AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class SoundManager : Node
+public partial class SoundManager : Node, IEventSubscriber
 {
     public static SoundManager Instance { get; private set; }
     [Export] public AudioStreamPlayer MenuMusicPlayer { get; private set; }
@@ -19,14 +19,30 @@ public partial class SoundManager : Node
     /// <summary>
     /// Master volume that affects all sounds. 0-100 range.
     /// </summary>
-    public float MasterVolume { get; private set; }
-    public float MusicVolume { get; private set; }
-    public float SfxVolume { get; private set; }
+    public float MasterVolume { get; private set; } = 50f;
+    public float MusicVolume { get; private set; } = 100f;
+    public float SfxVolume { get; private set; } = 100f;
 
     public SoundManager() { Instance = this; }
     public override void _Ready()
     {
         SetVolumes();
+        ((IEventSubscriber)this).SubscribeToEvents();
+    }
+
+    public override void _ExitTree()
+    {
+        ((IEventSubscriber)this).UnsubscribeFromEvents();
+    }
+
+    void IEventSubscriber.SubscribeToEvents()
+    {
+        GameManager.GameStateChanged += OnGameStateChanged;
+    }
+
+    void IEventSubscriber.UnsubscribeFromEvents()
+    {
+        GameManager.GameStateChanged -= OnGameStateChanged;
     }
 
     public void SetVolumes()
@@ -53,5 +69,41 @@ public partial class SoundManager : Node
 
         EffectsPlayer.Stream = sfx;
         EffectsPlayer.Play();
+    }
+
+    public void PlayMenuMusic()
+    {
+        if (LevelMusicPlayer.Playing)
+            LevelMusicPlayer.Stop();
+
+        MenuMusicPlayer.Play();
+    }
+
+    public void SetMasterVolume(float volume)
+    {
+        MasterVolume = volume;
+        SetVolumes();
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        MusicVolume = volume;
+        SetVolumes();
+    }
+
+    public void SetSfxVolume(float volume)
+    {
+        SfxVolume = volume;
+        SetVolumes();
+    }
+
+    private void OnGameStateChanged(GameState oldState, GameState newState)
+    {
+        switch (newState)
+        {
+            case GameState.Menu:
+                PlayMenuMusic();
+                break;
+        }
     }
 }
