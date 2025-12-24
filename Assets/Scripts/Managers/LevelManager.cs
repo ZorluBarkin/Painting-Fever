@@ -13,7 +13,5 @@ public partial class LevelManager : Node
     public LevelManager() { Instance = this; }
 
     public override void _Ready()
-    {
-        
-    }
+    { }
 }

@@ -1,35 +1,85 @@
-using System.Diagnostics.CodeAnalysis;
 using Godot;
 
 public partial class Level : Node
 {
-    [Export] public Node2D centralLinePoint;
-    [Export] public PlayerObject playerObject;
+    [ExportCategory("Level Metadata")]
+    [Export] public Difficulty Difficulty { get; private set; }
+    [Export] public float MaxDistance { get; private set; } = 3000f;
+    [Export] public float RequiredProgress { get; private set; } = 2000f;
 
+    [ExportCategory("Music Section")]
+    [Export] public AudioStream LevelMusic {get; private set; }
+    [Export] public float MusicBPM { get; private set; } = 0f;
+
+    [ExportCategory("In-Level Godot Nodes")]
+    [Export] public Node2D CentralLinePoint { get; private set; }
+
+    // Runtime variables
+    public PlayerObject PlayerObject { get; private set; }
     public float Progress { get; private set; } = 0f;
     public float Distance { get; private set; } = 0f;
-
-    [Export] float maxDistance = 3000f;
-    [Export] float requiredProgress = 2000f;
-
-    [Export] public AudioStream LevelMusic;
-    [Export] public float MusicBPM;
-
     public bool LevelStarted { get; private set; } = false;
 
     public override void _EnterTree()
     {
-        #if DEBUG
-        if (CheckErrors())
+        if (!ReadyLevel())
             return;
-        #endif
+            // NOTE: maybe return to main menu or show error message
 
-        playerObject.lineDefiner = centralLinePoint;
+        PlayerObject.LaneCentrePoint = CentralLinePoint;
         SoundManager.Instance.PlayLevelMusic(LevelMusic);
         
         LevelStarted = true;
         base._Ready();
     }
+
+    /// <summary>
+    /// Check if level is ready to be played <br/>
+    /// Returns false if there are errors
+    /// </summary>
+    /// <returns></returns>
+    private bool ReadyLevel()
+    {
+        bool noErrors = true;
+        if (LevelMusic == null)
+        {
+            GD.PrintErr("No level music assigned!");
+            noErrors = false;
+        }
+
+        if (MusicBPM <= 0)
+        {
+            GD.PrintErr("Invalid BPM assigned for level music!");
+            noErrors = false;
+        }
+        
+        if (!GetPlayerObject())
+        {
+            GD.PrintErr("No PlayerObject found in level!");
+            noErrors = false;
+        }
+
+        return noErrors;
+    }
+
+    private bool GetPlayerObject()
+    {
+        foreach (Node child in GetChildren())
+        {
+            if (child is PlayerObject player)
+            {
+                PlayerObject = player;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void SetPlayerVariables()
+    {
+        PlayerObject.SetMovementSpeed(LevelManager.Instance.LevelData.GetMoveSpeed(Difficulty), Difficulty);
+    } 
 
     public void UpdateProgress(float distanceTraveled, bool painting)
     {
@@ -40,9 +90,9 @@ public partial class Level : Node
 
     private void CheckLevelEnd()
     {
-        if (Distance >= maxDistance)
+        if (Distance >= MaxDistance)
         {
-            if (Progress >= requiredProgress)
+            if (Progress >= RequiredProgress)
             {
                 #if DEBUG
                 GD.Print("Level Complete!");
@@ -57,22 +107,5 @@ public partial class Level : Node
                 // TODO: add end popups
             }
         }
-    }
-
-    private bool CheckErrors()
-    {
-        bool hasErrors = false;
-        if (LevelMusic == null)
-        {
-            GD.PrintErr("No level music assigned!");
-            hasErrors = true;
-        }
-
-        if (MusicBPM <= 0)
-        {
-            GD.PrintErr("Invalid BPM assigned for level music!");
-            hasErrors = true;
-        }
-        return hasErrors;
     }
 }

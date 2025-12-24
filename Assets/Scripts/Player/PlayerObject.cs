@@ -4,12 +4,16 @@ public partial class PlayerObject : Node2D
 {
     public PlayerColors Color { get; private set; } = PlayerColors.Grey;
     
-    [Export] public float MoveSpeed { get; set; } = 300f;
-    [Export] public float LaneDistance { get; set; } = 100f;
-    [Export] public float LaneSwitchSpeed { get; set; } = 10f;
+    [Export] public float MoveSpeed { get; private set; } = 300f;
+    
+    /// <summary>
+    /// changes besed on current speed
+    /// </summary>
+    public float LaneSwitchTime { get; set; } = 1f;
     
     public bool OnBottomLane { get; private set; } = true;
-    [Export] public Node2D lineDefiner;
+    public bool AbleToPaint { get; private set; } = false;
+    public Node2D LaneCentrePoint;
     
     public override void _Ready()
     {
@@ -41,5 +45,26 @@ public partial class PlayerObject : Node2D
     private void MoveCube(double delta)
     {
         Position += new Vector2(MoveSpeed * (float)delta, 0);
+        LevelManager.Instance.CurrentLevel.UpdateProgress(MoveSpeed, AbleToPaint);
+    }
+
+    public void SetMovementSpeed(float speed, Difficulty difficulty)
+    {
+        MoveSpeed = speed;
+        switch (difficulty)
+        {
+            case Difficulty.Easy:
+                LaneSwitchTime = 3f;
+                break;
+            case Difficulty.Medium:
+                LaneSwitchTime = 1.5f;
+                break;
+            case Difficulty.Hard:
+                LaneSwitchTime = 1f;
+                break;
+            case Difficulty.EasterEgg:
+                LaneSwitchTime = 1f;
+                break;
+        }
     }
 }

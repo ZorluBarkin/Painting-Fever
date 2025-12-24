@@ -10,9 +10,9 @@ _data = {
 }
 point_count = 1
 
-[node name="dev_level" type="Node2D" node_paths=PackedStringArray("centralLinePoint")]
+[node name="dev_level" type="Node2D" node_paths=PackedStringArray("CentralLinePoint")]
 script = ExtResource("1_hvebc")
-centralLinePoint = NodePath("Central Line Definer Node2D")
+CentralLinePoint = NodePath("Central Line Definer Node2D")
 
 [node name="walls" type="Node2D" parent="."]
 position = Vector2(0, -200)
