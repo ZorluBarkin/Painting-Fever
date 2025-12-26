@@ -14,6 +14,6 @@ dest_files=["res://.godot/imported/Cosmic_Drift2_73.mp3-22b16e6f9f06d04de2226675
 
 loop=true
 loop_offset=0.0
-bpm=0.0
+bpm=60.0
 beat_count=0
 bar_beats=4

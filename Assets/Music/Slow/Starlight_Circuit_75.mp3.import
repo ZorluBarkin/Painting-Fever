@@ -14,6 +14,6 @@ dest_files=["res://.godot/imported/Starlight_Circuit_75.mp3-409f7d2875c7bb299d1f
 
 loop=true
 loop_offset=0.0
-bpm=0.0
+bpm=60.0
 beat_count=0
 bar_beats=4
