@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class PlayerObject : Node2D
+public partial class PlayerObject : RigidBody2D
 {
     public const float OBJECT_RADIUS = 40f;
     public PlayerColors Color { get; private set; } = PlayerColors.Grey;
@@ -24,22 +24,27 @@ public partial class PlayerObject : Node2D
         OnBottomLane = true;
     }
     
-    public override void _Process(double delta)
+    //public override void _Process(double delta)
+    //{
+    //    // Constant forward movement
+    //    base._Process(delta);
+    //}
+
+    public override void _PhysicsProcess(double delta)
     {
-        // Constant forward movement
-        MoveCube(delta);
-        base._Process(delta);
+        MoveObject();
+        base._PhysicsProcess(delta);
     }
 
     public override void _Input(InputEvent @event)
     {
-        if (@event.IsActionPressed("Move Up"))
+        if (@event.IsActionPressed("Move Up") && OnBottomLane)
         {
-            OnBottomLane = false;
+            SwitchGravity(OnBottomLane = false);
         }
-        else if (@event.IsActionPressed("Move Down"))
+        else if (@event.IsActionPressed("Move Down") && !OnBottomLane)
         {
-            OnBottomLane = true;
+            SwitchGravity(OnBottomLane = true);
         }
 
         if(@event.IsActionPressed("Color 1"))
@@ -61,11 +66,19 @@ public partial class PlayerObject : Node2D
         base._Input(@event);
     }
 
-    private void MoveCube(double delta)
+    private void SwitchGravity(bool bottomLane)
     {
-        //Position += new Vector2(MoveSpeed * (float)delta, 0);
-        Position = new Vector2(Position.X + MoveSpeed * (float)delta, LaneCentrePoint.Position.Y + (OnBottomLane ? laneOffset : -laneOffset));
-        level.UpdateProgress(MoveSpeed, AbleToPaint);
+        LinearVelocity = new Vector2(LinearVelocity.X, -GetGravity().Y);
+
+        if (bottomLane)
+            GravityScale = 1f;
+        else 
+            GravityScale = -1f;
+    }
+
+    private void MoveObject()
+    {
+        LinearVelocity = new Vector2(MoveSpeed, LinearVelocity.Y);
     }
 
     public void SetLevelBasedVariables(Level currentLevel)
@@ -95,5 +108,10 @@ public partial class PlayerObject : Node2D
     private void ChangeColor(Color newColor)
     {
         Shape.Modulate = newColor;
+    }
+
+    private void TeleportToLocation(Vector2 newPosition)
+    {
+        Position = newPosition;
     }
 }

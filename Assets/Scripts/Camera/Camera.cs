@@ -12,7 +12,7 @@ public partial class Camera : Camera2D, IEventSubscriber
     {
         if (PlayerObject != null)
         {
-            Follow((float)delta);
+            Move(PlayerObject, delta);
         }
     }
 
@@ -31,11 +31,16 @@ public partial class Camera : Camera2D, IEventSubscriber
         LevelManager.Instance.LevelLoaded -= OnLevelLoaded;
     }
 
+    private void Move(PlayerObject playerObject, double delta)
+    {
+        Position = new Vector2(Position.X + playerObject.MoveSpeed * (float)delta, playerObject.Position.Y);
+    }
+
+    // TODO: follow if the player is over a certain speed
     private void Follow(float delta)
     {
         Vector2 targetPosition = PlayerObject.Position + Offset;
         Position = targetPosition;
-        //Position = Position.Lerp(targetPosition, SmoothSpeed * delta);
     }
 
     private void OnLevelLoaded(Level loadedLevel)

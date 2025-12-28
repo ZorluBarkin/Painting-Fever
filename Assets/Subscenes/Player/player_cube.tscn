@@ -6,7 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbaqq"]
 size = Vector2(80, 80)
 
-[node name="Player object" type="Node2D" node_paths=PackedStringArray("Shape")]
+[node name="Player object" type="RigidBody2D" node_paths=PackedStringArray("Shape")]
+lock_rotation = true
+linear_velocity = Vector2(300, 0)
 script = ExtResource("1_7wb8f")
 Shape = NodePath("Visual/Sprite2D")
 
@@ -16,10 +18,8 @@ Shape = NodePath("Visual/Sprite2D")
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_x078r")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sbaqq")
 debug_color = Color(0.99999994, 0.14230075, 0.3681643, 0.41960785)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

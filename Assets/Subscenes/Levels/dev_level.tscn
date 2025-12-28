@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn2ifcwpa3u1i"]
+[gd_scene load_steps=5 format=3 uid="uid://dn2ifcwpa3u1i"]
 
 [ext_resource type="PackedScene" uid="uid://yc15qf53iqv1" path="res://Assets/Subscenes/Player/player_cube.tscn" id="1_7t5j6"]
 [ext_resource type="Script" uid="uid://beo7axsch4on6" path="res://Assets/Scripts/Level/Level.cs" id="1_hvebc"]
 [ext_resource type="Texture2D" uid="uid://cwnrtwe63binc" path="res://Assets/Sprites/Logos/Godot_Neon.png" id="2_18l3d"]
+[ext_resource type="PackedScene" uid="uid://dinh61lda4yrj" path="res://Assets/Subscenes/Walls/wall.tscn" id="4_l40ax"]
 
 [node name="dev_level" type="Node2D" node_paths=PackedStringArray("CentralLinePoint")]
 script = ExtResource("1_hvebc")
@@ -19,303 +20,32 @@ follow_viewport = false
 [node name="background Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D"]
 texture = ExtResource("2_18l3d")
 
-[node name="walls" type="Node2D" parent="."]
-position = Vector2(0, -200)
-
-[node name="Wall" type="Node2D" parent="walls"]
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls/Wall"]
-
-[node name="ColorRect" type="ColorRect" parent="walls/Wall/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall2" type="Node2D" parent="walls"]
-position = Vector2(80, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls/Wall2"]
-
-[node name="ColorRect" type="ColorRect" parent="walls/Wall2/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall3" type="Node2D" parent="walls"]
-position = Vector2(160, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls/Wall3"]
-
-[node name="ColorRect" type="ColorRect" parent="walls/Wall3/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall4" type="Node2D" parent="walls"]
-position = Vector2(240, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls/Wall4"]
-
-[node name="ColorRect" type="ColorRect" parent="walls/Wall4/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall5" type="Node2D" parent="walls"]
-position = Vector2(320, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls/Wall5"]
-
-[node name="ColorRect" type="ColorRect" parent="walls/Wall5/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall6" type="Node2D" parent="walls"]
-position = Vector2(400, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls/Wall6"]
-
-[node name="ColorRect" type="ColorRect" parent="walls/Wall6/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="walls3" type="Node2D" parent="."]
-position = Vector2(480, -200)
-
-[node name="Wall" type="Node2D" parent="walls3"]
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls3/Wall"]
-
-[node name="ColorRect" type="ColorRect" parent="walls3/Wall/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall2" type="Node2D" parent="walls3"]
-position = Vector2(80, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls3/Wall2"]
-
-[node name="ColorRect" type="ColorRect" parent="walls3/Wall2/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall3" type="Node2D" parent="walls3"]
-position = Vector2(160, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls3/Wall3"]
-
-[node name="ColorRect" type="ColorRect" parent="walls3/Wall3/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall4" type="Node2D" parent="walls3"]
-position = Vector2(240, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls3/Wall4"]
-
-[node name="ColorRect" type="ColorRect" parent="walls3/Wall4/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall5" type="Node2D" parent="walls3"]
-position = Vector2(320, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls3/Wall5"]
-
-[node name="ColorRect" type="ColorRect" parent="walls3/Wall5/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall6" type="Node2D" parent="walls3"]
-position = Vector2(400, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls3/Wall6"]
-
-[node name="ColorRect" type="ColorRect" parent="walls3/Wall6/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="walls2" type="Node2D" parent="."]
-position = Vector2(0, 200)
-
-[node name="Wall" type="Node2D" parent="walls2"]
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls2/Wall"]
-
-[node name="ColorRect" type="ColorRect" parent="walls2/Wall/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall2" type="Node2D" parent="walls2"]
-position = Vector2(80, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls2/Wall2"]
-
-[node name="ColorRect" type="ColorRect" parent="walls2/Wall2/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall3" type="Node2D" parent="walls2"]
-position = Vector2(160, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls2/Wall3"]
-
-[node name="ColorRect" type="ColorRect" parent="walls2/Wall3/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall4" type="Node2D" parent="walls2"]
-position = Vector2(240, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls2/Wall4"]
-
-[node name="ColorRect" type="ColorRect" parent="walls2/Wall4/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall5" type="Node2D" parent="walls2"]
-position = Vector2(320, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls2/Wall5"]
-
-[node name="ColorRect" type="ColorRect" parent="walls2/Wall5/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall6" type="Node2D" parent="walls2"]
-position = Vector2(400, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls2/Wall6"]
-
-[node name="ColorRect" type="ColorRect" parent="walls2/Wall6/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="walls4" type="Node2D" parent="."]
-position = Vector2(480, 200)
-
-[node name="Wall" type="Node2D" parent="walls4"]
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls4/Wall"]
-
-[node name="ColorRect" type="ColorRect" parent="walls4/Wall/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall2" type="Node2D" parent="walls4"]
-position = Vector2(80, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls4/Wall2"]
-
-[node name="ColorRect" type="ColorRect" parent="walls4/Wall2/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall3" type="Node2D" parent="walls4"]
-position = Vector2(160, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls4/Wall3"]
-
-[node name="ColorRect" type="ColorRect" parent="walls4/Wall3/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall4" type="Node2D" parent="walls4"]
-position = Vector2(240, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls4/Wall4"]
-
-[node name="ColorRect" type="ColorRect" parent="walls4/Wall4/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall5" type="Node2D" parent="walls4"]
-position = Vector2(320, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls4/Wall5"]
-
-[node name="ColorRect" type="ColorRect" parent="walls4/Wall5/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Wall6" type="Node2D" parent="walls4"]
-position = Vector2(400, 0)
-
-[node name="Wall Sprite2D" type="Sprite2D" parent="walls4/Wall6"]
-
-[node name="ColorRect" type="ColorRect" parent="walls4/Wall6/Wall Sprite2D"]
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
 [node name="Player Cube" parent="." instance=ExtResource("1_7t5j6")]
 position = Vector2(-200, 0)
 
 [node name="Central Line Definer Node2D" type="Marker2D" parent="."]
+
+[node name="Upper Walls" type="Node2D" parent="."]
+
+[node name="Wall start" parent="Upper Walls" instance=ExtResource("4_l40ax")]
+position = Vector2(-800, -200)
+
+[node name="Wall" parent="Upper Walls" instance=ExtResource("4_l40ax")]
+position = Vector2(0, -200)
+
+[node name="Wall2" parent="Upper Walls" instance=ExtResource("4_l40ax")]
+position = Vector2(800, -200)
+
+[node name="Lower Walls" type="Node2D" parent="."]
+
+[node name="Wall start" parent="Lower Walls" instance=ExtResource("4_l40ax")]
+position = Vector2(-800, 200)
+
+[node name="Wall" parent="Lower Walls" instance=ExtResource("4_l40ax")]
+position = Vector2(0, 200)
+
+[node name="Wall2" parent="Lower Walls" instance=ExtResource("4_l40ax")]
+position = Vector2(800, 200)
+
+[node name="Wall3" parent="Lower Walls" instance=ExtResource("4_l40ax")]
+position = Vector2(800, 100)
