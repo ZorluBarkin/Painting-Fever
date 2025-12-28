@@ -8,14 +8,15 @@ public partial class PlayerObject : CharacterBody2D
 
     public PlayerColors Color { get; private set; } = PlayerColors.Grey;
     
-    [Export] public float MoveSpeed { get; private set; }
-    [Export] public float MaxStuckTime { get; private set; }
     [Export] public Sprite2D Shape { get; private set; }
+    public float MoveSpeed { get; private set; }
+    public float MaxStuckTime { get; private set; }
     
     /// <summary>
     /// changes besed on current speed
     /// </summary>
     public float LaneSwitchTime { get; set; } = 1f;
+    private float LaneSwitchMult{ get; set; }
     public bool OnBottomLane { get; private set; } = true;
     public bool AbleToPaint { get; private set; } = false;
     public Level level;
@@ -59,7 +60,7 @@ public partial class PlayerObject : CharacterBody2D
             {
                 GotUnstuck?.Invoke();
             }
-            
+
             Stuck = false;
             StuckTime = 0f;
         }
@@ -110,7 +111,7 @@ public partial class PlayerObject : CharacterBody2D
     {
         Vector2 velocity = Velocity;
         velocity.X = MoveSpeed;
-        velocity.Y = GRAVITY * GravityDirection * 100f;
+        velocity.Y = GRAVITY * GravityDirection * LaneSwitchMult;
         //velocity.Y += GRAVITY * GravityDirection /* * (float)delta */;
         Velocity = velocity;
     }
@@ -119,6 +120,7 @@ public partial class PlayerObject : CharacterBody2D
     {
         level = currentLevel;
         MoveSpeed = LevelManager.Instance.LevelData.GetMoveSpeed(level.Difficulty);
+        LaneSwitchMult = MoveSpeed / 5f;
         MaxStuckTime = LevelManager.Instance.LevelData.GetMaxStuckTime(level.Difficulty);
         LaneCentrePoint = level.CentralLinePoint;
         laneOffset = level.LaneOffset;
