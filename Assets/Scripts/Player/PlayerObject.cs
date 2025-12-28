@@ -7,20 +7,23 @@ public partial class PlayerObject : CharacterBody2D
 
     public PlayerColors Color { get; private set; } = PlayerColors.Grey;
     
-    [Export] public float MoveSpeed { get; private set; } = 300f;
+    [Export] public float MoveSpeed { get; private set; }
+    [Export] public float MaxStuckTime { get; private set; }
     [Export] public Sprite2D Shape { get; private set; }
     
     /// <summary>
     /// changes besed on current speed
     /// </summary>
     public float LaneSwitchTime { get; set; } = 1f;
-    
     public bool OnBottomLane { get; private set; } = true;
     public bool AbleToPaint { get; private set; } = false;
     public Level level;
     public Marker2D LaneCentrePoint;
     public float laneOffset = 0f;
     public float GravityDirection = 1f;
+
+    public bool Stuck { get; private set; } = false;
+    public float StuckTime { get; private set; } = 0f;
     
     public override void _Ready()
     {
@@ -34,6 +37,25 @@ public partial class PlayerObject : CharacterBody2D
     {
         MoveObject();
         MoveAndSlide();
+
+        if (StuckTime > MaxStuckTime)
+        {
+            GD.Print("Got stuck too long");
+            // TODO: fail the level
+        }
+
+        // change to direction check later
+        if (GetRealVelocity().X <= 0f)
+        {
+            Stuck = true;
+            StuckTime += (float)delta;
+        }
+        else
+        {
+            Stuck = false;
+            StuckTime = 0f;
+        }
+
         base._PhysicsProcess(delta);
     }
 
@@ -89,6 +111,7 @@ public partial class PlayerObject : CharacterBody2D
     {
         level = currentLevel;
         MoveSpeed = LevelManager.Instance.LevelData.GetMoveSpeed(level.Difficulty);
+        MaxStuckTime = LevelManager.Instance.LevelData.GetMaxStuckTime(level.Difficulty);
         LaneCentrePoint = level.CentralLinePoint;
         laneOffset = level.LaneOffset;
 

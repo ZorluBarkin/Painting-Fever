@@ -32,4 +32,9 @@ public partial class LevelData : Resource
     {
         return DifficultyToSpeedMap[difficulty];
     }
+    
+    public float GetMaxStuckTime(Difficulty difficulty)
+    {
+        return DifficultyToTimeoutMap[difficulty];
+    }
 }
