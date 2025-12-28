@@ -24,11 +24,13 @@ public partial class Camera : Camera2D, IEventSubscriber
     void IEventSubscriber.SubscribeToEvents()
     {
         LevelManager.Instance.LevelLoaded += OnLevelLoaded;
+        LevelManager.Instance.LevelUnloaded += OnLevelUnloaded;
     }
 
     void IEventSubscriber.UnsubscribeFromEvents()
     {
-        LevelManager.Instance.LevelLoaded -= OnLevelLoaded;
+        LevelManager.Instance.LevelLoaded -= OnLevelLoaded; 
+        LevelManager.Instance.LevelUnloaded -= OnLevelUnloaded;
     }
 
     private void Move(PlayerObject playerObject, double delta)
@@ -46,7 +48,25 @@ public partial class Camera : Camera2D, IEventSubscriber
     private void OnLevelLoaded(Level loadedLevel)
     {
         PlayerObject = loadedLevel.PlayerObject;
+        PlayerObject.GotUnstuck += OnGotUnstuck;
         Position = PlayerObject.Position + Offset;
         MakeCurrent();
+    }
+
+    private void OnLevelUnloaded(Level unloadedLevel)
+    {
+        PlayerObject.GotUnstuck -= OnGotUnstuck;
+        PlayerObject = null;
+    }
+
+
+    private void OnGotUnstuck()
+    {
+        ResetToPlayer(PlayerObject);
+    }
+
+    private void ResetToPlayer(PlayerObject playerObject)
+    {
+        Position = playerObject.Position + Offset;
     }
 }

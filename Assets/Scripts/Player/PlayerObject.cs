@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class PlayerObject : CharacterBody2D
 {
@@ -24,6 +25,8 @@ public partial class PlayerObject : CharacterBody2D
 
     public bool Stuck { get; private set; } = false;
     public float StuckTime { get; private set; } = 0f;
+
+    public event Action GotUnstuck;
     
     public override void _Ready()
     {
@@ -52,6 +55,11 @@ public partial class PlayerObject : CharacterBody2D
         }
         else
         {
+            if (Stuck == true)
+            {
+                GotUnstuck?.Invoke();
+            }
+            
             Stuck = false;
             StuckTime = 0f;
         }

@@ -12,6 +12,7 @@ public partial class LevelManager : Node
 	[Export] public ColorData ColorData { get; private set; }
 
 	public event Action<Level> LevelLoaded;
+	public event Action<Level> LevelUnloaded;
 
 	public LevelManager() { Instance = this; }
 
@@ -20,6 +21,7 @@ public partial class LevelManager : Node
 	{
 		if(@event.IsActionPressed("debug_reload_level"))
 		{
+			LevelUnloaded.Invoke(CurrentLevel);
 			CurrentLevel.Free();
 			Instance.InstantiateLevel(CurrentLevel.Difficulty, 0);
 		}
