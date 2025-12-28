@@ -73,3 +73,24 @@ position = Vector2(800, 200)
 
 [node name="Wall3" parent="Lower Walls" instance=ExtResource("4_l40ax")]
 position = Vector2(800, 100)
+
+[node name="Lower Walls2" type="Node2D" parent="."]
+position = Vector2(2400, 0)
+
+[node name="Wall start" parent="Lower Walls2" instance=ExtResource("4_l40ax")]
+position = Vector2(-800, 200)
+
+[node name="Wall" parent="Lower Walls2" instance=ExtResource("4_l40ax")]
+position = Vector2(0, 200)
+
+[node name="Wall2" parent="Lower Walls2" instance=ExtResource("4_l40ax")]
+position = Vector2(800, 200)
+
+[node name="Lower Walls3" type="Node2D" parent="."]
+position = Vector2(4800, 0)
+
+[node name="Wall start" parent="Lower Walls3" instance=ExtResource("4_l40ax")]
+position = Vector2(-800, 200)
+
+[node name="Wall2" parent="Lower Walls3" instance=ExtResource("4_l40ax")]
+position = Vector2(800, 200)

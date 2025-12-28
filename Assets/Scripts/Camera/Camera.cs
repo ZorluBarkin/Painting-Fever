@@ -3,6 +3,7 @@ using Godot;
 public partial class Camera : Camera2D, IEventSubscriber
 {
     private PlayerObject PlayerObject;
+    private Marker2D laneCentrePoint;
     public override void _Ready()
     {
         ((IEventSubscriber)this).SubscribeToEvents();
@@ -35,7 +36,8 @@ public partial class Camera : Camera2D, IEventSubscriber
 
     private void Move(PlayerObject playerObject, double delta)
     {
-        Position = new Vector2(Position.X + playerObject.MoveSpeed * (float)delta, playerObject.Position.Y);
+        float verticalPos = Mathf.Clamp(playerObject.Position.Y, laneCentrePoint.Position.Y - playerObject.laneOffset, laneCentrePoint.Position.Y + playerObject.laneOffset);
+        Position = new Vector2(Position.X + playerObject.MoveSpeed * (float)delta, verticalPos);
     }
 
     // TODO: follow if the player is over a certain speed
@@ -48,6 +50,7 @@ public partial class Camera : Camera2D, IEventSubscriber
     private void OnLevelLoaded(Level loadedLevel)
     {
         PlayerObject = loadedLevel.PlayerObject;
+        laneCentrePoint = PlayerObject.LaneCentrePoint;
         PlayerObject.GotUnstuck += OnGotUnstuck;
         Position = PlayerObject.Position + Offset;
         MakeCurrent();
