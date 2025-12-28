@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn2ifcwpa3u1i"]
+[gd_scene load_steps=6 format=3 uid="uid://dn2ifcwpa3u1i"]
 
 [ext_resource type="PackedScene" uid="uid://yc15qf53iqv1" path="res://Assets/Subscenes/Player/player_cube.tscn" id="1_7t5j6"]
 [ext_resource type="Script" uid="uid://beo7axsch4on6" path="res://Assets/Scripts/Level/Level.cs" id="1_hvebc"]
 [ext_resource type="Texture2D" uid="uid://cwnrtwe63binc" path="res://Assets/Sprites/Logos/Godot_Neon.png" id="2_18l3d"]
-[ext_resource type="PackedScene" uid="uid://dinh61lda4yrj" path="res://Assets/Subscenes/Walls/wall.tscn" id="4_l40ax"]
+[ext_resource type="PackedScene" uid="uid://dinh61lda4yrj" path="res://Assets/Subscenes/Walls/wall_long.tscn" id="4_l40ax"]
+[ext_resource type="PackedScene" uid="uid://dy7oetulasqpl" path="res://Assets/Subscenes/Walls/wall_short.tscn" id="5_fcitj"]
 
 [node name="dev_level" type="Node2D" node_paths=PackedStringArray("CentralLinePoint")]
 script = ExtResource("1_hvebc")
@@ -94,3 +95,6 @@ position = Vector2(-800, 200)
 
 [node name="Wall2" parent="Lower Walls3" instance=ExtResource("4_l40ax")]
 position = Vector2(800, 200)
+
+[node name="Wall Short" parent="Lower Walls3" instance=ExtResource("5_fcitj")]
+position = Vector2(0, 200)

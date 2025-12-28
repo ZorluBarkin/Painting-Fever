@@ -11,11 +11,6 @@ public partial class PlayerObject : CharacterBody2D
     [Export] public Sprite2D Shape { get; private set; }
     public float MoveSpeed { get; private set; }
     public float MaxStuckTime { get; private set; }
-    
-    /// <summary>
-    /// changes besed on current speed
-    /// </summary>
-    public float LaneSwitchTime { get; set; } = 1f;
     private float LaneSwitchMult{ get; set; }
     public bool OnBottomLane { get; private set; } = true;
     public bool AbleToPaint { get; private set; } = false;
@@ -120,26 +115,10 @@ public partial class PlayerObject : CharacterBody2D
     {
         level = currentLevel;
         MoveSpeed = LevelManager.Instance.LevelData.GetMoveSpeed(level.Difficulty);
-        LaneSwitchMult = MoveSpeed / 5f;
+        LaneSwitchMult = MoveSpeed / 5f; // 80f at 400 speed, 200f at 1000 speed
         MaxStuckTime = LevelManager.Instance.LevelData.GetMaxStuckTime(level.Difficulty);
         LaneCentrePoint = level.CentralLinePoint;
         laneOffset = level.LaneOffset;
-
-        switch (level.Difficulty)
-        {
-            case Difficulty.Easy:
-                LaneSwitchTime = 3f;
-                break;
-            case Difficulty.Medium:
-                LaneSwitchTime = 1.5f;
-                break;
-            case Difficulty.Hard:
-                LaneSwitchTime = 1f;
-                break;
-            case Difficulty.EasterEgg:
-                LaneSwitchTime = 1f;
-                break;
-        }
     }
 
     private void ChangeColor(Color newColor)
