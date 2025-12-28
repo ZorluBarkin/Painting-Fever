@@ -22,6 +22,7 @@ public partial class PlayerObject : RigidBody2D
     public override void _Ready()
     {
         OnBottomLane = true;
+        ChangeColor(Colors.Gray);
     }
     
     //public override void _Process(double delta)
