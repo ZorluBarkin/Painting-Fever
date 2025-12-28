@@ -22,3 +22,8 @@ texture = ExtResource("2_x078r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sbaqq")
 debug_color = Color(0.99999994, 0.14230075, 0.3681643, 0.41960785)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-20, -20, 40, 40)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="OnScreenExited"]

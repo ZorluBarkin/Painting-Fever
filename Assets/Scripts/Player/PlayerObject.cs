@@ -39,8 +39,8 @@ public partial class PlayerObject : CharacterBody2D
 
         if (StuckTime > MaxStuckTime)
         {
-            GD.Print("Got stuck too long");
-            // TODO: fail the level
+            LevelFailed();
+            return;
         }
 
         // change to direction check later
@@ -129,5 +129,15 @@ public partial class PlayerObject : CharacterBody2D
     private void TeleportToLocation(Vector2 newPosition)
     {
         Position = newPosition;
+    }
+
+    private void OnScreenExited()
+    {
+        LevelFailed();
+    }
+
+    private void LevelFailed()
+    {
+        GD.Print("Level Failed");
     }
 }
