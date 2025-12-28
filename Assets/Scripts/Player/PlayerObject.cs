@@ -2,7 +2,7 @@ using Godot;
 
 public partial class PlayerObject : RigidBody2D
 {
-    public const float OBJECT_RADIUS = 40f;
+    public const float OBJECT_RADIUS = 20f;
     public PlayerColors Color { get; private set; } = PlayerColors.Grey;
     
     [Export] public float MoveSpeed { get; private set; } = 300f;
