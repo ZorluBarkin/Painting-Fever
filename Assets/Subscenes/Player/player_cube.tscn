@@ -6,9 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbaqq"]
 size = Vector2(40, 40)
 
-[node name="Player object" type="RigidBody2D" node_paths=PackedStringArray("Shape")]
-lock_rotation = true
-linear_velocity = Vector2(300, 0)
+[node name="Player object" type="CharacterBody2D" node_paths=PackedStringArray("Shape")]
+floor_constant_speed = true
 script = ExtResource("1_7wb8f")
 Shape = NodePath("Visual/Sprite2D")
 

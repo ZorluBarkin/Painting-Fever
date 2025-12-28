@@ -1,8 +1,10 @@
 using Godot;
 
-public partial class PlayerObject : RigidBody2D
+public partial class PlayerObject : CharacterBody2D
 {
     public const float OBJECT_RADIUS = 20f;
+    public const float GRAVITY = 9.81f;
+
     public PlayerColors Color { get; private set; } = PlayerColors.Grey;
     
     [Export] public float MoveSpeed { get; private set; } = 300f;
@@ -18,6 +20,7 @@ public partial class PlayerObject : RigidBody2D
     public Level level;
     public Marker2D LaneCentrePoint;
     public float laneOffset = 0f;
+    public float GravityDirection = 1f;
     
     public override void _Ready()
     {
@@ -28,12 +31,18 @@ public partial class PlayerObject : RigidBody2D
     //public override void _Process(double delta)
     //{
     //    // Constant forward movement
-    //    base._Process(delta);
+    //    //MoveObject(delta);
+    //    base._Process(delta);   
     //}
 
     public override void _PhysicsProcess(double delta)
     {
-        MoveObject();
+        //MoveObject(delta);
+        Vector2 velocity = Velocity;
+        velocity.X = MoveSpeed;
+        velocity.Y += GRAVITY * GravityDirection * (float)delta;
+        Velocity = velocity;
+        MoveAndSlide();
         base._PhysicsProcess(delta);
     }
 
@@ -69,18 +78,20 @@ public partial class PlayerObject : RigidBody2D
 
     private void SwitchGravity(bool bottomLane)
     {
-        LinearVelocity = new Vector2(LinearVelocity.X, -GetGravity().Y);
+        Position = new Vector2(Position.X, LaneCentrePoint.Position.Y + (bottomLane ? laneOffset - 2f : -laneOffset + 2f));
 
+        // TODO: make this lambda expression
         if (bottomLane)
-            GravityScale = 1f;
-        else 
-            GravityScale = -1f;
+            GravityDirection = 1f;
+        else
+            GravityDirection = -1f;
     }
 
-    private void MoveObject()
-    {
-        LinearVelocity = new Vector2(MoveSpeed, LinearVelocity.Y);
-    }
+    //private void MoveObject(double delta)
+    //{
+    //    this.Position += new Vector2(MoveSpeed * (float)delta, 0f);
+    //    //LinearVelocity = new Vector2(0f, LinearVelocity.Y);
+    //}
 
     public void SetLevelBasedVariables(Level currentLevel)
     {

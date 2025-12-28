@@ -15,6 +15,18 @@ public partial class LevelManager : Node
 
 	public LevelManager() { Instance = this; }
 
+	#if DEBUG
+	public override void _Input(InputEvent @event)
+    {
+        if(@event.IsActionPressed("debug_reload_level"))
+        {
+			CurrentLevel.Free();
+            Instance.InstantiateLevel(CurrentLevel.Difficulty, 0);
+        }
+        base._Input(@event);
+    }
+	#endif
+
 	public void InstantiateLevel(Difficulty difficulty, int index)
 	{
 		TargetLevel = null;

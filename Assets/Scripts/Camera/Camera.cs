@@ -46,6 +46,7 @@ public partial class Camera : Camera2D, IEventSubscriber
     private void OnLevelLoaded(Level loadedLevel)
     {
         PlayerObject = loadedLevel.PlayerObject;
+        Position = PlayerObject.Position + Offset;
         MakeCurrent();
     }
 }
