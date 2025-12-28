@@ -14,6 +14,14 @@ public partial class LevelData : Resource
         { Difficulty.EasterEgg, 1000f }
     };
 
+    [Export] public Godot.Collections.Dictionary<Difficulty, float> DifficultyToTimeoutMap = new()
+    {
+        { Difficulty.Easy, 2.0f },
+        { Difficulty.Medium, 1.2f },
+        { Difficulty.Hard, 0.8f },
+        { Difficulty.EasterEgg, 0.8f }
+    };
+
     #if DEBUG
     [Export] public Godot.Collections.Array<PackedScene> DevLevels { get; private set; }
     #endif
