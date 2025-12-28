@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://yc15qf53iqv1"]
 
-[ext_resource type="Texture2D" uid="uid://dpxhf4glpnaac" path="res://Assets/Sprites/square.svg" id="1_jpb7u"]
-[ext_resource type="Script" uid="uid://canueraolnluh" path="res://Assets/Scripts/Player/PlayerObject.cs" id="1_sbaqq"]
+[ext_resource type="Script" uid="uid://canueraolnluh" path="res://Assets/Scripts/Player/PlayerObject.cs" id="1_7wb8f"]
+[ext_resource type="Texture2D" uid="uid://dpxhf4glpnaac" path="res://Assets/Sprites/square.svg" id="2_x078r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbaqq"]
 size = Vector2(80, 80)
 
-[node name="Player Cube" type="Node2D"]
-script = ExtResource("1_sbaqq")
+[node name="Player object" type="Node2D" node_paths=PackedStringArray("Shape")]
+script = ExtResource("1_7wb8f")
+Shape = NodePath("Visual/Sprite2D")
 
 [node name="Visual" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual"]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_jpb7u")
+texture = ExtResource("2_x078r")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -6,6 +6,7 @@ public partial class PlayerObject : Node2D
     public PlayerColors Color { get; private set; } = PlayerColors.Grey;
     
     [Export] public float MoveSpeed { get; private set; } = 300f;
+    [Export] public Sprite2D Shape { get; private set; }
     
     /// <summary>
     /// changes besed on current speed
@@ -34,14 +35,29 @@ public partial class PlayerObject : Node2D
     {
         if (@event.IsActionPressed("Move Up"))
         {
-            GD.Print("Move Up pressed");
             OnBottomLane = false;
         }
         else if (@event.IsActionPressed("Move Down"))
         {
-            GD.Print("Move Down pressed");
             OnBottomLane = true;
         }
+
+        if(@event.IsActionPressed("Color 1"))
+        {
+            Color = PlayerColors.Red;
+            ChangeColor(Colors.Red);
+        }
+        else if (@event.IsActionPressed("Color 2"))
+        {
+            Color = PlayerColors.Green;
+            ChangeColor(Colors.Green);
+        }
+        else if (@event.IsActionPressed("Color 3"))
+        {
+            Color = PlayerColors.Blue;
+            ChangeColor(Colors.Blue);
+        }
+
         base._Input(@event);
     }
 
@@ -74,5 +90,10 @@ public partial class PlayerObject : Node2D
                 LaneSwitchTime = 1f;
                 break;
         }
+    }
+
+    private void ChangeColor(Color newColor)
+    {
+        Shape.Modulate = newColor;
     }
 }
