@@ -25,6 +25,8 @@ public partial class PlayerObject : CharacterBody2D
     public override void _Ready()
     {
         OnBottomLane = true;
+        // offset to bottom lane
+        Position = new Vector2(Position.X, LaneCentrePoint.Position.Y + laneOffset - 10f);
         ChangeColor(Colors.Gray);
     }
 
