@@ -27,21 +27,10 @@ public partial class PlayerObject : CharacterBody2D
         OnBottomLane = true;
         ChangeColor(Colors.Gray);
     }
-    
-    //public override void _Process(double delta)
-    //{
-    //    // Constant forward movement
-    //    //MoveObject(delta);
-    //    base._Process(delta);   
-    //}
 
     public override void _PhysicsProcess(double delta)
     {
-        //MoveObject(delta);
-        Vector2 velocity = Velocity;
-        velocity.X = MoveSpeed;
-        velocity.Y += GRAVITY * GravityDirection * (float)delta;
-        Velocity = velocity;
+        MoveObject();
         MoveAndSlide();
         base._PhysicsProcess(delta);
     }
@@ -78,20 +67,21 @@ public partial class PlayerObject : CharacterBody2D
 
     private void SwitchGravity(bool bottomLane)
     {
-        Position = new Vector2(Position.X, LaneCentrePoint.Position.Y + (bottomLane ? laneOffset - 2f : -laneOffset + 2f));
-
-        // TODO: make this lambda expression
-        if (bottomLane)
-            GravityDirection = 1f;
-        else
-            GravityDirection = -1f;
+        //Position = new Vector2(Position.X, LaneCentrePoint.Position.Y + (bottomLane ? laneOffset - 20f : -laneOffset + 20f));
+        GravityDirection = bottomLane ? 1f : -1f;
     }
 
-    //private void MoveObject(double delta)
-    //{
-    //    this.Position += new Vector2(MoveSpeed * (float)delta, 0f);
-    //    //LinearVelocity = new Vector2(0f, LinearVelocity.Y);
-    //}
+    /// <summary>
+    /// Use only in _PhysicsProcess, maybe move this to process with delta?
+    /// </summary>
+    private void MoveObject()
+    {
+        Vector2 velocity = Velocity;
+        velocity.X = MoveSpeed;
+        velocity.Y = GRAVITY * GravityDirection * 100f;
+        //velocity.Y += GRAVITY * GravityDirection /* * (float)delta */;
+        Velocity = velocity;
+    }
 
     public void SetLevelBasedVariables(Level currentLevel)
     {
