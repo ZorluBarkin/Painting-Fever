@@ -9,4 +9,10 @@ EasyLevelScenes = Array[PackedScene]([])
 MediumLevelScenes = Array[PackedScene]([])
 HardLevelScenes = Array[PackedScene]([])
 EasterEggLevelScenes = Array[PackedScene]([])
+DifficultyToSpeedMap = Dictionary[int, float]({
+0: 400.0,
+1: 600.0,
+2: 1000.0,
+3: 1000.0
+})
 DevLevels = Array[PackedScene]([ExtResource("1_fcbys")])
