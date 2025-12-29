@@ -130,11 +130,13 @@ public partial class PlayerObject : CharacterBody2D
 
     private void CheckCollisions()
     {
-        for (int i = 0; i < GetSlideCollisionCount(); i++)
-        {
+        //for (int i = 0; i < GetSlideCollisionCount(); i++)
+        //{
 
             //CollisionObject2D collider = (CollisionObject2D)GetSlideCollision(i).GetCollider();
             CollisionObject2D collider = (CollisionObject2D)GetLastSlideCollision().GetCollider();
+            if (collider == null) return;
+            
             GD.Print(collider.CollisionLayer.ToString());
             if (collider.GetCollisionLayerValue(3)) // 3rd layer is saw / spikes
             {
@@ -150,7 +152,7 @@ public partial class PlayerObject : CharacterBody2D
                     MoveSpeed *= slowDownMultiplier;
                 }
             }
-        }
+        //}
     }
 
     private void ChangeColor(Color newColor)
