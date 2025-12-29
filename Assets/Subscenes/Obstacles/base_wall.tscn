@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://crgj07qd1qkhp"]
+
+[ext_resource type="Texture2D" uid="uid://dpxhf4glpnaac" path="res://Assets/Sprites/square.svg" id="1_n53eu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7oto"]
+size = Vector2(80, 80)
+
+[node name="Base Wall StaticBody2D" type="StaticBody2D"]
+
+[node name="Visuals Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals Node2D"]
+modulate = Color(0.1728327, 0.17283267, 0.17283267, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_n53eu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t7oto")
+debug_color = Color(0.6884457, 0, 0.12608176, 0.41960785)

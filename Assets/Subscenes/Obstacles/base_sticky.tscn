@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://r4bkj3ehfbay"]
+
+[ext_resource type="Texture2D" uid="uid://5od7x41xa6gj" path="res://Assets/Sprites/Logos/Chadot.png" id="1_ny2ke"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7oto"]
+size = Vector2(235, 80)
+
+[node name="Base Sticky StaticBody2D" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(77.5, 0)
+shape = SubResource("RectangleShape2D_t7oto")
+
+[node name="Visuals Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals Node2D"]
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("1_ny2ke")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Visuals Node2D"]
+position = Vector2(78.99999, -0.9999999)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("1_ny2ke")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Visuals Node2D"]
+position = Vector2(159, -1)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("1_ny2ke")

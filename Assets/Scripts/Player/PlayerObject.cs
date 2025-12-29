@@ -9,16 +9,20 @@ public partial class PlayerObject : CharacterBody2D
     public PlayerColors Color { get; private set; } = PlayerColors.Grey;
     
     [Export] public Sprite2D Shape { get; private set; }
+    public Level level;
+    private float slowDownMultiplier;
     public float MoveSpeed { get; private set; }
     public float MaxStuckTime { get; private set; }
     private float LaneSwitchMult{ get; set; }
+    
     public bool OnBottomLane { get; private set; } = true;
     public bool AbleToPaint { get; private set; } = false;
-    public Level level;
+    
     public Marker2D LaneCentrePoint;
     public float laneOffset = 0f;
     public float GravityDirection = 1f;
 
+    public bool Sticked { get; private set; } = false;
     public bool Stuck { get; private set; } = false;
     public float StuckTime { get; private set; } = 0f;
 
@@ -36,6 +40,8 @@ public partial class PlayerObject : CharacterBody2D
     {
         MoveObject();
         MoveAndSlide();
+
+        CheckCollisions();
 
         if (StuckTime > MaxStuckTime)
         {
@@ -93,6 +99,17 @@ public partial class PlayerObject : CharacterBody2D
         base._Input(@event);
     }
 
+    public void SetLevelBasedVariables(Level currentLevel)
+    {
+        level = currentLevel;
+        slowDownMultiplier = 1 - LevelManager.Instance.LevelData.stickySlowdownMultiplier;
+        MoveSpeed = LevelManager.Instance.LevelData.GetMoveSpeed(level.Difficulty);
+        LaneSwitchMult = MoveSpeed / 5f; // 80f at 400 speed, 200f at 1000 speed
+        MaxStuckTime = LevelManager.Instance.LevelData.GetMaxStuckTime(level.Difficulty);
+        LaneCentrePoint = level.CentralLinePoint;
+        laneOffset = level.LaneOffset;
+    }
+
     private void SwitchGravity(bool bottomLane)
     {
         //Position = new Vector2(Position.X, LaneCentrePoint.Position.Y + (bottomLane ? laneOffset - 20f : -laneOffset + 20f));
@@ -111,14 +128,29 @@ public partial class PlayerObject : CharacterBody2D
         Velocity = velocity;
     }
 
-    public void SetLevelBasedVariables(Level currentLevel)
+    private void CheckCollisions()
     {
-        level = currentLevel;
-        MoveSpeed = LevelManager.Instance.LevelData.GetMoveSpeed(level.Difficulty);
-        LaneSwitchMult = MoveSpeed / 5f; // 80f at 400 speed, 200f at 1000 speed
-        MaxStuckTime = LevelManager.Instance.LevelData.GetMaxStuckTime(level.Difficulty);
-        LaneCentrePoint = level.CentralLinePoint;
-        laneOffset = level.LaneOffset;
+        for (int i = 0; i < GetSlideCollisionCount(); i++)
+        {
+
+            //CollisionObject2D collider = (CollisionObject2D)GetSlideCollision(i).GetCollider();
+            CollisionObject2D collider = (CollisionObject2D)GetLastSlideCollision().GetCollider();
+            GD.Print(collider.CollisionLayer.ToString());
+            if (collider.GetCollisionLayerValue(3)) // 3rd layer is saw / spikes
+            {
+                //GD.Print("Collision with layer 3 detected");
+                LevelFailed();
+            }
+            else if (collider.GetCollisionLayerValue(4))
+            {
+                if(!Sticked)
+                {
+                    GD.Print("Sticky collision detected");
+                    Sticked = true;
+                    MoveSpeed *= slowDownMultiplier;
+                }
+            }
+        }
     }
 
     private void ChangeColor(Color newColor)

@@ -26,6 +26,8 @@ public partial class LevelData : Resource
     [Export] public Godot.Collections.Array<PackedScene> DevLevels { get; private set; }
     #endif
 
+    public float stickySlowdownMultiplier = 0.9f;
+
     public LevelData() { }
 
     public float GetMoveSpeed(Difficulty difficulty)

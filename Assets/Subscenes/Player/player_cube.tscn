@@ -7,6 +7,8 @@
 size = Vector2(40, 40)
 
 [node name="Player object" type="CharacterBody2D" node_paths=PackedStringArray("Shape")]
+collision_layer = 13
+collision_mask = 13
 floor_constant_speed = true
 script = ExtResource("1_7wb8f")
 Shape = NodePath("Visual/Sprite2D")
