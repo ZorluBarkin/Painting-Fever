@@ -38,6 +38,12 @@ public partial class GameManager : Node, IEventSubscriber
 		GetTree().Root.AddChild(GUI.Instantiate());
 	}
 
+	public void ReturnToMainMenu()
+	{
+		LevelManager.Instance.UnloadCurrentLevel();
+		ChangeGameState(CurrentGameState, GameState.Menu);
+	}
+
 	public static void ChangeGameState(GameState oldState, GameState targetState)
 	{
 		#if DEBUG

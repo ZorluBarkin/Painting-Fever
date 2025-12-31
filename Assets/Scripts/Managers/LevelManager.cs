@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 public partial class LevelManager : Node
 {
@@ -19,10 +20,9 @@ public partial class LevelManager : Node
 	#if DEBUG
 	public override void _Input(InputEvent @event)
 	{
-		if(@event.IsActionPressed("debug_reload_level"))
+		if(@event.IsActionPressed("debug_reload_level")) // keybind: R
 		{
-			LevelUnloaded.Invoke(CurrentLevel);
-			CurrentLevel.Free();
+			UnloadCurrentLevel();
 			Instance.InstantiateLevel(CurrentLevel.Difficulty, 0);
 		}
 		base._Input(@event);
@@ -61,7 +61,28 @@ public partial class LevelManager : Node
 		}
 
 		CurrentLevel = TargetLevel.Instantiate<Level>();
+		CurrentLevel.LevelIndex = index;
 		GameManager.Instance.GameSceneRoot.AddChild(CurrentLevel);
 		LevelLoaded.Invoke(CurrentLevel);
+	}
+
+	public void UnloadCurrentLevel()
+	{
+		if (CurrentLevel == null) return;
+
+		LevelUnloaded.Invoke(CurrentLevel);
+		CurrentLevel.QueueFree();
+		CurrentLevel = null;
+	}
+
+	public void RestartCurrentLevel()
+	{
+		if (CurrentLevel == null) return;
+
+		int currentIndex = CurrentLevel.LevelIndex;
+		Difficulty currentDifficulty = CurrentLevel.Difficulty;
+
+		UnloadCurrentLevel();
+		InstantiateLevel(currentDifficulty, currentIndex);
 	}
 }

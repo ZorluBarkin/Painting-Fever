@@ -131,8 +131,6 @@ public partial class PlayerObject : CharacterBody2D
         CollisionObject2D collider = GetLastSlideCollision() != null ? (CollisionObject2D)GetLastSlideCollision().GetCollider() : null;
         if (collider == null) return;
         
-        GD.Print(collider.CollisionLayer.ToString());
-
         if (collider.GetCollisionLayerValue(3)) // 3rd layer is saw / spikes
         {
             LevelFailed();
@@ -164,6 +162,9 @@ public partial class PlayerObject : CharacterBody2D
 
     private void LevelFailed()
     {
+        #if DEBUG
         GD.Print("Level Failed");
+        #endif
+        GameManager.Instance.ReturnToMainMenu();
     }
 }

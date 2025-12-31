@@ -3,6 +3,7 @@ using Godot;
 public partial class Level : Node
 {
     [ExportCategory("Level Metadata")]
+    [Export] public int LevelIndex { get; set; }
     [Export] public Difficulty Difficulty { get; private set; }
     [Export] public float MaxDistance { get; private set; } = 3000f;
     [Export] public float RequiredProgress { get; private set; } = 2000f;
