@@ -39,9 +39,4 @@ public partial class LevelData : Resource
     {
         return DifficultyToTimeoutMap[difficulty];
     }
-
-    public void SetLevelIndex(Level level)
-    {
-        
-    }
 }
