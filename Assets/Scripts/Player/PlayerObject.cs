@@ -49,7 +49,7 @@ public partial class PlayerObject : CharacterBody2D
             return;
         }
 
-        // change to direction check later
+        // TODO: change to direction check later
         if (GetRealVelocity().X <= 0f)
         {
             Stuck = true;
@@ -112,7 +112,6 @@ public partial class PlayerObject : CharacterBody2D
 
     private void SwitchGravity(bool bottomLane)
     {
-        //Position = new Vector2(Position.X, LaneCentrePoint.Position.Y + (bottomLane ? laneOffset - 20f : -laneOffset + 20f));
         GravityDirection = bottomLane ? 1f : -1f;
     }
 
@@ -124,35 +123,28 @@ public partial class PlayerObject : CharacterBody2D
         Vector2 velocity = Velocity;
         velocity.X = MoveSpeed;
         velocity.Y = GRAVITY * GravityDirection * LaneSwitchMult;
-        //velocity.Y += GRAVITY * GravityDirection /* * (float)delta */;
         Velocity = velocity;
     }
 
     private void CheckCollisions()
     {
-        //for (int i = 0; i < GetSlideCollisionCount(); i++)
-        //{
+        CollisionObject2D collider = GetLastSlideCollision() != null ? (CollisionObject2D)GetLastSlideCollision().GetCollider() : null;
+        if (collider == null) return;
+        
+        GD.Print(collider.CollisionLayer.ToString());
 
-            //CollisionObject2D collider = (CollisionObject2D)GetSlideCollision(i).GetCollider();
-            CollisionObject2D collider = (CollisionObject2D)GetLastSlideCollision().GetCollider();
-            if (collider == null) return;
-            
-            GD.Print(collider.CollisionLayer.ToString());
-            if (collider.GetCollisionLayerValue(3)) // 3rd layer is saw / spikes
+        if (collider.GetCollisionLayerValue(3)) // 3rd layer is saw / spikes
+        {
+            LevelFailed();
+        }
+        else if (collider.GetCollisionLayerValue(4))
+        {
+            if(!Sticked)
             {
-                //GD.Print("Collision with layer 3 detected");
-                LevelFailed();
+                Sticked = true;
+                MoveSpeed *= slowDownMultiplier;
             }
-            else if (collider.GetCollisionLayerValue(4))
-            {
-                if(!Sticked)
-                {
-                    GD.Print("Sticky collision detected");
-                    Sticked = true;
-                    MoveSpeed *= slowDownMultiplier;
-                }
-            }
-        //}
+        }
     }
 
     private void ChangeColor(Color newColor)

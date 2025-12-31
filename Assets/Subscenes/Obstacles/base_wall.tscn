@@ -10,7 +10,7 @@ size = Vector2(80, 80)
 [node name="Visuals Node2D" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals Node2D"]
-modulate = Color(0.1728327, 0.17283267, 0.17283267, 1)
+modulate = Color(0.27450982, 0.27450982, 0.27450982, 1)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_n53eu")
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://yc15qf53iqv1" path="res://Assets/Subscenes/Player/player_cube.tscn" id="1_7t5j6"]
 [ext_resource type="Script" uid="uid://beo7axsch4on6" path="res://Assets/Scripts/Level/Level.cs" id="1_hvebc"]
-[ext_resource type="Texture2D" uid="uid://cwnrtwe63binc" path="res://Assets/Sprites/Logos/Godot_Neon.png" id="2_18l3d"]
+[ext_resource type="Texture2D" uid="uid://cu4o1c35xslnr" path="res://Assets/Sprites/Backgrounds/parallax-background-jim1uavi6whbcns0.webp" id="2_p5wxb"]
 [ext_resource type="PackedScene" uid="uid://dinh61lda4yrj" path="res://Assets/Subscenes/Walls/wall_long.tscn" id="4_l40ax"]
 [ext_resource type="PackedScene" uid="uid://dy7oetulasqpl" path="res://Assets/Subscenes/Walls/wall_short.tscn" id="5_fcitj"]
 [ext_resource type="PackedScene" uid="uid://r4bkj3ehfbay" path="res://Assets/Subscenes/Obstacles/base_sticky.tscn" id="7_gfjbi"]
@@ -14,15 +14,17 @@ script = ExtResource("1_hvebc")
 LaneOffset = 160.0
 CentralLinePoint = NodePath("Central Line Definer Node2D")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Paralax CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1000
 
-[node name="Parallax2D" type="Parallax2D" parent="CanvasLayer"]
-repeat_size = Vector2(1280, 720)
+[node name="Parallax2D" type="Parallax2D" parent="Paralax CanvasLayer"]
+repeat_size = Vector2(1800, 0)
+repeat_times = 3
 follow_viewport = false
 
-[node name="background Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D"]
-texture = ExtResource("2_18l3d")
+[node name="background Sprite2D" type="Sprite2D" parent="Paralax CanvasLayer/Parallax2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_p5wxb")
 
 [node name="Player Cube" parent="." instance=ExtResource("1_7t5j6")]
 position = Vector2(-200, 0)
@@ -45,14 +47,14 @@ position = Vector2(800, -200)
 [node name="Upper Walls2" type="Node2D" parent="."]
 position = Vector2(2400, 0)
 
-[node name="Wall start" parent="Upper Walls2" instance=ExtResource("4_l40ax")]
-position = Vector2(-800, -200)
-
 [node name="Wall" parent="Upper Walls2" instance=ExtResource("4_l40ax")]
 position = Vector2(0, -200)
 
 [node name="Wall2" parent="Upper Walls2" instance=ExtResource("4_l40ax")]
 position = Vector2(800, -200)
+
+[node name="Wall Short" parent="Upper Walls2" instance=ExtResource("5_fcitj")]
+position = Vector2(-800, -200)
 
 [node name="Upper Walls3" type="Node2D" parent="."]
 position = Vector2(4800, 0)
@@ -101,20 +103,22 @@ position = Vector2(800, 200)
 [node name="Wall Short" parent="Lower Walls3" instance=ExtResource("5_fcitj")]
 position = Vector2(0, 200)
 
-[node name="Base Sticky StaticBody2D" parent="." instance=ExtResource("7_gfjbi")]
+[node name="Obstacles Parent" type="Node2D" parent="."]
+
+[node name="Base Sticky StaticBody2D" parent="Obstacles Parent" instance=ExtResource("7_gfjbi")]
 position = Vector2(4180, 143)
 
-[node name="BaseObstacle StaticBody2D" parent="." instance=ExtResource("7_p5wxb")]
+[node name="BaseObstacle StaticBody2D" parent="Obstacles Parent" instance=ExtResource("7_p5wxb")]
 position = Vector2(3380, 119)
 
-[node name="Base Wall StaticBody2D" parent="." instance=ExtResource("7_p5wxb")]
+[node name="Base Wall StaticBody2D" parent="Obstacles Parent" instance=ExtResource("7_p5wxb")]
 position = Vector2(954, 125)
 
-[node name="Base Wall StaticBody2D2" parent="." instance=ExtResource("7_p5wxb")]
+[node name="Base Wall StaticBody2D2" parent="Obstacles Parent" instance=ExtResource("7_p5wxb")]
 position = Vector2(1374, -122)
 
-[node name="Base Wall StaticBody2D3" parent="." instance=ExtResource("7_p5wxb")]
+[node name="Base Wall StaticBody2D3" parent="Obstacles Parent" instance=ExtResource("7_p5wxb")]
 position = Vector2(1360, 121)
 
-[node name="Base Sticky StaticBody2D2" parent="." instance=ExtResource("8_p5wxb")]
+[node name="Base Sticky StaticBody2D2" parent="Obstacles Parent" instance=ExtResource("8_p5wxb")]
 position = Vector2(1767, 123)

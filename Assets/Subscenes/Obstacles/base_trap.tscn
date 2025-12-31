@@ -1,25 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmoc5qloe16ki"]
 
-[ext_resource type="Texture2D" uid="uid://5od7x41xa6gj" path="res://Assets/Sprites/Logos/Chadot.png" id="1_dv0fs"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_dv0fs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7oto"]
-size = Vector2(161, 80)
+size = Vector2(80, 80)
 
 [node name="Base Sticky StaticBody2D" type="StaticBody2D"]
 collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(40.5, 0)
 shape = SubResource("RectangleShape2D_t7oto")
 
 [node name="Visuals Node2D" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals Node2D"]
-scale = Vector2(0.17, 0.17)
-texture = ExtResource("1_dv0fs")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Visuals Node2D"]
-position = Vector2(78.99999, -0.9999999)
-scale = Vector2(0.17, 0.17)
+position = Vector2(0, 9.536743e-07)
+scale = Vector2(0.62499994, 0.62499994)
 texture = ExtResource("1_dv0fs")
