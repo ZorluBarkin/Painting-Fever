@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn2ifcwpa3u1i"]
+[gd_scene load_steps=10 format=3 uid="uid://dn2ifcwpa3u1i"]
 
 [ext_resource type="PackedScene" uid="uid://yc15qf53iqv1" path="res://Assets/Subscenes/Player/player_cube.tscn" id="1_7t5j6"]
 [ext_resource type="Script" uid="uid://beo7axsch4on6" path="res://Assets/Scripts/Level/Level.cs" id="1_hvebc"]
@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dy7oetulasqpl" path="res://Assets/Subscenes/Walls/wall_short.tscn" id="5_fcitj"]
 [ext_resource type="PackedScene" uid="uid://r4bkj3ehfbay" path="res://Assets/Subscenes/Obstacles/base_sticky.tscn" id="7_gfjbi"]
 [ext_resource type="PackedScene" uid="uid://crgj07qd1qkhp" path="res://Assets/Subscenes/Obstacles/base_wall.tscn" id="7_p5wxb"]
-[ext_resource type="PackedScene" uid="uid://bmoc5qloe16ki" path="res://Assets/Subscenes/Obstacles/base_trap.tscn" id="8_p5wxb"]
+[ext_resource type="PackedScene" uid="uid://ca6lehsvubvkw" path="res://Assets/Subscenes/Obstacles/Traps/saw.tscn" id="8_p5wxb"]
+[ext_resource type="PackedScene" uid="uid://b36xrgwmafkfh" path="res://Assets/Subscenes/Obstacles/Traps/spike.tscn" id="9_uy6lu"]
 
 [node name="dev_level" type="Node2D" node_paths=PackedStringArray("CentralLinePoint")]
 script = ExtResource("1_hvebc")
@@ -108,9 +109,6 @@ position = Vector2(0, 200)
 [node name="Base Sticky StaticBody2D" parent="Obstacles Parent" instance=ExtResource("7_gfjbi")]
 position = Vector2(4180, 143)
 
-[node name="BaseObstacle StaticBody2D" parent="Obstacles Parent" instance=ExtResource("7_p5wxb")]
-position = Vector2(3380, 119)
-
 [node name="Base Wall StaticBody2D" parent="Obstacles Parent" instance=ExtResource("7_p5wxb")]
 position = Vector2(954, 125)
 
@@ -120,5 +118,22 @@ position = Vector2(1374, -122)
 [node name="Base Wall StaticBody2D3" parent="Obstacles Parent" instance=ExtResource("7_p5wxb")]
 position = Vector2(1360, 121)
 
-[node name="Base Sticky StaticBody2D2" parent="Obstacles Parent" instance=ExtResource("8_p5wxb")]
-position = Vector2(1767, 123)
+[node name="Base Trap StaticBody2D" parent="Obstacles Parent" node_paths=PackedStringArray("trapPositions") instance=ExtResource("8_p5wxb")]
+position = Vector2(2152, 120)
+MovementTime = 1.0
+trapPositions = [NodePath("Marker2D3"), NodePath("Marker2D4")]
+
+[node name="Marker2D3" type="Marker2D" parent="Obstacles Parent/Base Trap StaticBody2D"]
+position = Vector2(125, 0)
+
+[node name="Marker2D4" type="Marker2D" parent="Obstacles Parent/Base Trap StaticBody2D"]
+position = Vector2(-335, -7)
+
+[node name="Spike StaticBody2D" parent="Obstacles Parent" instance=ExtResource("9_uy6lu")]
+position = Vector2(2667, -120)
+
+[node name="Spike StaticBody2D2" parent="Obstacles Parent" instance=ExtResource("9_uy6lu")]
+position = Vector2(3726, 116)
+
+[node name="Spike StaticBody2D3" parent="Obstacles Parent" instance=ExtResource("9_uy6lu")]
+position = Vector2(4542, 120)
