@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn2ifcwpa3u1i"]
+[gd_scene load_steps=11 format=3 uid="uid://dn2ifcwpa3u1i"]
 
 [ext_resource type="PackedScene" uid="uid://yc15qf53iqv1" path="res://Assets/Subscenes/Player/player_cube.tscn" id="1_7t5j6"]
 [ext_resource type="Script" uid="uid://beo7axsch4on6" path="res://Assets/Scripts/Level/Level.cs" id="1_hvebc"]
@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://r4bkj3ehfbay" path="res://Assets/Subscenes/Obstacles/base_sticky.tscn" id="7_gfjbi"]
 [ext_resource type="PackedScene" uid="uid://crgj07qd1qkhp" path="res://Assets/Subscenes/Obstacles/base_wall.tscn" id="7_p5wxb"]
 [ext_resource type="PackedScene" uid="uid://ca6lehsvubvkw" path="res://Assets/Subscenes/Obstacles/Traps/saw.tscn" id="8_p5wxb"]
-[ext_resource type="PackedScene" uid="uid://b36xrgwmafkfh" path="res://Assets/Subscenes/Obstacles/Traps/spike.tscn" id="9_uy6lu"]
+[ext_resource type="PackedScene" uid="uid://b36xrgwmafkfh" path="res://Assets/Subscenes/Obstacles/Traps/single_spike.tscn" id="9_uy6lu"]
+[ext_resource type="PackedScene" uid="uid://dbsfohp0whbwh" path="res://Assets/Subscenes/Obstacles/Traps/quad_spike.tscn" id="10_pep3e"]
 
 [node name="dev_level" type="Node2D" node_paths=PackedStringArray("CentralLinePoint")]
 script = ExtResource("1_hvebc")
@@ -130,10 +131,21 @@ position = Vector2(125, 0)
 position = Vector2(-335, -7)
 
 [node name="Spike StaticBody2D" parent="Obstacles Parent" instance=ExtResource("9_uy6lu")]
-position = Vector2(2667, -120)
+position = Vector2(2667, -158)
+rotation = 3.1415927
 
 [node name="Spike StaticBody2D2" parent="Obstacles Parent" instance=ExtResource("9_uy6lu")]
-position = Vector2(3726, 116)
+position = Vector2(3726, 160)
 
 [node name="Spike StaticBody2D3" parent="Obstacles Parent" instance=ExtResource("9_uy6lu")]
-position = Vector2(4542, 120)
+position = Vector2(4542, 160.21)
+
+[node name="Quad Spikes StaticBody2D" parent="." instance=ExtResource("10_pep3e")]
+position = Vector2(1158, 161)
+
+[node name="Quad Spikes StaticBody2D2" parent="." instance=ExtResource("10_pep3e")]
+position = Vector2(2954, 159)
+
+[node name="Quad Spikes StaticBody2D3" parent="." instance=ExtResource("10_pep3e")]
+position = Vector2(4259, -160)
+rotation = 3.1415927
