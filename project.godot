@@ -15,7 +15,8 @@ run/main_scene="uid://cl7qrdh347yna"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="uid://dd5ug6itfcy7b"
+config/windows_native_icon="res://Assets/Sprites/Icons/painting_fever.ico"
 
 [autoload]
 

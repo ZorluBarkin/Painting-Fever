@@ -26,6 +26,8 @@ public partial class Intro : CanvasLayer
     #if DEBUG
     public override void _UnhandledInput(InputEvent @event)
     {
+        // ignore mouse inputs
+        if (@event is InputEventMouse) return; 
         FinishIntro();
         base._UnhandledInput(@event);
     }
