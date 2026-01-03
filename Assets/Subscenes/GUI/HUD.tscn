@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://gjgame5ymalg" path="res://Assets/Scripts/GUI/HUD/HUD.cs" id="1_dny7b"]
 [ext_resource type="PackedScene" uid="uid://bnyjiy5ahlolr" path="res://Assets/Subscenes/GUI/pause_menu.tscn" id="1_pbvnn"]
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("levelProgressBar", "colorRects", "pauseMenu")]
+[node name="HUD" type="Control" node_paths=PackedStringArray("levelProgressBar", "colorRects", "PauseMenu")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -14,7 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_dny7b")
 levelProgressBar = NodePath("Top CenterContainer/Level ProgressBar")
 colorRects = [NodePath("Bottom CenterContainer/PanelContainer/MarginContainer/HBoxContainer/Paint 1"), NodePath("Bottom CenterContainer/PanelContainer/MarginContainer/HBoxContainer/Paint 2"), NodePath("Bottom CenterContainer/PanelContainer/MarginContainer/HBoxContainer/Paint 3")]
-pauseMenu = NodePath("Pause Menu")
+PauseMenu = NodePath("Pause Menu")
 
 [node name="Top CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

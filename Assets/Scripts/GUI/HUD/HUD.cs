@@ -2,16 +2,14 @@ using Godot;
 
 public partial class HUD : Control, IEventSubscriber
 {
-    public static bool PauseMenuOpen { get; private set; } = false;
     [Export] private ProgressBar levelProgressBar;
     [Export] private Godot.Collections.Array<ColorRect> colorRects;
 
     [ExportCategory("UI Subscenes")]
-    [Export] private PauseMenu pauseMenu;
+    [Export] public PauseMenu PauseMenu { get; private set; }
 
     public override void _Ready()
     {
-        PauseMenuOpen = false;
         base._Ready();
     }
 
@@ -19,8 +17,7 @@ public partial class HUD : Control, IEventSubscriber
     {
         if (@event.IsActionPressed("Pause"))
         {
-            pauseMenu.Visible = !pauseMenu.Visible;
-            PauseMenuOpen = pauseMenu.Visible;
+            PauseMenu.Visible = !PauseMenu.Visible;
         }
         base._Input(@event);
     }
@@ -49,8 +46,7 @@ public partial class HUD : Control, IEventSubscriber
     {
         if (targetState == GameState.Menu)
         {
-            pauseMenu.Visible = false;
-            PauseMenuOpen = false;
+            PauseMenu.Visible = false;
         }
     }
 }

@@ -8,6 +8,8 @@ public partial class GUI : CanvasLayer, IEventSubscriber
     [Export] public MainMenu MainMenu { get; private set; }
     [Export] public HUD HUD { get; private set; }
 
+    public bool PauseMenuOpened => HUD.PauseMenu.Visible;
+
     public override void _Ready()
     {
         Instance = this;
