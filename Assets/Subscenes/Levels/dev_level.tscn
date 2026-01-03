@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://yc15qf53iqv1" path="res://Assets/Subscenes/Player/player_cube.tscn" id="1_7t5j6"]
 [ext_resource type="Script" uid="uid://beo7axsch4on6" path="res://Assets/Scripts/Level/Level.cs" id="1_hvebc"]
-[ext_resource type="Texture2D" uid="uid://cu4o1c35xslnr" path="res://Assets/Sprites/Backgrounds/parallax-background-jim1uavi6whbcns0.webp" id="2_p5wxb"]
+[ext_resource type="Texture2D" uid="uid://gh1vts4whrx7" path="res://Assets/Sprites/Backgrounds/purple_disco.jpg" id="2_pep3e"]
 [ext_resource type="PackedScene" uid="uid://dinh61lda4yrj" path="res://Assets/Subscenes/Walls/wall_long.tscn" id="4_l40ax"]
 [ext_resource type="PackedScene" uid="uid://dy7oetulasqpl" path="res://Assets/Subscenes/Walls/wall_short.tscn" id="5_fcitj"]
 [ext_resource type="PackedScene" uid="uid://r4bkj3ehfbay" path="res://Assets/Subscenes/Obstacles/base_sticky.tscn" id="7_gfjbi"]
@@ -20,13 +20,14 @@ CentralLinePoint = NodePath("Central Line Definer Node2D")
 layer = -1000
 
 [node name="Parallax2D" type="Parallax2D" parent="Paralax CanvasLayer"]
-repeat_size = Vector2(1800, 0)
-repeat_times = 3
+scroll_scale = Vector2(0.1, 0.1)
+scroll_offset = Vector2(0, 300)
 follow_viewport = false
+screen_offset = Vector2(0, -600)
 
 [node name="background Sprite2D" type="Sprite2D" parent="Paralax CanvasLayer/Parallax2D"]
-scale = Vector2(2, 2)
-texture = ExtResource("2_p5wxb")
+scale = Vector2(1, 0.3)
+texture = ExtResource("2_pep3e")
 
 [node name="Player Cube" parent="." instance=ExtResource("1_7t5j6")]
 position = Vector2(-200, 0)
