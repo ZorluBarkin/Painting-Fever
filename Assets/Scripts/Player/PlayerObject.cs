@@ -71,6 +71,8 @@ public partial class PlayerObject : CharacterBody2D
 
     public override void _Input(InputEvent @event)
     {
+        if (HUD.PauseMenuOpen) return;
+        
         if (@event.IsActionPressed("Move Up") && OnBottomLane)
         {
             SwitchGravity(OnBottomLane = false);

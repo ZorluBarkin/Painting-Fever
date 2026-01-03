@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbh70xnomdx5c"]
+
+[ext_resource type="Script" uid="uid://gjgame5ymalg" path="res://Assets/Scripts/GUI/HUD/HUD.cs" id="1_dny7b"]
+[ext_resource type="PackedScene" uid="uid://bnyjiy5ahlolr" path="res://Assets/Subscenes/GUI/pause_menu.tscn" id="1_pbvnn"]
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("levelProgressBar", "colorRects", "pauseMenu")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dny7b")
+levelProgressBar = NodePath("Top CenterContainer/Level ProgressBar")
+colorRects = [NodePath("Bottom CenterContainer/PanelContainer/MarginContainer/HBoxContainer/Paint 1"), NodePath("Bottom CenterContainer/PanelContainer/MarginContainer/HBoxContainer/Paint 2"), NodePath("Bottom CenterContainer/PanelContainer/MarginContainer/HBoxContainer/Paint 3")]
+pauseMenu = NodePath("Pause Menu")
+
+[node name="Top CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.1
+
+[node name="Level ProgressBar" type="ProgressBar" parent="Top CenterContainer"]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 2
+
+[node name="Bottom CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Bottom CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Bottom CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Bottom CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Paint 1" type="ColorRect" parent="Bottom CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+
+[node name="Paint 2" type="ColorRect" parent="Bottom CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0, 1, 0, 1)
+
+[node name="Paint 3" type="ColorRect" parent="Bottom CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0, 0, 1, 1)
+
+[node name="Pause Menu" parent="." instance=ExtResource("1_pbvnn")]
+visible = false
+layout_mode = 1

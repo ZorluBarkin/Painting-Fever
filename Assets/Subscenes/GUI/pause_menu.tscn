@@ -1,0 +1,210 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnyjiy5ahlolr"]
+
+[ext_resource type="Script" uid="uid://6sugmd12redt" path="res://Assets/Scripts/GUI/Menu/PauseMenu.cs" id="1_4105w"]
+
+[node name="Pause Menu" type="CenterContainer" node_paths=PackedStringArray("masterVolumeSlider", "musicVolumeSlider", "sfxVolumeSlider", "masterVolumeLineEdit", "musicVolumeLineEdit", "sfxVolumeLineEdit", "upKeyLineEdit", "downKeyLineEdit", "paint1KeyLineEdit", "paint2KeyLineEdit", "paint3KeyLineEdit")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4105w")
+masterVolumeSlider = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Master Audio HBoxContainer/Master HSlider")
+musicVolumeSlider = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Muisc HBoxContainer/Music HSlider")
+sfxVolumeSlider = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Sfx HBoxContainer/SFX HSlider")
+masterVolumeLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Master Audio HBoxContainer/LineEdit")
+musicVolumeLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Muisc HBoxContainer/LineEdit")
+sfxVolumeLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Sfx HBoxContainer/LineEdit")
+upKeyLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Up HBoxContainer/LineEdit")
+downKeyLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Down HBoxContainer/LineEdit")
+paint1KeyLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 1 HBoxContainer/LineEdit")
+paint2KeyLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 2 HBoxContainer/LineEdit")
+paint3KeyLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 3 HBoxContainer/LineEdit")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Pause VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Continue Button" type="Button" parent="PanelContainer/MarginContainer/Pause VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Continue"
+
+[node name="Restart Button" type="Button" parent="PanelContainer/MarginContainer/Pause VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Restart"
+
+[node name="Audio VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Sound Title Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
+layout_mode = 2
+text = "Sounds"
+horizontal_alignment = 1
+
+[node name="Audio CheckButton" type="CheckButton" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
+visible = false
+layout_mode = 2
+button_pressed = true
+text = "Sound"
+
+[node name="Master Audio HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Master HSlider" type="HSlider" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Master Audio HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 20.0
+value = 20.0
+rounded = true
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Master Audio HBoxContainer"]
+layout_mode = 2
+max_length = 3
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+
+[node name="Muisc HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Music HSlider" type="HSlider" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Muisc HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 20.0
+value = 20.0
+rounded = true
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Muisc HBoxContainer"]
+layout_mode = 2
+max_length = 3
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+
+[node name="Sfx HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="SFX HSlider" type="HSlider" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Sfx HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+rounded = true
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Sfx HBoxContainer"]
+layout_mode = 2
+max_length = 3
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+
+[node name="Controls VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Controls Title Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="Up HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Up HBoxContainer"]
+layout_mode = 2
+placeholder_text = "w"
+alignment = 1
+max_length = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Up HBoxContainer"]
+layout_mode = 2
+text = "Move Up"
+
+[node name="Down HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Down HBoxContainer"]
+layout_mode = 2
+placeholder_text = "s"
+alignment = 1
+max_length = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Down HBoxContainer"]
+layout_mode = 2
+text = "Move Down"
+
+[node name="Paint 1 HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 1 HBoxContainer"]
+layout_mode = 2
+placeholder_text = "1"
+alignment = 1
+max_length = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 1 HBoxContainer"]
+layout_mode = 2
+text = "Paint 1"
+
+[node name="Paint 2 HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 2 HBoxContainer"]
+layout_mode = 2
+placeholder_text = "2"
+alignment = 1
+max_length = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 2 HBoxContainer"]
+layout_mode = 2
+text = "Paint 2"
+
+[node name="Paint 3 HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 3 HBoxContainer"]
+layout_mode = 2
+placeholder_text = "3"
+alignment = 1
+max_length = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 3 HBoxContainer"]
+layout_mode = 2
+text = "Paint 3"
+
+[connection signal="visibility_changed" from="." to="." method="OnVisibilityChanged"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Pause VBoxContainer/Continue Button" to="." method="OnContinueButtonPressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Pause VBoxContainer/Restart Button" to="." method="OnRestartButtonPressed"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Audio CheckButton" to="." method="OnAudioToggle"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Master Audio HBoxContainer/Master HSlider" to="." method="OnMasterSliderValueChanged"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Master Audio HBoxContainer/LineEdit" to="." method="OnMasterEditTextSubmitted"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Muisc HBoxContainer/Music HSlider" to="." method="OnMusicSliderValueChanged"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Muisc HBoxContainer/LineEdit" to="." method="OnMusicEditTextSubmitted"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Sfx HBoxContainer/SFX HSlider" to="." method="OnSFXSliderValueChanged"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Sfx HBoxContainer/LineEdit" to="." method="OnSFXEditTextSubmitted"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Up HBoxContainer/LineEdit" to="." method="OnUpLineEditTextSubmitted"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Down HBoxContainer/LineEdit" to="." method="OnDownLineEditTextSubmitted"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 1 HBoxContainer/LineEdit" to="." method="OnPaint1LineEditTextSubmitted"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 2 HBoxContainer/LineEdit" to="." method="OnPaint2LineEditTextSubmitted"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 3 HBoxContainer/LineEdit" to="." method="OnPaint3LineEditTextSubmitted"]
