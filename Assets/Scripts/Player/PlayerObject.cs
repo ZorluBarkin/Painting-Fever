@@ -11,9 +11,10 @@ public partial class PlayerObject : CharacterBody2D
     [Export] public Sprite2D Shape { get; private set; }
     public Level level;
     private float slowDownMultiplier;
-    public float MoveSpeed { get; private set; }
+    public float originalMoveSpeed { get; private set; }
+    public float MoveSpeed { get; set; }
     public float MaxStuckTime { get; private set; }
-    private float LaneSwitchMult{ get; set; }
+    private float LaneSwitchMult => MoveSpeed / 5f;
     
     public bool OnBottomLane { get; private set; } = true;
     public bool AbleToPaint { get; private set; } = false;
@@ -22,7 +23,7 @@ public partial class PlayerObject : CharacterBody2D
     public float laneOffset = 0f;
     public float GravityDirection = 1f;
 
-    public bool Sticked { get; private set; } = false;
+    public bool Sticked { get; set; } = false;
     public bool Stuck { get; private set; } = false;
     public float StuckTime { get; private set; } = 0f;
 
@@ -106,7 +107,8 @@ public partial class PlayerObject : CharacterBody2D
         level = currentLevel;
         slowDownMultiplier = 1 - LevelManager.Instance.LevelData.stickySlowdownMultiplier;
         MoveSpeed = LevelManager.Instance.LevelData.GetMoveSpeed(level.Difficulty);
-        LaneSwitchMult = MoveSpeed / 5f; // 80f at 400 speed, 200f at 1000 speed
+        originalMoveSpeed = MoveSpeed;
+        //LaneSwitchMult = MoveSpeed / 5f; // 80f at 400 speed, 200f at 1000 speed
         MaxStuckTime = LevelManager.Instance.LevelData.GetMaxStuckTime(level.Difficulty);
         LaneCentrePoint = level.CentralLinePoint;
         laneOffset = level.LaneOffset;
@@ -131,20 +133,27 @@ public partial class PlayerObject : CharacterBody2D
     private void CheckCollisions()
     {
         CollisionObject2D collider = GetLastSlideCollision() != null ? (CollisionObject2D)GetLastSlideCollision().GetCollider() : null;
-        if (collider == null) return;
+        if (collider == null)
+        {
+            /* if (Sticked)
+            {
+                RemoveStickyEffect(2f);
+            } */
+            return;
+        }
         
         if (collider.GetCollisionLayerValue(3)) // 3rd layer is saw / spikes
         {
             LevelFailed();
         }
-        else if (collider.GetCollisionLayerValue(4))
+        /* else if (collider.GetCollisionLayerValue(4))
         {
             if(!Sticked)
             {
                 Sticked = true;
                 MoveSpeed *= slowDownMultiplier;
             }
-        }
+        } */
     }
 
     private void ChangeColor(Color newColor)
@@ -161,6 +170,13 @@ public partial class PlayerObject : CharacterBody2D
     {
         LevelFailed();
     }
+
+    /* private async void RemoveStickyEffect(float delay)
+    {
+        await ToSignal(GetTree().CreateTimer(delay), "timeout");
+        Sticked = false;
+        MoveSpeed = originalMoveSpeed;
+    } */
 
     private void LevelFailed()
     {

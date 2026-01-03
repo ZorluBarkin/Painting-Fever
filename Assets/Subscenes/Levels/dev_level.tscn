@@ -108,8 +108,11 @@ position = Vector2(0, 200)
 
 [node name="Obstacles Parent" type="Node2D" parent="."]
 
+[node name="Base Sticky StaticBody2D2" parent="Obstacles Parent" instance=ExtResource("7_gfjbi")]
+position = Vector2(331, 187)
+
 [node name="Base Sticky StaticBody2D" parent="Obstacles Parent" instance=ExtResource("7_gfjbi")]
-position = Vector2(4180, 143)
+position = Vector2(4124, 188)
 
 [node name="Base Wall StaticBody2D" parent="Obstacles Parent" instance=ExtResource("7_p5wxb")]
 position = Vector2(954, 125)

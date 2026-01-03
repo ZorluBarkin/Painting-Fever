@@ -1,34 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://r4bkj3ehfbay"]
+[gd_scene load_steps=4 format=3 uid="uid://r4bkj3ehfbay"]
 
 [ext_resource type="Texture2D" uid="uid://dpxhf4glpnaac" path="res://Assets/Sprites/square.svg" id="1_ny2ke"]
+[ext_resource type="Script" uid="uid://ceg32seqc7p75" path="res://Assets/Scripts/Level/Obstacle/StickyArea.cs" id="1_osq25"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7oto"]
-size = Vector2(235, 80)
+size = Vector2(320, 80)
 
-[node name="Base Sticky StaticBody2D" type="StaticBody2D"]
+[node name="Base Sticky StaticBody2D" type="Area2D"]
 collision_layer = 8
 collision_mask = 8
+script = ExtResource("1_osq25")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(77.5, 0)
 shape = SubResource("RectangleShape2D_t7oto")
 debug_color = Color(0.2605534, 0.14597267, 0.013797281, 0.41960785)
 
 [node name="Visuals Node2D" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals Node2D"]
-modulate = Color(0.2224878, 0.14004734, 0, 1)
+modulate = Color(0.22352941, 0.14117648, 0, 0.78431374)
+position = Vector2(-39.00001, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_ny2ke")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Visuals Node2D"]
-modulate = Color(0.2224878, 0.14004734, 0, 1)
-position = Vector2(80, 0)
+modulate = Color(0.22352941, 0.14117648, 0, 0.78431374)
+position = Vector2(40.99999, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_ny2ke")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Visuals Node2D"]
-modulate = Color(0.2224878, 0.14004734, 0, 1)
-position = Vector2(160, 0)
+modulate = Color(0.22352941, 0.14117648, 0, 0.78431374)
+position = Vector2(120.999985, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_ny2ke")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Visuals Node2D"]
+modulate = Color(0.22352941, 0.14117648, 0, 0.78431374)
+position = Vector2(-120, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ny2ke")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]
