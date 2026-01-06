@@ -24,54 +24,65 @@ public partial class PauseMenu : CenterContainer
     [Export] private LineEdit paint2KeyLineEdit;
     [Export] private LineEdit paint3KeyLineEdit;
 
-    [ExportCategory("Paused Time Scale")]
-    [Export] private float pausedTimeScale = 0.25f;
+    private bool SettingsChanged = false;
 
     private RegEx regExNumeric = new();
 
     public override void _Ready()
     {
         regExNumeric.Compile("[^0-9]");
-        InitializeSettings();
+        LoadSettings();
     }
 
-    private void InitializeSettings()
+    private void LoadSettings()
     {
         // TODO: Add Config manager then connect settings to it
+        SettingsData data = SettingsManager.Instance.SettingsData;
+        masterVolumeSlider.Value = data.MasterVolume;
+        musicVolumeSlider.Value = data.MusicVolume;
+        sfxVolumeSlider.Value = data.EffectsVolume;
+
+        masterVolumeLineEdit.Text = masterVolumeSlider.Value.ToString();
+        musicVolumeLineEdit.Text = musicVolumeSlider.Value.ToString();
+        sfxVolumeLineEdit.Text = sfxVolumeSlider.Value.ToString();
     }
 
     private void OnVisibilityChanged()
     {
         if (Visible)
-            Engine.TimeScale = pausedTimeScale;
+            Engine.TimeScale = LevelManager.Instance.PausedTimeScale;
         else
+        {
+            if (SettingsChanged)
+            {
+                SettingsChanged = false;
+                SettingsManager.Instance.SettingsData.ChangeAudioSettings((int)masterVolumeSlider.Value, (int)musicVolumeSlider.Value, (int)sfxVolumeSlider.Value);
+                SettingsManager.Instance.SaveSettings();
+            }
             Engine.TimeScale = 1f;
-
-        GD.Print("Pause Menu Visibility Changed: " + Engine.TimeScale);
+        }
     }
 
     private void OnContinueButtonPressed()
     {
         Visible = false;
-        GD.Print("Continue Button Pressed");
     }
 
     private void OnRestartButtonPressed()
     {
         Visible = false;
         LevelManager.Instance.RestartCurrentLevel();
-        GD.Print("Restart Button Pressed");
     }
 
     private void OnAudioToggle(bool toggled)
     {
-        GD.Print("Audio Toggled ", toggled);
+        SettingsChanged = true;
     }
 
     private void OnMasterSliderValueChanged(float value)
     {
         masterVolumeLineEdit.Text = value.ToString();
-        GD.Print("Master Slider Value Changed: " + value);
+        SettingsChanged = true;
     }
 
     private void OnMasterEditTextSubmitted(string newText)
@@ -82,7 +93,7 @@ public partial class PauseMenu : CenterContainer
             float clampedValue = Mathf.Clamp(float.Parse(newText), MasterVolumeMin, 100f);
             masterVolumeLineEdit.Text = clampedValue.ToString();
             masterVolumeSlider.Value = clampedValue;
-            GD.Print("Master Audio Edit Text Changed: " + clampedValue);
+            SettingsChanged = true;
         }
 
     }
@@ -90,7 +101,7 @@ public partial class PauseMenu : CenterContainer
     private void OnMusicSliderValueChanged(float value)
     {
         musicVolumeLineEdit.Text = value.ToString();
-        GD.Print("Music Slider Value Changed: " + value);
+        SettingsChanged = true;
     }
 
     private void OnMusicEditTextSubmitted(string newText)
@@ -101,14 +112,14 @@ public partial class PauseMenu : CenterContainer
             float clampedValue = Mathf.Clamp(float.Parse(newText), MusicVolumeMin, 100f);
             musicVolumeLineEdit.Text = clampedValue.ToString();
             musicVolumeSlider.Value = clampedValue;
-            GD.Print("Music Audio Edit Text Changed: " + clampedValue);
+            SettingsChanged = true;
         }
     }
 
     private void OnSFXSliderValueChanged(float value)
     {
         sfxVolumeLineEdit.Text = value.ToString();
-        GD.Print("SFX Slider Value Changed: " + value);
+        SettingsChanged = true;
     }
 
     private void OnSFXEditTextSubmitted(string newText)
@@ -119,37 +130,37 @@ public partial class PauseMenu : CenterContainer
             float clampedValue = Mathf.Clamp(float.Parse(newText), SFXVolumeMin, 100f);
             sfxVolumeLineEdit.Text = clampedValue.ToString();
             sfxVolumeSlider.Value = clampedValue;
-            GD.Print("SFX Audio Edit Text Changed: " + clampedValue);
+            SettingsChanged = true;
         }
     }
 
     private void OnUpLineEditTextSubmitted(string newText)
     {
         upKeyLineEdit.Text = newText;
-        GD.Print("Line Edit Text Changed: " + newText);
+        SettingsChanged = true;
     }
 
     private void OnDownLineEditTextSubmitted(string newText)
     {
         downKeyLineEdit.Text = newText;
-        GD.Print("Line Edit Text Changed: " + newText);
+        SettingsChanged = true;
     }
 
     private void OnPaint1LineEditTextSubmitted(string newText)
     {
         paint1KeyLineEdit.Text = newText;
-        GD.Print("Line Edit Text Changed: " + newText);
+        SettingsChanged = true;
     }
 
     private void OnPaint2LineEditTextSubmitted(string newText)
     {
         paint2KeyLineEdit.Text = newText;
-        GD.Print("Line Edit Text Changed: " + newText);
+        SettingsChanged = true;
     }
 
     private void OnPaint3LineEditTextSubmitted(string newText)
     {
         paint3KeyLineEdit.Text = newText;
-        GD.Print("Line Edit Text Changed: " + newText);
+        SettingsChanged = true;
     }
 }

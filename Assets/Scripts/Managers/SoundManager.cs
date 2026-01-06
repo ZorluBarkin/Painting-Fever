@@ -26,7 +26,7 @@ public partial class SoundManager : Node, IEventSubscriber
     public SoundManager() { Instance = this; }
     public override void _Ready()
     {
-        SetVolumes();
+        LoadSettings();
         ((IEventSubscriber)this).SubscribeToEvents();
     }
 
@@ -38,19 +38,30 @@ public partial class SoundManager : Node, IEventSubscriber
     void IEventSubscriber.SubscribeToEvents()
     {
         GameManager.GameStateChanged += OnGameStateChanged;
+        SettingsManager.Instance.SettingsChanged += LoadSettings;
     }
 
     void IEventSubscriber.UnsubscribeFromEvents()
     {
         GameManager.GameStateChanged -= OnGameStateChanged;
+        SettingsManager.Instance.SettingsChanged -= LoadSettings;
     }
 
-    public void SetVolumes()
+    private void LoadSettings()
     {
-        float masterEffect = MasterVolume / 100f;
-        MenuMusicPlayer.VolumeDb = Mathf.LinearToDb(masterEffect * MusicVolume / 100f);
-        LevelMusicPlayer.VolumeDb = Mathf.LinearToDb(masterEffect * MusicVolume / 100f);
-        EffectsPlayer.VolumeDb = Mathf.LinearToDb(masterEffect * SfxVolume / 100f);
+        SettingsData data = SettingsManager.Instance.SettingsData;
+        MasterVolume = data.MasterVolume;
+        MusicVolume = data.MusicVolume;
+        SfxVolume = data.EffectsVolume;
+        SetVolumes();
+    }
+
+    private void SetVolumes()
+    {
+        float masterMult = MasterVolume / 100f;
+        MenuMusicPlayer.VolumeDb = Mathf.LinearToDb(masterMult * MusicVolume / 100f);
+        LevelMusicPlayer.VolumeDb = Mathf.LinearToDb(masterMult * MusicVolume / 100f);
+        EffectsPlayer.VolumeDb = Mathf.LinearToDb(masterMult * SfxVolume / 100f);
     }
 
     public void PlayLevelMusic(AudioStream music)

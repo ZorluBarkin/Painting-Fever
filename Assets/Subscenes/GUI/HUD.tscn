@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbh70xnomdx5c"]
+[gd_scene load_steps=5 format=3 uid="uid://dbh70xnomdx5c"]
 
 [ext_resource type="Script" uid="uid://gjgame5ymalg" path="res://Assets/Scripts/GUI/HUD/HUD.cs" id="1_dny7b"]
 [ext_resource type="PackedScene" uid="uid://bnyjiy5ahlolr" path="res://Assets/Subscenes/GUI/pause_menu.tscn" id="1_pbvnn"]
+[ext_resource type="Texture2D" uid="uid://dpxhf4glpnaac" path="res://Assets/Sprites/square.svg" id="3_3afnw"]
+[ext_resource type="Texture2D" uid="uid://bbky04phhrli7" path="res://Assets/Sprites/UI/gear.svg" id="4_xrlhs"]
 
 [node name="HUD" type="Control" node_paths=PackedStringArray("levelProgressBar", "colorRects", "PauseMenu")]
 process_mode = 3
@@ -21,6 +23,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.1
+mouse_filter = 2
 
 [node name="Level ProgressBar" type="ProgressBar" parent="Top CenterContainer"]
 custom_minimum_size = Vector2(300, 30)
@@ -34,10 +37,11 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -200.0
-offset_top = -100.0
+offset_top = -152.0
 offset_right = 200.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Bottom CenterContainer"]
 layout_mode = 2
@@ -51,7 +55,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Bottom CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 25
 alignment = 1
 
 [node name="Paint 1" type="ColorRect" parent="Bottom CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
@@ -72,3 +76,33 @@ color = Color(0, 0, 1, 1)
 [node name="Pause Menu" parent="." instance=ExtResource("1_pbvnn")]
 visible = false
 layout_mode = 1
+
+[node name="Pause Menu TextureButton" type="TextureButton" parent="."]
+self_modulate = Color(0.78431374, 0.78431374, 0.78431374, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_top = 10.0
+offset_right = 749.0
+offset_bottom = 810.0
+grow_horizontal = 0
+scale = Vector2(0.05, 0.05)
+texture_normal = ExtResource("3_3afnw")
+
+[node name="Metal Gear Reference TextureRect" type="TextureRect" parent="Pause Menu TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_xrlhs")
+expand_mode = 1
+stretch_mode = 3
+
+[connection signal="pressed" from="Pause Menu TextureButton" to="." method="OnPauseButtonPressed"]

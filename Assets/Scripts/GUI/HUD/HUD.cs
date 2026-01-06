@@ -42,6 +42,11 @@ public partial class HUD : Control, IEventSubscriber
         //colorRects[index].Shine(); // TODO: add Shine effect
     }
 
+    public void OnPauseButtonPressed()
+    {
+        PauseMenu.Visible = !PauseMenu.Visible;
+    }
+
     public void OnGameStateChanged(GameState oldState, GameState targetState)
     {
         if (targetState == GameState.Menu)

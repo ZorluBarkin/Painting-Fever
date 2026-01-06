@@ -39,12 +39,12 @@ theme_override_constants/separation = 15
 [node name="Continue Button" type="Button" parent="PanelContainer/MarginContainer/Pause VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Continue"
+text = "continue"
 
 [node name="Restart Button" type="Button" parent="PanelContainer/MarginContainer/Pause VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Restart"
+text = "restart"
 
 [node name="Audio VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer"]
 layout_mode = 2
@@ -52,14 +52,22 @@ alignment = 1
 
 [node name="Sound Title Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
 layout_mode = 2
-text = "Sounds"
+text = "sounds-settings"
 horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
+layout_mode = 2
 
 [node name="Audio CheckButton" type="CheckButton" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
 visible = false
 layout_mode = 2
 button_pressed = true
-text = "Sound"
+text = "sound-toggle"
+
+[node name="Master Volume Title Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
+layout_mode = 2
+text = "master-volume"
+horizontal_alignment = 1
 
 [node name="Master Audio HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
 layout_mode = 2
@@ -81,6 +89,11 @@ shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
 selecting_enabled = false
 
+[node name="Music Volume Title Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
+layout_mode = 2
+text = "music-volume"
+horizontal_alignment = 1
+
 [node name="Muisc HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
 layout_mode = 2
 alignment = 2
@@ -101,6 +114,11 @@ shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
 selecting_enabled = false
 
+[node name="Effects Volume Title Label2" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
+layout_mode = 2
+text = "effects-volume"
+horizontal_alignment = 1
+
 [node name="Sfx HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer"]
 layout_mode = 2
 alignment = 2
@@ -120,12 +138,13 @@ middle_mouse_paste_enabled = false
 selecting_enabled = false
 
 [node name="Controls VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer"]
+visible = false
 layout_mode = 2
 alignment = 1
 
 [node name="Controls Title Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
 layout_mode = 2
-text = "Controls"
+text = "control-keybinds"
 horizontal_alignment = 1
 
 [node name="Up HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
@@ -139,7 +158,7 @@ max_length = 1
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Up HBoxContainer"]
 layout_mode = 2
-text = "Move Up"
+text = "move-up"
 
 [node name="Down HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
 layout_mode = 2
@@ -152,7 +171,7 @@ max_length = 1
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Down HBoxContainer"]
 layout_mode = 2
-text = "Move Down"
+text = "move-down"
 
 [node name="Paint 1 HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
 layout_mode = 2
@@ -165,7 +184,7 @@ max_length = 1
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 1 HBoxContainer"]
 layout_mode = 2
-text = "Paint 1"
+text = "paint-1"
 
 [node name="Paint 2 HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
 layout_mode = 2
@@ -178,7 +197,7 @@ max_length = 1
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 2 HBoxContainer"]
 layout_mode = 2
-text = "Paint 2"
+text = "paint-2"
 
 [node name="Paint 3 HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
 layout_mode = 2
@@ -191,7 +210,7 @@ max_length = 1
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 3 HBoxContainer"]
 layout_mode = 2
-text = "Paint 3"
+text = "paint-3"
 
 [connection signal="visibility_changed" from="." to="." method="OnVisibilityChanged"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/Pause VBoxContainer/Continue Button" to="." method="OnContinueButtonPressed"]

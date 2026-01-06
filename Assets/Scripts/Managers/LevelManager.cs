@@ -9,8 +9,11 @@ public partial class LevelManager : Node
 	public Level CurrentLevel { get; private set; }
 	public PackedScene TargetLevel { get; private set; }
 
+	[ExportCategory("Game Data")]
 	[Export] public LevelData LevelData { get; private set; }
 	[Export] public ColorData ColorData { get; private set; }
+
+	[Export] public float PausedTimeScale { get; private set; } = 0.05f;
 
 	public event Action<Level> LevelLoaded;
 	public event Action<Level> LevelUnloaded;
