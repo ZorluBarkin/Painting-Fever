@@ -27,7 +27,7 @@ public partial class StickyArea : Area2D
             
             // Gradually restore speed based on time progress
             float progress = Mathf.Clamp(timeSinceExit / persistDuration, 0.0f, 1.0f);
-            player.MoveSpeed = Mathf.Lerp(slowedSpeed, player.originalMoveSpeed, progress);
+            player.MoveSpeed = Mathf.Lerp(slowedSpeed, player.OriginalMoveSpeed, progress);
             
             if (timeSinceExit >= persistDuration)
                 RemoveEffect();
@@ -71,7 +71,7 @@ public partial class StickyArea : Area2D
         if (player == null) return;
         
         player.Sticked = false;
-        player.MoveSpeed = player.originalMoveSpeed;
+        player.MoveSpeed = player.OriginalMoveSpeed;
         effectActive = false;
         timeSinceExit = 0.0f;
     }

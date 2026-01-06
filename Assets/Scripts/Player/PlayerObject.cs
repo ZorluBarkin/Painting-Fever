@@ -11,7 +11,7 @@ public partial class PlayerObject : CharacterBody2D
     [Export] public Sprite2D Shape { get; private set; }
     public Level level;
     private float slowDownMultiplier;
-    public float originalMoveSpeed { get; private set; }
+    public float OriginalMoveSpeed { get; private set; }
     public float MoveSpeed { get; set; }
     public float MaxStuckTime { get; private set; }
     private float LaneSwitchMult => MoveSpeed / 5f;
@@ -107,7 +107,7 @@ public partial class PlayerObject : CharacterBody2D
         level = currentLevel;
         slowDownMultiplier = 1 - LevelManager.Instance.LevelData.stickySlowdownMultiplier;
         MoveSpeed = LevelManager.Instance.LevelData.GetMoveSpeed(level.Difficulty);
-        originalMoveSpeed = MoveSpeed;
+        OriginalMoveSpeed = MoveSpeed;
         //LaneSwitchMult = MoveSpeed / 5f; // 80f at 400 speed, 200f at 1000 speed
         MaxStuckTime = LevelManager.Instance.LevelData.GetMaxStuckTime(level.Difficulty);
         LaneCentrePoint = level.CentralLinePoint;
