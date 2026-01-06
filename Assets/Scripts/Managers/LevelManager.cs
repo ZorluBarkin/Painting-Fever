@@ -13,12 +13,18 @@ public partial class LevelManager : Node
 	[Export] public LevelData LevelData { get; private set; }
 	[Export] public ColorData ColorData { get; private set; }
 
-	[Export] public float PausedTimeScale { get; private set; } = 0.05f;
+	public float PausedTimeScale { get; private set; } = 0.05f;
 
 	public event Action<Level> LevelLoaded;
 	public event Action<Level> LevelUnloaded;
 
 	public LevelManager() { Instance = this; }
+
+	public override void _Ready()
+	{
+		PausedTimeScale = LevelData.LevelSlowDownTimeScale;	
+		base._Ready();
+	}
 
 	#if DEBUG
 	public override void _Input(InputEvent @event)

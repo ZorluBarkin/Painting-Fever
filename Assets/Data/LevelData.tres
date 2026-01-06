@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_es6fk")
+LevelSlowDownTimeScale = 0.05
 EasyLevelScenes = Array[PackedScene]([])
 MediumLevelScenes = Array[PackedScene]([])
 HardLevelScenes = Array[PackedScene]([])

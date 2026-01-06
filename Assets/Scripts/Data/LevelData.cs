@@ -2,10 +2,16 @@ using Godot;
 
 public partial class LevelData : Resource
 {
+    [ExportCategory("Level Settings")]
+    [Export] public float LevelSlowDownTimeScale { get; private set; } = 0.25f;
+    
+    [ExportCategory("Level Scenes")]
     [Export] public Godot.Collections.Array<PackedScene> EasyLevelScenes {get; private set; }
     [Export] public Godot.Collections.Array<PackedScene> MediumLevelScenes { get; private set; }
     [Export] public Godot.Collections.Array<PackedScene> HardLevelScenes { get; private set; }
     [Export] public Godot.Collections.Array<PackedScene> EasterEggLevelScenes { get; private set; }
+
+    [ExportCategory("Difficulty Settings")]
     [Export] public Godot.Collections.Dictionary<Difficulty, float> DifficultyToSpeedMap = new()
     {
         { Difficulty.Easy, 300f },
