@@ -152,6 +152,9 @@ layout_mode = 2
 text = "control-keybinds"
 horizontal_alignment = 1
 
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
+layout_mode = 2
+
 [node name="Up HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer"]
 layout_mode = 2
 

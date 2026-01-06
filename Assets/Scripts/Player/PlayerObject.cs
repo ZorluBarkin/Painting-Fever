@@ -146,17 +146,21 @@ public partial class PlayerObject : CharacterBody2D
         Shape.Modulate = newColor;
     }
 
-    private void TeleportToLocation(Vector2 newPosition)
+    /// <summary>
+    /// Teleports the player to a new position. For use in portals.
+    /// </summary>
+    /// <param name="newPosition"></param>
+    public void TeleportToLocation(Vector2 newPosition)
     {
         Position = newPosition;
     }
 
-    private void OnScreenExited()
+    private static void OnScreenExited()
     {
         LevelFailed();
     }
 
-    private void LevelFailed()
+    private static void LevelFailed()
     {
         #if DEBUG
         GD.Print("Level Failed");
