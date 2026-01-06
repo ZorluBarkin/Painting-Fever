@@ -12,7 +12,7 @@ public partial class SettingsManager : Node
     {
         Instance = this;
         SettingsData.LoadSettings();
-        SetMandatoryDisplaySettings();
+        SetDisplaySettings();
         base._Ready();
     }
     
@@ -23,10 +23,16 @@ public partial class SettingsManager : Node
         SettingsChanged.Invoke();
     }
 
-    public void SetMandatoryDisplaySettings()
+    /// <summary>
+    /// Applies the display settings from SettingsData to the engine.
+    /// </summary>
+    public void SetDisplaySettings()
     {
         DisplayServer.WindowSetMode(SettingsData.DisplayMode);
         DisplayServer.WindowSetSize(SettingsData.Resolution);
+        DisplayServer.WindowSetVsyncMode(SettingsData.VSync ? DisplayServer.VSyncMode.Enabled : DisplayServer.VSyncMode.Disabled);
+        // TargetFrameRate + 1 to account for 59.98 like offsets.
+        Engine.MaxFps = SettingsData.TargetFrameRate + 1;
         SetColorblindModeShader(SettingsData.ColorBlindMode);
     }
 

@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://ffco7jgmnm37"]
+
+[ext_resource type="Script" uid="uid://6e85giv2ckki" path="res://Assets/Scripts/GUI/Overlay/PerformanceOverlay.cs" id="1_75cul"]
+
+[node name="Performance Overlay CenterContainer" type="CenterContainer" node_paths=PackedStringArray("gameVersionLabel", "fpsValueLabel", "frameTimeValueLabel")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -66.0
+offset_right = 92.265
+offset_bottom = -10.0
+grow_vertical = 0
+script = ExtResource("1_75cul")
+gameVersionLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/Version Label")
+fpsValueLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/FPS HBoxContainer/FPS Value Label")
+frameTimeValueLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/Frame Time HBoxContainer2/Frametime Value Label")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="FPS HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FPS Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/FPS HBoxContainer"]
+layout_mode = 2
+text = "FPS:"
+
+[node name="FPS Value Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/FPS HBoxContainer"]
+layout_mode = 2
+text = "XXX"
+
+[node name="Frame Time HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Frametime Value Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Frame Time HBoxContainer2"]
+layout_mode = 2
+text = "XXX"
+
+[node name="FrameTime Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Frame Time HBoxContainer2"]
+layout_mode = 2
+text = "ms"
+
+[node name="Version Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "ver XXX"

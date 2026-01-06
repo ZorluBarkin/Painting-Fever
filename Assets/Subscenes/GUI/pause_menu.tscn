@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6sugmd12redt" path="res://Assets/Scripts/GUI/Menu/PauseMenu.cs" id="1_4105w"]
 
-[node name="Pause Menu" type="CenterContainer" node_paths=PackedStringArray("masterVolumeSlider", "musicVolumeSlider", "sfxVolumeSlider", "masterVolumeLineEdit", "musicVolumeLineEdit", "sfxVolumeLineEdit", "upKeyLineEdit", "downKeyLineEdit", "paint1KeyLineEdit", "paint2KeyLineEdit", "paint3KeyLineEdit")]
+[node name="Pause Menu" type="CenterContainer" node_paths=PackedStringArray("masterVolumeSlider", "musicVolumeSlider", "sfxVolumeSlider", "masterVolumeLineEdit", "musicVolumeLineEdit", "sfxVolumeLineEdit", "performanceOverlay", "upKeyLineEdit", "downKeyLineEdit", "paint1KeyLineEdit", "paint2KeyLineEdit", "paint3KeyLineEdit")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,6 +15,7 @@ sfxVolumeSlider = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/A
 masterVolumeLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Master Audio HBoxContainer/LineEdit")
 musicVolumeLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Muisc HBoxContainer/LineEdit")
 sfxVolumeLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Sfx HBoxContainer/LineEdit")
+performanceOverlay = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Performance Overlay HBoxContainer/Performance Overlay CheckButton")
 upKeyLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Up HBoxContainer/LineEdit")
 downKeyLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Down HBoxContainer/LineEdit")
 paint1KeyLineEdit = NodePath("PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 1 HBoxContainer/LineEdit")
@@ -142,6 +143,14 @@ shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
 selecting_enabled = false
 
+[node name="Performance Overlay HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Performance Overlay CheckButton" type="CheckButton" parent="PanelContainer/MarginContainer/Pause VBoxContainer/Performance Overlay HBoxContainer"]
+layout_mode = 2
+text = "performance-overlay"
+
 [node name="Controls VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer"]
 visible = false
 layout_mode = 2
@@ -231,6 +240,7 @@ text = "paint-3"
 [connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Muisc HBoxContainer/LineEdit" to="." method="OnMusicEditTextSubmitted"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Sfx HBoxContainer/SFX HSlider" to="." method="OnSFXSliderValueChanged"]
 [connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Sfx HBoxContainer/LineEdit" to="." method="OnSFXEditTextSubmitted"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/Pause VBoxContainer/Performance Overlay HBoxContainer/Performance Overlay CheckButton" to="." method="OnPerformanceOverlayToggled"]
 [connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Up HBoxContainer/LineEdit" to="." method="OnUpLineEditTextSubmitted"]
 [connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Down HBoxContainer/LineEdit" to="." method="OnDownLineEditTextSubmitted"]
 [connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Controls VBoxContainer/Paint 1 HBoxContainer/LineEdit" to="." method="OnPaint1LineEditTextSubmitted"]

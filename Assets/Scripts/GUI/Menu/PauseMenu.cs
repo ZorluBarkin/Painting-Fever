@@ -17,6 +17,9 @@ public partial class PauseMenu : CenterContainer
     [Export] private LineEdit musicVolumeLineEdit;
     [Export] private LineEdit sfxVolumeLineEdit;
 
+    [ExportCategory("Performance Overlay")]
+    [Export] private CheckButton performanceOverlay;
+
     [ExportCategory("Keybind LineEdits")]
     [Export] private LineEdit upKeyLineEdit;
     [Export] private LineEdit downKeyLineEdit;
@@ -44,6 +47,8 @@ public partial class PauseMenu : CenterContainer
         masterVolumeLineEdit.Text = masterVolumeSlider.Value.ToString();
         musicVolumeLineEdit.Text = musicVolumeSlider.Value.ToString();
         sfxVolumeLineEdit.Text = sfxVolumeSlider.Value.ToString();
+
+        performanceOverlay.ButtonPressed = data.ShowPerformanceOverlay;
     }
 
     private void OnVisibilityChanged()
@@ -138,6 +143,13 @@ public partial class PauseMenu : CenterContainer
             sfxVolumeSlider.Value = clampedValue;
             SettingsChanged = true;
         }
+    }
+
+    private void OnPerformanceOverlayToggled(bool toggled)
+    {
+        performanceOverlay.ButtonPressed = toggled;
+        SettingsManager.Instance.SettingsData.ShowPerformanceOverlay = toggled;
+        SettingsChanged = true;
     }
 
     private void OnUpLineEditTextSubmitted(string newText)

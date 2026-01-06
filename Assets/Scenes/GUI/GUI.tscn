@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://fqax347l1thg"]
+[gd_scene load_steps=5 format=3 uid="uid://fqax347l1thg"]
 
 [ext_resource type="PackedScene" uid="uid://xhsdd4bpy7om" path="res://Assets/Subscenes/GUI/main_menu.tscn" id="1_221tx"]
 [ext_resource type="Script" uid="uid://dex0s44cl4wfg" path="res://Assets/Scripts/GUI/GUI.cs" id="1_gm80i"]
 [ext_resource type="PackedScene" uid="uid://dbh70xnomdx5c" path="res://Assets/Subscenes/GUI/HUD.tscn" id="3_bsuq2"]
+[ext_resource type="PackedScene" uid="uid://ffco7jgmnm37" path="res://Assets/Subscenes/GUI/Overlay/performance_overlay.tscn" id="4_uje7d"]
 
 [node name="GUI" type="CanvasLayer" node_paths=PackedStringArray("MainMenu", "HUD")]
 editor_description = "This CanvasLayer houses a singleton script."
@@ -14,3 +15,5 @@ HUD = NodePath("HUD")
 
 [node name="HUD" parent="." instance=ExtResource("3_bsuq2")]
 visible = false
+
+[node name="Performance Overlay CenterContainer" parent="." instance=ExtResource("4_uje7d")]
