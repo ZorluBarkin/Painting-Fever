@@ -49,7 +49,7 @@ public partial class SettingsData : Resource
     {
         ChangeDisplaySettings(displayMode, resolution, vSync, targetFrameRate, showPerformanceOverlay);
         ChangeAudioSettings(masterVolume, musicVolume, effectsVolume);
-        ChangeAccessibilitySettings(colorBlindMode);
+        
     }
 
     public void LoadSettings()

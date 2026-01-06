@@ -46,6 +46,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "restart"
 
+[node name="Return to Menu Button" type="Button" parent="PanelContainer/MarginContainer/Pause VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "return-to-menu"
+
 [node name="Audio VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Pause VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -215,6 +220,7 @@ text = "paint-3"
 [connection signal="visibility_changed" from="." to="." method="OnVisibilityChanged"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/Pause VBoxContainer/Continue Button" to="." method="OnContinueButtonPressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/Pause VBoxContainer/Restart Button" to="." method="OnRestartButtonPressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Pause VBoxContainer/Return to Menu Button" to="." method="OnReturnToMenuButtonPressed"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Audio CheckButton" to="." method="OnAudioToggle"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Master Audio HBoxContainer/Master HSlider" to="." method="OnMasterSliderValueChanged"]
 [connection signal="text_submitted" from="PanelContainer/MarginContainer/Pause VBoxContainer/Audio VBoxContainer/Master Audio HBoxContainer/LineEdit" to="." method="OnMasterEditTextSubmitted"]

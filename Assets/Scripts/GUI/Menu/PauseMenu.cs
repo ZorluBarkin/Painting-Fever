@@ -36,7 +36,6 @@ public partial class PauseMenu : CenterContainer
 
     private void LoadSettings()
     {
-        // TODO: Add Config manager then connect settings to it
         SettingsData data = SettingsManager.Instance.SettingsData;
         masterVolumeSlider.Value = data.MasterVolume;
         musicVolumeSlider.Value = data.MusicVolume;
@@ -72,6 +71,13 @@ public partial class PauseMenu : CenterContainer
     {
         Visible = false;
         LevelManager.Instance.RestartCurrentLevel();
+    }
+
+    private void OnReturnToMenuButtonPressed()
+    {
+        Visible = false;
+        // TODO: not the proper way but its fine for now
+        GameManager.Instance.ReturnToMainMenu();
     }
 
     private void OnAudioToggle(bool toggled)

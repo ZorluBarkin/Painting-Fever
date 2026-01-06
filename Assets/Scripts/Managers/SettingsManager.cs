@@ -12,6 +12,7 @@ public partial class SettingsManager : Node
     {
         Instance = this;
         SettingsData.LoadSettings();
+        SetMandatoryDisplaySettings();
         base._Ready();
     }
     
@@ -20,6 +21,13 @@ public partial class SettingsManager : Node
         SettingsData.SaveSettings();
         // can never be null
         SettingsChanged.Invoke();
+    }
+
+    public void SetMandatoryDisplaySettings()
+    {
+        DisplayServer.WindowSetMode(SettingsData.DisplayMode);
+        DisplayServer.WindowSetSize(SettingsData.Resolution);
+        SetColorblindModeShader(SettingsData.ColorBlindMode);
     }
 
     public static string GetIndexFromWindowMode(DisplayServer.WindowMode mode)

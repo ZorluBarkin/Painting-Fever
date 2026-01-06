@@ -133,27 +133,12 @@ public partial class PlayerObject : CharacterBody2D
     private void CheckCollisions()
     {
         CollisionObject2D collider = GetLastSlideCollision() != null ? (CollisionObject2D)GetLastSlideCollision().GetCollider() : null;
-        if (collider == null)
-        {
-            /* if (Sticked)
-            {
-                RemoveStickyEffect(2f);
-            } */
-            return;
-        }
+        if (collider == null) return;
         
-        if (collider.GetCollisionLayerValue(3)) // 3rd layer is saw / spikes
+        if (collider.GetCollisionLayerValue(3)) // 3rd layer is trap layer
         {
             LevelFailed();
         }
-        /* else if (collider.GetCollisionLayerValue(4))
-        {
-            if(!Sticked)
-            {
-                Sticked = true;
-                MoveSpeed *= slowDownMultiplier;
-            }
-        } */
     }
 
     private void ChangeColor(Color newColor)
@@ -170,13 +155,6 @@ public partial class PlayerObject : CharacterBody2D
     {
         LevelFailed();
     }
-
-    /* private async void RemoveStickyEffect(float delay)
-    {
-        await ToSignal(GetTree().CreateTimer(delay), "timeout");
-        Sticked = false;
-        MoveSpeed = originalMoveSpeed;
-    } */
 
     private void LevelFailed()
     {
