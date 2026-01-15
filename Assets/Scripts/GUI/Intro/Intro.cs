@@ -3,10 +3,11 @@ using System.Threading.Tasks;
 
 public partial class Intro : CanvasLayer
 {
-    private const float DISPLAY_DURATION = 2.0f;
+    private const float DISPLAY_DURATION = 1.0f;
     private const float FADE_DURATION = 1f;
 
     [Export] private TextureRect godotEngineImage;
+    [Export] private TextureRect orgLogoImage;
     [Export] private VBoxContainer gameVboxContainer;
 
     private Tween tween;
@@ -14,6 +15,7 @@ public partial class Intro : CanvasLayer
     public override void _EnterTree()
     {
         godotEngineImage.Visible = false;
+        orgLogoImage.Visible = false;
         gameVboxContainer.Visible = false;
         base._EnterTree();
     }
@@ -38,6 +40,9 @@ public partial class Intro : CanvasLayer
         await FadeInGodotLogo();
         await ToSignal(GetTree().CreateTimer(DISPLAY_DURATION), SceneTreeTimer.SignalName.Timeout);
         await FadeOutGodotLogo();
+        await FadeInOrgLogo();
+        await ToSignal(GetTree().CreateTimer(DISPLAY_DURATION), SceneTreeTimer.SignalName.Timeout);
+        await FadeOutOrgLogo();
         await FadeInGameLogo();
         await ToSignal(GetTree().CreateTimer(DISPLAY_DURATION), SceneTreeTimer.SignalName.Timeout);
         await FadeOutGameLogo();
@@ -68,6 +73,24 @@ public partial class Intro : CanvasLayer
         godotEngineImage.Visible = false;
     }
     
+    private async Task FadeInOrgLogo()
+    {
+        orgLogoImage.Modulate = new Color(1, 1, 1, 0);
+        orgLogoImage.Visible = true;
+
+        tween = CreateTween();
+        tween.TweenProperty(orgLogoImage, "modulate:a", 1.0f, FADE_DURATION);
+        await ToSignal(tween, Tween.SignalName.Finished);
+    }
+
+    private async Task FadeOutOrgLogo()
+    {
+        tween = CreateTween();
+        tween.TweenProperty(orgLogoImage, "modulate:a", 0.0f, FADE_DURATION);
+        await ToSignal(tween, Tween.SignalName.Finished);
+        orgLogoImage.Visible = false;
+    }
+
     private async Task FadeInGameLogo()
     {
         gameVboxContainer.Modulate = new Color(1, 1, 1, 0);
