@@ -10,7 +10,7 @@ public partial class PluginMain : EditorPlugin
     private const string AutoloadName = "SettingsManager";
     
     // The path to your singleton script
-    private const string AutoloadPath = "res://addons/BZSettingsSystem/Scripts/SettingsManager.cs";
+    private const string AutoloadPath = "res://addons/BZSettingsSystem/settings_manager.tscn";
 
     public override void _EnterTree()
     {
