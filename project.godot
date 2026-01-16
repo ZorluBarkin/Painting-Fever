@@ -21,7 +21,7 @@ config/windows_native_icon="res://Assets/Sprites/Icons/painting_fever.ico"
 [autoload]
 
 Intro="res://Assets/Scenes/Intro/Intro.tscn"
-SettingsManager="*res://addons/BZSettingsSystem/settings_manager.tscn"
+SettingsManager="*res://addons/BZSettingsSystem/Scripts/SettingsManager.cs"
 
 [display]
 
@@ -34,6 +34,10 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="Painting Fever"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/BZSettingsSystem/plugin.cfg")
 
 [input]
 
