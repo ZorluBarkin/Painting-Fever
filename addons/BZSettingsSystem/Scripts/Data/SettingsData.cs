@@ -15,7 +15,7 @@ public partial class SettingsData : Resource
     [Export] public float MusicVolume { get; set; } = 100f;
     [Export] public float EffectsVolume { get; set; } = 100f;
 
-    [ExportCategory("Display Settings")]
+    [ExportCategory("Accessibility Settings")]
     [Export] public ColorBlindMode ColorBlindMode { get; set; } = ColorBlindMode.None;
 
     /// <summary>

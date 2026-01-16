@@ -21,7 +21,7 @@ config/windows_native_icon="res://Assets/Sprites/Icons/painting_fever.ico"
 [autoload]
 
 Intro="res://Assets/Scenes/Intro/Intro.tscn"
-SettingsManager="*res://Assets/Subscenes/Managers/settings_manager.tscn"
+SettingsManager="*res://addons/BZSettingsSystem/settings_manager.tscn"
 
 [display]
 
