@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://xhsdd4bpy7om"]
+[gd_scene load_steps=5 format=3 uid="uid://xhsdd4bpy7om"]
 
 [ext_resource type="Script" uid="uid://cns3kw7vleamf" path="res://Assets/Scripts/GUI/Menu/MainMenu.cs" id="1_n77li"]
+[ext_resource type="Theme" uid="uid://vqgb03qbuhg6" path="res://Assets/Themes/Menu-UITheme.tres" id="2_t2mbt"]
 
 [sub_resource type="Gradient" id="Gradient_qhwsd"]
 offsets = PackedFloat32Array(0, 0.67333335)
@@ -47,22 +48,31 @@ alignment = 1
 
 [node name="Continue Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
 layout_mode = 2
-text = "continue"
+size_flags_vertical = 0
+theme = ExtResource("2_t2mbt")
+text = "Continue"
 
 [node name="New Game Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_t2mbt")
 text = "new-game"
 
 [node name="Level Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_t2mbt")
 text = "level-selector"
 
 [node name="Settings Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_t2mbt")
 text = "settings"
 
 [node name="Exit Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_t2mbt")
 text = "exit
 "
 
