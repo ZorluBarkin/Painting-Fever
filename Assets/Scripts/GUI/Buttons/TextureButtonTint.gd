@@ -5,8 +5,8 @@ extends TextureButton
 @export var normal_color: Color = Color.LIGHT_GRAY
 
 @export_category("Label colors")
-@export var label_light_color: Color = Color.BLACK
-@export var label_dark_color: Color = Color.WHITE
+@export var label_light_color: Color = Color.WHITE
+@export var label_dark_color: Color = Color.BLACK
 
 var _label: Label = null
 

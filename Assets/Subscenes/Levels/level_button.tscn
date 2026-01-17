@@ -17,8 +17,6 @@ texture_normal = ExtResource("1_iad10")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_js2em")
-label_light_color = Color(1, 1, 1, 1)
-label_dark_color = Color(0, 0, 0, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
