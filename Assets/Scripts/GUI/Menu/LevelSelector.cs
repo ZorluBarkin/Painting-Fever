@@ -7,6 +7,7 @@ public partial class LevelSelector : Control
     [Export] private VBoxContainer easyLevelsContainer;
     [Export] private VBoxContainer mediumLevelsContainer;
     [Export] private VBoxContainer hardLevelsContainer;
+    [Export] private VBoxContainer easterEggLevelsContainer;
 
     [ExportCategory("Page Switch Buttons")]
     [Export] private TextureButton PrevPageButtonScene;
@@ -26,6 +27,7 @@ public partial class LevelSelector : Control
         levelData = LevelManager.Instance.LevelData;
         selectedDifficulty = Difficulty.Easy;
         PrevPageButtonScene.Disabled = true;
+        SelectLevelPage(selectedDifficulty);
         base._Ready();
     }
 
@@ -41,17 +43,45 @@ public partial class LevelSelector : Control
         GetTree().ChangeSceneToFile("res://Assets/Scenes/GameScene.tscn");
     }
 
+    private void SelectLevelPage(Difficulty selectedDifficulty)
+    {
+        switch (selectedDifficulty)
+        {
+            case Difficulty.Easy:
+                easyLevelsContainer.Visible = true;
+                mediumLevelsContainer.Visible = false;
+                hardLevelsContainer.Visible = false;
+                easterEggLevelsContainer.Visible = false;
+                break;
+            case Difficulty.Medium:
+                easyLevelsContainer.Visible = false;
+                mediumLevelsContainer.Visible = true;
+                hardLevelsContainer.Visible = false;
+                easterEggLevelsContainer.Visible = false;
+                break;
+            case Difficulty.Hard:
+                easyLevelsContainer.Visible = false;
+                mediumLevelsContainer.Visible = false;
+                hardLevelsContainer.Visible = true;
+                easterEggLevelsContainer.Visible = false;
+                break;
+            case Difficulty.EasterEgg:
+                easyLevelsContainer.Visible = false;
+                mediumLevelsContainer.Visible = false;
+                hardLevelsContainer.Visible = false;
+                easterEggLevelsContainer.Visible = true;
+                break;
+        }
+    }
+
     private void OnPrevPageButtonPressed()
     {
-        GD.Print("Prev Page pressed");
         int targetLevel = (int)selectedDifficulty - 1;
         
-        if (targetLevel < 0)
-            targetLevel = Enum.GetNames(typeof(Difficulty)).Length - 1;
-        else
-            selectedDifficulty = (Difficulty)(targetLevel % Enum.GetNames(typeof(Difficulty)).Length);
+        if (targetLevel < 0) targetLevel = Enum.GetNames(typeof(Difficulty)).Length - 1;
+        else selectedDifficulty = (Difficulty)(targetLevel % Enum.GetNames(typeof(Difficulty)).Length);
 
-        GD.Print($"Selected Difficulty: {selectedDifficulty}");
+        SelectLevelPage(selectedDifficulty);
 
         if (Difficulty.Easy == selectedDifficulty)
         {
@@ -67,15 +97,12 @@ public partial class LevelSelector : Control
 
     private void OnNextPageButtonPressed()
     {
-        GD.Print("Next Page pressed");
         int targetLevel = (int)selectedDifficulty + 1;
         
-        if (targetLevel >= Enum.GetNames(typeof(Difficulty)).Length)
-            targetLevel = 0;
-        else
-            selectedDifficulty = (Difficulty)(targetLevel % Enum.GetNames(typeof(Difficulty)).Length);
+        if (targetLevel >= Enum.GetNames(typeof(Difficulty)).Length) targetLevel = 0;
+        else selectedDifficulty = (Difficulty)(targetLevel % Enum.GetNames(typeof(Difficulty)).Length);
 
-        GD.Print($"Selected Difficulty: {selectedDifficulty}");
+        SelectLevelPage(selectedDifficulty);
 
         if (Difficulty.EasterEgg == selectedDifficulty)
         {

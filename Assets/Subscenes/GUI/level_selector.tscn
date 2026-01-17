@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cbtqvkytht4nn" path="res://Assets/Sprites/UI/crossmark.svg" id="7_v1vcg"]
 [ext_resource type="Script" uid="uid://cxhhuotksn65w" path="res://Assets/Scripts/GUI/Buttons/TextureButtonTint.gd" id="8_ty2a0"]
 
-[node name="Level Selector" type="Control" node_paths=PackedStringArray("easyLevelsContainer", "mediumLevelsContainer", "hardLevelsContainer", "PrevPageButtonScene", "NextPageButtonScene")]
+[node name="Level Selector" type="Control" node_paths=PackedStringArray("easyLevelsContainer", "mediumLevelsContainer", "hardLevelsContainer", "easterEggLevelsContainer", "PrevPageButtonScene", "NextPageButtonScene")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +22,7 @@ script = ExtResource("1_jax88")
 easyLevelsContainer = NodePath("MarginContainer/PanelContainer/MarginContainer/easy-levels")
 mediumLevelsContainer = NodePath("MarginContainer/PanelContainer/MarginContainer/med-levels")
 hardLevelsContainer = NodePath("MarginContainer/PanelContainer/MarginContainer/hard-levels")
+easterEggLevelsContainer = NodePath("MarginContainer/PanelContainer/MarginContainer/easter-egg-levels")
 PrevPageButtonScene = NodePath("MarginContainer/PanelContainer/MarginContainer/Level Switches HBoxContainer/Previous Level Page Button")
 NextPageButtonScene = NodePath("MarginContainer/PanelContainer/MarginContainer/Level Switches HBoxContainer/Next Level Page TextureButton")
 
@@ -173,7 +174,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="Hard Levels Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels/Hard Levels PanelContainer/MarginContainer"]
 layout_mode = 2
-text = "med-levels"
+text = "hard-levels"
 
 [node name="Upper Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels"]
 layout_mode = 2
@@ -210,34 +211,34 @@ layout_mode = 2
 [node name="lower Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels"]
 layout_mode = 2
 
-[node name="easteregg-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="easter-egg-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Easteregg Levels PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels"]
+[node name="Easter Egg Levels PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels/Easteregg Levels PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels/Easter Egg Levels PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Easteregg Levels Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels/Easteregg Levels PanelContainer/MarginContainer"]
+[node name="Easter Egg Levels Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels/Easter Egg Levels PanelContainer/MarginContainer"]
 layout_mode = 2
 text = "easter-levels"
 
-[node name="Upper Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels"]
+[node name="Upper Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels"]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels/Upper Level Hbox"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels/Upper Level Hbox"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels/Upper Level Hbox/ColorRect"]
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels/Upper Level Hbox/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -246,11 +247,11 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Level 1"
 
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels/Upper Level Hbox"]
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels/Upper Level Hbox"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels/Upper Level Hbox/ColorRect2"]
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels/Upper Level Hbox/ColorRect2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -259,10 +260,10 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Level 2"
 
-[node name="Spacer" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels"]
+[node name="Spacer" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels"]
 layout_mode = 2
 
-[node name="lower Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels"]
+[node name="lower Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels"]
 layout_mode = 2
 
 [node name="Level Switches HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
