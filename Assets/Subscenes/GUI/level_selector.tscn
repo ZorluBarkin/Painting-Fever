@@ -210,6 +210,61 @@ layout_mode = 2
 [node name="lower Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels"]
 layout_mode = 2
 
+[node name="easteregg-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Easteregg Levels PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels/Easteregg Levels PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Easteregg Levels Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels/Easteregg Levels PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "easter-levels"
+
+[node name="Upper Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels/Upper Level Hbox"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels/Upper Level Hbox/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1"
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels/Upper Level Hbox"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels/Upper Level Hbox/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 2"
+
+[node name="Spacer" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels"]
+layout_mode = 2
+
+[node name="lower Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/easteregg-levels"]
+layout_mode = 2
+
 [node name="Level Switches HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
@@ -257,13 +312,20 @@ script = ExtResource("8_ty2a0")
 hover_color = Color(0.999996, 0.4617213, 0.4608022, 1)
 pressed_color = Color(1, 0.7286562, 0.8264454, 1)
 
-[node name="TextureRect" type="TextureRect" parent="Exit button Control/Exit TextureButton"]
+[node name="MarginContainer" type="MarginContainer" parent="Exit button Control/Exit TextureButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="Exit button Control/Exit TextureButton/MarginContainer"]
+layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("7_v1vcg")
 expand_mode = 1
