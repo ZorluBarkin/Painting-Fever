@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ry0w5vfiov40"]
+[gd_scene load_steps=10 format=3 uid="uid://ry0w5vfiov40"]
 
 [ext_resource type="Script" uid="uid://be5630ud08pey" path="res://Assets/Scripts/GUI/Menu/LevelSelector.cs" id="1_jax88"]
 [ext_resource type="Theme" uid="uid://vqgb03qbuhg6" path="res://Assets/Themes/UITheme.tres" id="1_xao7e"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dokrk78njur1v" path="res://Assets/Sprites/UI/Arrow/arrow-disabled.svg" id="5_v1vcg"]
 [ext_resource type="Texture2D" uid="uid://dpxhf4glpnaac" path="res://Assets/Sprites/square.svg" id="6_8jp3j"]
 [ext_resource type="Texture2D" uid="uid://cbtqvkytht4nn" path="res://Assets/Sprites/UI/crossmark.svg" id="7_v1vcg"]
+[ext_resource type="Script" uid="uid://cxhhuotksn65w" path="res://Assets/Scripts/GUI/Buttons/TextureButtonTint.gd" id="8_ty2a0"]
 
 [node name="Level Selector" type="Control" node_paths=PackedStringArray("easyLevelsContainer", "mediumLevelsContainer", "hardLevelsContainer", "PrevPageButtonScene", "NextPageButtonScene")]
 layout_mode = 3
@@ -252,6 +253,9 @@ grow_vertical = 2
 texture_normal = ExtResource("6_8jp3j")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("8_ty2a0")
+hover_color = Color(0.999996, 0.4617213, 0.4608022, 1)
+pressed_color = Color(1, 0.7286562, 0.8264454, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Exit button Control/Exit TextureButton"]
 layout_mode = 1
