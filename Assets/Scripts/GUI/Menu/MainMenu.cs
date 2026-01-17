@@ -4,6 +4,7 @@ using System;
 public partial class MainMenu : Control, IEventSubscriber
 {
     [Export] private Button continueButton;
+    [Export] private LevelSelector levelSelector;
 
     public override void _Ready()
     {
@@ -46,6 +47,7 @@ public partial class MainMenu : Control, IEventSubscriber
     private void OnLevelSelectorButtonPressed()
     {
         GD.Print("Level Selector Button Pressed");
+        levelSelector.Visible = true;
         // Add logic to open level selector
     }
 
