@@ -12,7 +12,7 @@ colors = PackedColorArray(0.18497226, 0.071321554, 0.121279396, 1, 0.69803923, 0
 gradient = SubResource("Gradient_qhwsd")
 fill_to = Vector2(0, 1)
 
-[node name="Main Menu" type="Control"]
+[node name="Main Menu" type="Control" node_paths=PackedStringArray("continueButton", "levelSelector")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +21,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_to5nd")
 script = ExtResource("1_n77li")
+continueButton = NodePath("Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer/Continue Button")
+levelSelector = NodePath("Level Selector")
 
 [node name="Background TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
