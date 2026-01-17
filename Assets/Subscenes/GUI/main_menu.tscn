@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://xhsdd4bpy7om"]
 
 [ext_resource type="Script" uid="uid://cns3kw7vleamf" path="res://Assets/Scripts/GUI/Menu/MainMenu.cs" id="1_n77li"]
-[ext_resource type="Theme" uid="uid://vqgb03qbuhg6" path="res://Assets/Themes/UITheme.tres" id="1_t2mbt"]
 [ext_resource type="PackedScene" uid="uid://ry0w5vfiov40" path="res://Assets/Subscenes/GUI/level_selector.tscn" id="2_trecg"]
+[ext_resource type="Theme" uid="uid://vqgb03qbuhg6" path="res://Assets/Themes/Menu-UITheme.tres" id="3_to5nd"]
 
 [sub_resource type="Gradient" id="Gradient_qhwsd"]
 offsets = PackedFloat32Array(0, 0.67333335)
@@ -12,16 +12,15 @@ colors = PackedColorArray(0.18497226, 0.071321554, 0.121279396, 1, 0.69803923, 0
 gradient = SubResource("Gradient_qhwsd")
 fill_to = Vector2(0, 1)
 
-[node name="Main Menu" type="Control" node_paths=PackedStringArray("levelSelector")]
+[node name="Main Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_t2mbt")
+theme = ExtResource("3_to5nd")
 script = ExtResource("1_n77li")
-levelSelector = NodePath("Level Selector")
 
 [node name="Background TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -51,22 +50,28 @@ alignment = 1
 
 [node name="Continue Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_to5nd")
+disabled = true
 text = "continue"
 
 [node name="New Game Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_to5nd")
 text = "new-game"
 
 [node name="Level Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_to5nd")
 text = "level-selector"
 
 [node name="Settings Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_to5nd")
 text = "settings"
 
 [node name="Exit Button" type="Button" parent="Menu HSplitContainer/Menu CenterContainer/Buttons VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_to5nd")
 text = "exit
 "
 
