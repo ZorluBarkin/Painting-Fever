@@ -1,0 +1,337 @@
+[gd_scene load_steps=10 format=3 uid="uid://ry0w5vfiov40"]
+
+[ext_resource type="Script" uid="uid://be5630ud08pey" path="res://Assets/Scripts/GUI/Menu/LevelSelector.cs" id="1_jax88"]
+[ext_resource type="Theme" uid="uid://vqgb03qbuhg6" path="res://Assets/Themes/UITheme.tres" id="1_xao7e"]
+[ext_resource type="Texture2D" uid="uid://daxga8fsipt6y" path="res://Assets/Sprites/UI/Arrow/arrow-normal.svg" id="2_8jp3j"]
+[ext_resource type="Texture2D" uid="uid://btqg5tgos7ff6" path="res://Assets/Sprites/UI/Arrow/arrow-pressed.svg" id="3_hny76"]
+[ext_resource type="Texture2D" uid="uid://uis12c7brpfd" path="res://Assets/Sprites/UI/Arrow/arrow-hover.svg" id="4_8jp3j"]
+[ext_resource type="Texture2D" uid="uid://dokrk78njur1v" path="res://Assets/Sprites/UI/Arrow/arrow-disabled.svg" id="5_v1vcg"]
+[ext_resource type="Texture2D" uid="uid://dpxhf4glpnaac" path="res://Assets/Sprites/square.svg" id="6_8jp3j"]
+[ext_resource type="Texture2D" uid="uid://cbtqvkytht4nn" path="res://Assets/Sprites/UI/crossmark.svg" id="7_v1vcg"]
+[ext_resource type="Script" uid="uid://cxhhuotksn65w" path="res://Assets/Scripts/GUI/Buttons/TextureButtonTint.gd" id="8_ty2a0"]
+
+[node name="Level Selector" type="Control" node_paths=PackedStringArray("easyLevelsContainer", "mediumLevelsContainer", "hardLevelsContainer", "easterEggLevelsContainer", "PrevPageButtonScene", "NextPageButtonScene")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xao7e")
+script = ExtResource("1_jax88")
+easyLevelsContainer = NodePath("MarginContainer/PanelContainer/MarginContainer/easy-levels")
+mediumLevelsContainer = NodePath("MarginContainer/PanelContainer/MarginContainer/med-levels")
+hardLevelsContainer = NodePath("MarginContainer/PanelContainer/MarginContainer/hard-levels")
+easterEggLevelsContainer = NodePath("MarginContainer/PanelContainer/MarginContainer/easter-egg-levels")
+PrevPageButtonScene = NodePath("MarginContainer/PanelContainer/MarginContainer/Level Switches HBoxContainer/Previous Level Page Button")
+NextPageButtonScene = NodePath("MarginContainer/PanelContainer/MarginContainer/Level Switches HBoxContainer/Next Level Page TextureButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="easy-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Easy Levels PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/easy-levels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/easy-levels/Easy Levels PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Easy Levels Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/easy-levels/Easy Levels PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "easy-levels"
+
+[node name="Upper Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/easy-levels"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/easy-levels/Upper Level Hbox"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/easy-levels/Upper Level Hbox/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1"
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/easy-levels/Upper Level Hbox"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/easy-levels/Upper Level Hbox/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 2"
+
+[node name="Spacer" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/easy-levels"]
+layout_mode = 2
+
+[node name="lower Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/easy-levels"]
+layout_mode = 2
+
+[node name="med-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Med Levels PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/med-levels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/med-levels/Med Levels PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Med Levels Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/med-levels/Med Levels PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "med-levels"
+
+[node name="Upper Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/med-levels"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/med-levels/Upper Level Hbox"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/med-levels/Upper Level Hbox/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1"
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/med-levels/Upper Level Hbox"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/med-levels/Upper Level Hbox/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 2"
+
+[node name="Spacer" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/med-levels"]
+layout_mode = 2
+
+[node name="lower Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/med-levels"]
+layout_mode = 2
+
+[node name="hard-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Hard Levels PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels/Hard Levels PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Hard Levels Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels/Hard Levels PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "hard-levels"
+
+[node name="Upper Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels/Upper Level Hbox"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels/Upper Level Hbox/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1"
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels/Upper Level Hbox"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels/Upper Level Hbox/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 2"
+
+[node name="Spacer" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels"]
+layout_mode = 2
+
+[node name="lower Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels"]
+layout_mode = 2
+
+[node name="easter-egg-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Easter Egg Levels PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels/Easter Egg Levels PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Easter Egg Levels Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels/Easter Egg Levels PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "easter-levels"
+
+[node name="Upper Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels/Upper Level Hbox"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels/Upper Level Hbox/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1"
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels/Upper Level Hbox"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels/Upper Level Hbox/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 2"
+
+[node name="Spacer" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels"]
+layout_mode = 2
+
+[node name="lower Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels"]
+layout_mode = 2
+
+[node name="Level Switches HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 700
+alignment = 1
+
+[node name="Previous Level Page Button" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/Level Switches HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_8jp3j")
+texture_pressed = ExtResource("3_hny76")
+texture_hover = ExtResource("4_8jp3j")
+texture_disabled = ExtResource("5_v1vcg")
+flip_h = true
+
+[node name="Next Level Page TextureButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/Level Switches HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_8jp3j")
+texture_pressed = ExtResource("3_hny76")
+texture_hover = ExtResource("4_8jp3j")
+texture_disabled = ExtResource("5_v1vcg")
+
+[node name="Exit button Control" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.96900004
+anchor_top = 0.056
+anchor_right = 0.96900004
+anchor_bottom = 0.056
+offset_left = -64.32007
+offset_top = 18.68
+offset_right = -15.320068
+offset_bottom = 66.68
+
+[node name="Exit TextureButton" type="TextureButton" parent="Exit button Control"]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_8jp3j")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("8_ty2a0")
+hover_color = Color(0.999996, 0.4617213, 0.4608022, 1)
+pressed_color = Color(1, 0.7286562, 0.8264454, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Exit button Control/Exit TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="Exit button Control/Exit TextureButton/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("7_v1vcg")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/Level Switches HBoxContainer/Previous Level Page Button" to="." method="OnPrevPageButtonPressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/Level Switches HBoxContainer/Next Level Page TextureButton" to="." method="OnNextPageButtonPressed"]
+[connection signal="pressed" from="Exit button Control/Exit TextureButton" to="." method="OnExitButtonPressed"]
