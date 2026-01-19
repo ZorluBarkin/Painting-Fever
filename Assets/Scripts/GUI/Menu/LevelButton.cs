@@ -34,26 +34,30 @@ public partial class LevelButton : TextureButton
 
     private void SetScoreVisuals()
     {
-        
-        if(score >= 100f) // perfect, 3 disco
+        LevelData levelData = LevelManager.Instance.LevelData;
+        // perfect, 3 disco
+        if(score >= levelData.levelPerfectThreshold)
         {
             completed = true;
             foreach (var indicator in scoreIndicators)
                 indicator.Visible = true;
         }
-        else if (score >= 90f) // good 2 disco
+        // good 2 disco
+        else if (score >= levelData.levelSuccessThreshold)
         {
             completed = true;
             for (int i = 0; i <= scoreIndicators.Count / 2; i++)
                 scoreIndicators[i].Visible = true;
         }
-        else if (score >= 75f) // ok 1 disco
+        // ok 1 disco
+        else if (score >= levelData.levelPassedThreshold)
         {
             completed = true;
             for (int i = 0; i <= scoreIndicators.Count / 3; i++)
                 scoreIndicators[i].Visible = true;
         }
-        else // no disco, not completed 
+        // no disco, not completed
+        else
         {
             completed = false;
             foreach (var indicator in scoreIndicators)

@@ -34,6 +34,12 @@ public partial class LevelData : Resource
 
     public float stickySlowdownMultiplier = 0.9f;
 
+    [ExportCategory("Level Completion Thresholds")]
+    [Export] public float levelPassedThreshold = 75f;
+    [Export] public float levelSuccessThreshold = 90f;
+    [Export] public float levelPerfectThreshold = 100f;
+
+
     public LevelData() { }
 
     public float GetMoveSpeed(Difficulty difficulty)
