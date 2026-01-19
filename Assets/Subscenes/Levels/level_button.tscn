@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dk5wo1sy7ousp" path="res://Assets/Sprites/UI/Disco/disco-ball-purp.svg" id="3_tmgf5"]
 [ext_resource type="Script" uid="uid://cxhhuotksn65w" path="res://Assets/Scripts/GUI/Buttons/TextureButtonTint.gd" id="7_mxe2t"]
 
-[node name="Level Button" type="VBoxContainer" node_paths=PackedStringArray("lockedIndicator", "scoreIndicators")]
+[node name="Level Button" type="VBoxContainer" node_paths=PackedStringArray("lockedIndicator", "scoreIndicators", "LevelSelectButton")]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
 custom_minimum_size = Vector2(100, 100)
 anchors_preset = 8
@@ -26,6 +26,7 @@ script = ExtResource("2_js2em")
 lockedColor = Color(0.29411766, 0.29411766, 0.29411766, 1)
 lockedIndicator = NodePath("TextureRect")
 scoreIndicators = [NodePath("Score Indicators HBoxContainer/Disco Ball 1 TextureRect"), NodePath("Score Indicators HBoxContainer/Disco Ball 2 TextureRect"), NodePath("Score Indicators HBoxContainer/Disco Ball 3 TextureRect")]
+LevelSelectButton = NodePath("Level TextureButton")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(30, 30)
