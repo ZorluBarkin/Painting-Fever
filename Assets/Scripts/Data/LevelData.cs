@@ -10,7 +10,7 @@ public partial class LevelData : Resource
     [Export] public Godot.Collections.Array<PackedScene> MediumLevelScenes { get; private set; }
     [Export] public Godot.Collections.Array<PackedScene> HardLevelScenes { get; private set; }
     [Export] public Godot.Collections.Array<PackedScene> EasterEggLevelScenes { get; private set; }
-
+    
     [ExportCategory("Difficulty Settings")]
     [Export] public Godot.Collections.Dictionary<Difficulty, float> DifficultyToSpeedMap = new()
     {

@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvkyc7xl0khsi"]
+[gd_scene load_steps=8 format=3 uid="uid://dvkyc7xl0khsi"]
 
+[ext_resource type="Texture2D" uid="uid://dypw6581rsmi3" path="res://Assets/Sprites/UI/locked.svg" id="1_6swdm"]
+[ext_resource type="Texture2D" uid="uid://bdiiev27hydq5" path="res://Assets/Sprites/UI/Disco/disco-ball-blue.svg" id="1_e30k8"]
 [ext_resource type="Texture2D" uid="uid://dpxhf4glpnaac" path="res://Assets/Sprites/square.svg" id="1_iad10"]
-[ext_resource type="Script" uid="uid://cxhhuotksn65w" path="res://Assets/Scripts/GUI/Buttons/TextureButtonTint.gd" id="2_js2em"]
+[ext_resource type="Texture2D" uid="uid://bov54ikxbmhg0" path="res://Assets/Sprites/UI/Disco/disco-ball-green.svg" id="2_6swdm"]
+[ext_resource type="Script" uid="uid://tmrn7ppch1um" path="res://Assets/Scripts/GUI/Menu/LevelButton.cs" id="2_js2em"]
+[ext_resource type="Texture2D" uid="uid://dk5wo1sy7ousp" path="res://Assets/Sprites/UI/Disco/disco-ball-purp.svg" id="3_tmgf5"]
+[ext_resource type="Script" uid="uid://cxhhuotksn65w" path="res://Assets/Scripts/GUI/Buttons/TextureButtonTint.gd" id="7_mxe2t"]
 
-[node name="Level Button" type="TextureButton"]
+[node name="Level Button" type="VBoxContainer"]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
 custom_minimum_size = Vector2(100, 100)
 anchors_preset = 8
@@ -11,14 +16,54 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_js2em")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_6swdm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Score Indicators HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Disco Ball 1 TextureRect" type="TextureRect" parent="Score Indicators HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_e30k8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Disco Ball 2 TextureRect" type="TextureRect" parent="Score Indicators HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("2_6swdm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Disco Ball 3 TextureRect" type="TextureRect" parent="Score Indicators HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("3_tmgf5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level TextureButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
 texture_normal = ExtResource("1_iad10")
 ignore_texture_size = true
 stretch_mode = 5
-script = ExtResource("2_js2em")
+script = ExtResource("7_mxe2t")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="Level TextureButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +71,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Level Label" type="Label" parent="CenterContainer"]
+[node name="Level Label" type="Label" parent="Level TextureButton/CenterContainer"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 text = "level-name"

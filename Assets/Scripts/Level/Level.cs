@@ -3,6 +3,7 @@ using Godot;
 public partial class Level : Node
 {
     [ExportCategory("Level Metadata")]
+    [Export] public Texture2D LevelThumbnail { get; private set; }
     [Export] public int LevelIndex { get; set; }
     [Export] public Difficulty Difficulty { get; private set; }
     [Export] public float MaxDistance { get; private set; } = 3000f;

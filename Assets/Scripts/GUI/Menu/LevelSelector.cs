@@ -13,11 +13,8 @@ public partial class LevelSelector : Control
     [Export] private TextureButton PrevPageButtonScene;
     [Export] private TextureButton NextPageButtonScene;
 
-    [ExportCategory("Level Button Colors")]
-    [Export] private Color LockedLevelColor = Colors.Gray;
-    [Export] private Color completedLevelColor = Colors.Green;
-    [Export] private Color notCompletedLevelColor = Colors.Yellow;
-    [Export] private Color EasterEggLevelColor = Colors.Purple;
+    [ExportCategory("Level Button PackedScene")]
+    [Export] private PackedScene LevelButtonScene;
 
     private Difficulty selectedDifficulty;
     private LevelData levelData;
@@ -33,14 +30,12 @@ public partial class LevelSelector : Control
 
     private void CreateLevelButtons()
     {
-        
+        // TODO: Implement level button creation logic, applicable when multiple levels are added
     }
 
-    private void OnLevelButtonPressed(int levelIndex)
+    private void CloseLevelSelector()
     {
-        GD.Print($"Level {levelIndex} selected for difficulty {selectedDifficulty}");
-        LevelManager.Instance.InstantiateLevel(selectedDifficulty, levelIndex);
-        GetTree().ChangeSceneToFile("res://Assets/Scenes/GameScene.tscn");
+        Visible = false;
     }
 
     private void SelectLevelPage(Difficulty selectedDifficulty)
@@ -72,6 +67,12 @@ public partial class LevelSelector : Control
                 easterEggLevelsContainer.Visible = true;
                 break;
         }
+    }
+
+    public void InstantiateLevel(Difficulty difficulty, int index)
+    {
+        LevelManager.Instance.InstantiateLevel(difficulty, index);
+        CloseLevelSelector();
     }
 
     private void OnPrevPageButtonPressed()
@@ -118,6 +119,6 @@ public partial class LevelSelector : Control
 
     private void OnExitButtonPressed()
     {
-        Visible = false;
+        CloseLevelSelector();
     }
 }
