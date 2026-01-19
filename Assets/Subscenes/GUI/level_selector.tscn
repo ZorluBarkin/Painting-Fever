@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://ry0w5vfiov40"]
+[gd_scene load_steps=12 format=3 uid="uid://ry0w5vfiov40"]
 
-[ext_resource type="Script" uid="uid://be5630ud08pey" path="res://Assets/Scripts/GUI/Menu/LevelSelector.cs" id="1_jax88"]
+[ext_resource type="Script" uid="uid://be5630ud08pey" path="res://Assets/Scripts/GUI/Menu/Levels/LevelSelector.cs" id="1_jax88"]
 [ext_resource type="Theme" uid="uid://vqgb03qbuhg6" path="res://Assets/Themes/Menu-UITheme.tres" id="1_ty2a0"]
 [ext_resource type="Texture2D" uid="uid://daxga8fsipt6y" path="res://Assets/Sprites/UI/Arrow/arrow-normal.svg" id="2_8jp3j"]
 [ext_resource type="PackedScene" uid="uid://dvkyc7xl0khsi" path="res://Assets/Subscenes/Levels/level_button.tscn" id="3_7u8q2"]
 [ext_resource type="Texture2D" uid="uid://btqg5tgos7ff6" path="res://Assets/Sprites/UI/Arrow/arrow-pressed.svg" id="3_hny76"]
 [ext_resource type="Texture2D" uid="uid://uis12c7brpfd" path="res://Assets/Sprites/UI/Arrow/arrow-hover.svg" id="4_8jp3j"]
+[ext_resource type="Script" uid="uid://b4n4khwghh6jr" path="res://Assets/Scripts/GUI/Menu/Levels/LevelPage.cs" id="4_up3wd"]
 [ext_resource type="Texture2D" uid="uid://dokrk78njur1v" path="res://Assets/Sprites/UI/Arrow/arrow-disabled.svg" id="5_v1vcg"]
 [ext_resource type="Texture2D" uid="uid://dpxhf4glpnaac" path="res://Assets/Sprites/square.svg" id="6_8jp3j"]
 [ext_resource type="Texture2D" uid="uid://cbtqvkytht4nn" path="res://Assets/Sprites/UI/crossmark.svg" id="7_v1vcg"]
@@ -49,8 +50,11 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="easy-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="easy-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" node_paths=PackedStringArray("UpperlevelRow", "LowerlevelRow")]
 layout_mode = 2
+script = ExtResource("4_up3wd")
+UpperlevelRow = NodePath("Upper Level Hbox")
+LowerlevelRow = NodePath("lower Level Hbox")
 
 [node name="Easy Levels PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/easy-levels"]
 layout_mode = 2
@@ -77,9 +81,13 @@ layout_mode = 2
 [node name="lower Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/easy-levels"]
 layout_mode = 2
 
-[node name="med-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="med-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" node_paths=PackedStringArray("UpperlevelRow", "LowerlevelRow")]
 visible = false
 layout_mode = 2
+script = ExtResource("4_up3wd")
+Difficulty = 1
+UpperlevelRow = NodePath("Upper Level Hbox")
+LowerlevelRow = NodePath("lower Level Hbox")
 
 [node name="Med Levels PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/med-levels"]
 layout_mode = 2
@@ -106,9 +114,13 @@ layout_mode = 2
 [node name="lower Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/med-levels"]
 layout_mode = 2
 
-[node name="hard-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="hard-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" node_paths=PackedStringArray("UpperlevelRow", "LowerlevelRow")]
 visible = false
 layout_mode = 2
+script = ExtResource("4_up3wd")
+Difficulty = 2
+UpperlevelRow = NodePath("Upper Level Hbox")
+LowerlevelRow = NodePath("lower Level Hbox")
 
 [node name="Hard Levels PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels"]
 layout_mode = 2
@@ -135,9 +147,13 @@ layout_mode = 2
 [node name="lower Level Hbox" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/hard-levels"]
 layout_mode = 2
 
-[node name="easter-egg-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="easter-egg-levels" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" node_paths=PackedStringArray("UpperlevelRow", "LowerlevelRow")]
 visible = false
 layout_mode = 2
+script = ExtResource("4_up3wd")
+Difficulty = 3
+UpperlevelRow = NodePath("Upper Level Hbox")
+LowerlevelRow = NodePath("lower Level Hbox")
 
 [node name="Easter Egg Levels PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/easter-egg-levels"]
 layout_mode = 2

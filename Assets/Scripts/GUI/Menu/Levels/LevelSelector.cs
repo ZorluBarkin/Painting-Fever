@@ -4,10 +4,10 @@ using Godot;
 public partial class LevelSelector : Control
 {
     [ExportCategory("Level Containers")]
-    [Export] private VBoxContainer easyLevelsContainer;
-    [Export] private VBoxContainer mediumLevelsContainer;
-    [Export] private VBoxContainer hardLevelsContainer;
-    [Export] private VBoxContainer easterEggLevelsContainer;
+    [Export] private LevelPage easyLevelsContainer;
+    [Export] private LevelPage mediumLevelsContainer;
+    [Export] private LevelPage hardLevelsContainer;
+    [Export] private LevelPage easterEggLevelsContainer;
 
     [ExportCategory("Page Switch Buttons")]
     [Export] private TextureButton PrevPageButtonScene;
@@ -31,6 +31,9 @@ public partial class LevelSelector : Control
     private void CreateLevelButtons()
     {
         // TODO: Implement level button creation logic, applicable when multiple levels are added
+        // read data
+        //switch diff
+        //easterEggLevelsContainer.AddLevelButton(LevelButtonScene.Instantiate<LevelButton>()); like so
     }
 
     private void CloseLevelSelector()

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bdiiev27hydq5" path="res://Assets/Sprites/UI/Disco/disco-ball-blue.svg" id="1_e30k8"]
 [ext_resource type="Texture2D" uid="uid://dpxhf4glpnaac" path="res://Assets/Sprites/square.svg" id="1_iad10"]
 [ext_resource type="Texture2D" uid="uid://bov54ikxbmhg0" path="res://Assets/Sprites/UI/Disco/disco-ball-green.svg" id="2_6swdm"]
-[ext_resource type="Script" uid="uid://tmrn7ppch1um" path="res://Assets/Scripts/GUI/Menu/LevelButton.cs" id="2_js2em"]
+[ext_resource type="Script" uid="uid://tmrn7ppch1um" path="res://Assets/Scripts/GUI/Menu/Levels/LevelButton.cs" id="2_js2em"]
 [ext_resource type="Texture2D" uid="uid://dk5wo1sy7ousp" path="res://Assets/Sprites/UI/Disco/disco-ball-purp.svg" id="3_tmgf5"]
 [ext_resource type="Script" uid="uid://cxhhuotksn65w" path="res://Assets/Scripts/GUI/Buttons/TextureButtonTint.gd" id="7_mxe2t"]
 
