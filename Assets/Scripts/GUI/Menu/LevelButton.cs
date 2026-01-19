@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class LevelButton : TextureButton
+public partial class LevelButton : Control
 {
     public Level level = null;
     public Difficulty Difficulty;
@@ -8,15 +8,18 @@ public partial class LevelButton : TextureButton
 
     // TODO: When progress system is implemented, set this based on last completed level index
     public bool unlocked = false;
-    public bool completed = false;
+    public bool completed = false;  
     public float score;
 
+    [Export] private Color lockedColor;
     [Export] private TextureRect lockedIndicator;
     [Export] private Godot.Collections.Array<TextureRect> scoreIndicators;
 
+    [Export] private TextureButton LevelSelectButton;
+
     private void Initialize()
     {
-        TextureNormal = level.LevelThumbnail;
+        LevelSelectButton.TextureNormal = level.LevelThumbnail;
         Difficulty = level.Difficulty;
         Index = level.LevelIndex;
     }
@@ -65,12 +68,25 @@ public partial class LevelButton : TextureButton
         }
     }
 
-    private void SetLockedVisual()
+    private void SetLocked(bool locked)
     {
-        lockedIndicator.Visible = true;
-        foreach (var indicator in scoreIndicators)
-            indicator.Visible = false;
-        Disabled = true;
-        unlocked = false;
+        if (locked)
+        {
+            unlocked = false;
+            lockedIndicator.Visible = true;
+            foreach (var indicator in scoreIndicators)
+                indicator.Visible = false;
+
+            LevelSelectButton.Disabled = true;
+            LevelSelectButton.SelfModulate = lockedColor;
+        }
+        else
+        {
+            unlocked = true;
+            lockedIndicator.Visible = false;
+            LevelSelectButton.Disabled = false;
+            LevelSelectButton.SelfModulate = Colors.White;
+            SetScoreVisuals();
+        }
     }
 }
