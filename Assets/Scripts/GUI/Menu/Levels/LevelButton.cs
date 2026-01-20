@@ -16,10 +16,11 @@ public partial class LevelButton : Control
     [Export] private Godot.Collections.Array<TextureRect> scoreIndicators;
 
     [Export] private TextureButton LevelSelectButton;
+    [Export] private TextureRect LevelImage;
 
     private void Initialize()
     {
-        LevelSelectButton.TextureNormal = level.LevelThumbnail;
+        LevelImage.Texture = level.LevelThumbnail;
         Difficulty = level.Difficulty;
         Index = level.LevelIndex;
     }
@@ -78,14 +79,14 @@ public partial class LevelButton : Control
                 indicator.Visible = false;
 
             LevelSelectButton.Disabled = true;
-            LevelSelectButton.SelfModulate = lockedColor;
+            LevelSelectButton.Modulate = lockedColor;
         }
         else
         {
             unlocked = true;
             lockedIndicator.Visible = false;
             LevelSelectButton.Disabled = false;
-            LevelSelectButton.SelfModulate = Colors.White;
+            LevelSelectButton.Modulate = Colors.White;
             SetScoreVisuals();
         }
     }
